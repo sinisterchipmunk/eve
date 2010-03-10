@@ -16,7 +16,6 @@ module Eve
     private
     def default_options
       {
-        :base_uri => "http://api.eve-online.com",
       }
     end
 

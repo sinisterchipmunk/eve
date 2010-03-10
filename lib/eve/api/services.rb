@@ -1,3 +1,4 @@
+require 'eve/api/services/misc'
 require 'eve/api/services/server'
 
 module Eve
@@ -5,6 +6,7 @@ module Eve
     module Services
       def self.included(base)
         base.instance_eval do
+          include Eve::API::Services::Misc
           include Eve::API::Services::Server
         end
       end

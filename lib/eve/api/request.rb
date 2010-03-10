@@ -4,38 +4,65 @@ module Eve
       extend ActiveSupport::Memoizable
       attr_reader :response, :uri, :options, :namespace, :service
       
-      def initialize(namespace, service, options = {:base_uri => "http://api.eve-online.com"})
+      def initialize(namespace, service, options = {})
+        options.reverse_merge! default_options
         namespace = namespace.to_s if namespace.is_a?(Symbol)
         service   = service.to_s   if service.is_a?(Symbol)
+
+        unless [:xml,:string].include? options[:response_type]
+          raise ArgumentError, "Expected :response_type to be :xml or :string"
+        end
         
         @options = options.dup
-        @service = service.camelize
+        @service = options[:camelize] ? service.camelize : service
         @namespace = namespace
-        @uri = File.join(@options.delete(:base_uri), @namespace, "#{@service}.xml.aspx")
+        @response_type = options[:response_type]
+
+        @uri = File.join(@options.delete(:base_uri), @namespace, "#{@service}.#{options[:extension]}")
       end
 
       def dispatch
-        cached_response || cache_response(Net::HTTP.post_form(URI.parse(uri), options).body)
+        cached_response || cache_response(Net::HTTP.post_form(URI.parse(uri), post_options).body)
       end
 
       def cached_response
         if xml = Eve.cache.read(cache_key)
-          potential_response = Eve::API::Response.new(xml)
-          return potential_response if potential_response.cached_until >= Time.now
+          potential_response = response_for(xml)
+          if !potential_response.respond_to?(:cached_until) || potential_response.cached_until >= Time.now
+            return potential_response
+          end
         end
         nil
       end
 
+      def response_for(body)
+        @response_type == :xml ? Eve::API::Response.new(body) : body
+      end
+
       def cache_response(xml)
         Eve.cache.write(cache_key, xml)
-        Eve::API::Response.new(xml)
+        response_for xml
       end
 
       def cache_key
-        ActiveSupport::Cache.expand_cache_key(options, @uri)
+        ActiveSupport::Cache.expand_cache_key(post_options, @uri)
       end
 
       memoize :cache_key
+
+      private
+      def post_options
+        options.without(default_options.keys)
+      end
+
+      def default_options
+        {
+          :base_uri => "http://api.eve-online.com",
+          :extension => "xml.aspx",
+          :camelize => true,
+          :response_type => :xml
+        }
+      end
     end
   end
 end
