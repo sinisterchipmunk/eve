@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Eve::API::Response do
   context "server_status" do
     subject do
-      Eve::API::Response.new(mock_request(:server, :server_status))
+      Eve::API::Response.new(mock_http_response(:server, :server_status).body)
     end
 
     it "should respond_to :api_version" do

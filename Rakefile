@@ -16,7 +16,7 @@ $hoe = Hoe.spec 'eve' do
   self.description = "Interfaces with the Eve Online API and In-Game Browser. Provides helpers for generating Eve-specific JavaScript"
   self.developer('Colin MacKenzie IV', 'sinisterchipmunk@gmail.com')
   self.extra_deps << ["activesupport",">=2.3.5"] << ["hpricot",">=0.8.2"]
-  self.extra_dev_deps << ["cucumber",">=0.3"] << ["rspec",">=0.2.1"] << ["rcov",">=0.9.8"]
+  self.extra_dev_deps << ["cucumber",">=0.6.2"] << ["rspec",">=1.3.0"] << ["rcov",">=0.9.8"]
   self.rspec_options = ['--options', 'spec/spec.opts']
   #self.history_file = 'History.rdoc'
   self.readme_file = 'README.rdoc'

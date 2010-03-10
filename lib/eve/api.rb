@@ -19,5 +19,9 @@ module Eve
         :base_uri => "http://api.eve-online.com",
       }
     end
+
+    def cache_namespace
+      self.class.name.underscore
+    end
   end
 end

@@ -19,7 +19,10 @@ module Eve
     end
 
     def cache
-      @cache ||= defined?(Rails) ? Rails.cache : ActiveSupport::Cache.lookup_store(*cache_store)
+      return @cache if @cache
+      @cache = defined?(Rails) ? Rails.cache : ActiveSupport::Cache.lookup_store(*cache_store)
+      @cache.logger = Logger.new($stdout) unless defined?(Rails)
+      @cache
     end
   end
 end

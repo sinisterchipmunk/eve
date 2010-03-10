@@ -1,5 +1,6 @@
 .idea
 .svn
+coverage.data
 coverage
 **/coverage
 
