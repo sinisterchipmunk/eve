@@ -7,12 +7,12 @@ module Eve
       delegate :[], :count, :length, :name, :columns, :key, :to => :rowset
       
       def initialize(xml)
+        xml = Hpricot::XML(xml).root if xml.kind_of?(String)
         @xml = xml
         @attributes = {}
         @rowset = []
 
-        root = Hpricot::XML(@xml).root
-        if error = (root / 'error').first
+        if error = (@xml / 'error').first
           message = error.inner_text
           code = error['code'].to_i
           if Eve::Errors::API_ERROR_MAP.key?(code)
@@ -26,7 +26,7 @@ module Eve
             end
           end
         end
-        parse_xml(root)
+        parse_xml(@xml)
       end
 
       private
@@ -47,12 +47,7 @@ module Eve
             @attributes[method_name]
           end
 
-#          define_method "#{method_name}=" do |value|
-#            @attributes[method_name] = value
-#          end
-
           alias_method original_method_name, method_name
-#          alias_method "#{original_method_name}=", "#{method_name}="
         end
       end
 
@@ -67,13 +62,17 @@ module Eve
         case node.name
           when 'eveapi' then
             @api_version = node['version']
-            node.children.each { |child| parse_xml(child) } if node.children
+            parse_children(node)
           when 'result' then
-            node.children.each { |child| parse_xml(child) } if node.children
+            parse_children(node)
           when 'rowset' then
             @rowset = Rowset.new(node)
           else wrap_method_around_node(node)
         end
+      end
+
+      def parse_children(node)
+        node.children.each { |child| parse_xml(child) } if node.children
       end
     end
   end

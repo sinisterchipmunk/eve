@@ -3,8 +3,28 @@ module Eve
     class Response
       class Rowset < Array
         class Row
-          def initialize(columns, attributes)
-            attributes = attributes.to_hash
+          attr_reader :rowset
+          delegate :[], :count, :length, :name, :columns, :key, :to => :rowset
+
+          def initialize(columns, row_element)
+            copy_attributes(columns, row_element)
+            parse_children(row_element)
+          end
+
+          private
+          def parse_children(row_element)
+            row_element.children.each do |child|
+              if child.kind_of?(Hpricot::Elem)
+                case child.name
+                  when 'rowset' then @rowset = Rowset.new(child)
+                  else #raise ArgumentError, "Only more rowsets can be children of rows"
+                end
+              end
+            end if row_element.children
+          end
+
+          def copy_attributes(columns, row_element)
+            attributes = row_element.attributes.to_hash
             missing_attributes = columns - attributes.keys
             extra_attributes = attributes.keys - columns
             raise Eve::Errors::InvalidRowset,
@@ -50,7 +70,7 @@ module Eve
 
         #<row solarSystemID="30000001" allianceID="0" factionID="500007" solarSystemName="Tanoo" corporationID="0" />
         def parse_row(elem)
-          self << Row.new(columns, elem.attributes)
+          self << Row.new(columns, elem)
         end
       end
     end
