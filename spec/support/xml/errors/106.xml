@@ -1,0 +1,5 @@
+<eveapi version="2">
+  <currentTime>2010-03-10 16:28:17</currentTime>
+  <error code="106">Must provide userID parameter for authentication.</error>
+  <cachedUntil>2010-03-10 16:33:17</cachedUntil>
+</eveapi>
