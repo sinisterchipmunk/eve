@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rowset name="solarSystems" key="solarSystemID" columns="solarSystemID,allianceID,factionID">
+  <row solarSystemID="30000001" allianceID="0" factionID="500007" solarSystemName="Tanoo" corporationID="0" />
+  <row solarSystemID="30000002" allianceID="0" factionID="500007" solarSystemName="Lashesih" corporationID="0" />
+  <row solarSystemID="30000003" allianceID="0" factionID="500007" solarSystemName="Akpivem" corporationID="0" />
+</rowset>

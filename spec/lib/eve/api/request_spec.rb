@@ -9,7 +9,7 @@ describe Eve::API::Request do
   end
 
   it "should cache repeat requests" do
-    Eve.cache.delete_matched /.*/
+    Eve.cache.delete_matched /#{Regexp.escape subject.namespace}\/#{Regexp.escape subject.service}/
     Net::HTTP.should_receive(:post_form).once.and_return(mock_http_response(subject.namespace, subject.service))
     subject.dispatch
     subject.dispatch

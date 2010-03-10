@@ -1,4 +1,10 @@
 module MockAPIHelpers
+  def eve_api(options = {})
+    @eve_api ||= {}
+    @eve_api[ActiveSupport::Cache.expand_cache_key(options)] ||= Eve::API.new(options)
+  end
+  alias api eve_api
+
   def mock_response_body(base, service = nil)
     if service.nil?
       fi = File.expand_path File.join("spec/support", base)

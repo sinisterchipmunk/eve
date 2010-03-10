@@ -4,6 +4,11 @@ require 'eve/errors/internal_errors'
 require 'eve/errors/miscellaneous_errors'
 
 module Eve
+  module Errors
+    # Raised when a rowset cannot be processed.
+    class InvalidRowset < StandardError; end
+  end
+
   unless defined?(API_ERROR_MAP)
     API_ERROR_MAP = {
       '1xx' => Eve::Errors::UserInputError,

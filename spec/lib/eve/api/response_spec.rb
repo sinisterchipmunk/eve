@@ -26,4 +26,22 @@ describe Eve::API::Response do
       should respond_to(:cached_until)
     end
   end
+
+  context "with a rowset" do
+    subject do
+      Eve::API::Response.new(mock_http_response(:map, :sovereignty).body)
+    end
+
+    it "defines rowset attributes on the response object: #name" do
+      subject.name.should == 'solarSystems'
+    end
+
+    it "defines rowset attributes on the response object: #key" do
+      subject.key.should == 'solarSystemID'
+    end
+
+    it "defines rowset attributes on the response object: #columns" do
+      subject.columns.should == %w(solarSystemID allianceID factionID solarSystemName corporationID)
+    end
+  end
 end

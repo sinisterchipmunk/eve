@@ -1,3 +1,4 @@
+require 'eve/api/services/map'
 require 'eve/api/services/misc'
 require 'eve/api/services/server'
 

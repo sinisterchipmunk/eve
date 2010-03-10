@@ -1,11 +1,15 @@
+require 'eve/api/response/rowset'
+
 module Eve
   class API
     class Response
-      attr_reader :xml, :api_version
+      attr_reader :xml, :api_version, :rowset
+      delegate :[], :count, :length, :name, :columns, :key, :to => :rowset
       
       def initialize(xml)
         @xml = xml
         @attributes = {}
+        @rowset = []
 
         parse_xml(Hpricot::XML(@xml).root)
       end
@@ -51,6 +55,8 @@ module Eve
             node.children.each { |child| parse_xml(child) } if node.children
           when 'result' then
             node.children.each { |child| parse_xml(child) } if node.children
+          when 'rowset' then
+            @rowset = Rowset.new(node)
           else wrap_method_around_node(node)
         end
       end
