@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Eve::API do
   context "#character_portrait" do
     it "should be a binary string" do
+      mock_service('jpg/mock_portrait.jpg')
       subject.character_portrait('1234567890').should be_a(String)
     end
 

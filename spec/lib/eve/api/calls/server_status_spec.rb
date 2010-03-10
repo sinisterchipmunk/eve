@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Eve::API do
   context "#server_status" do
+    before(:each) { mock_service('server', 'server_status') }
     subject { Eve::API.new }
 
     it "should respond to current_time" do

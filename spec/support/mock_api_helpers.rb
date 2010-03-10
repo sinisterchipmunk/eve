@@ -1,7 +1,7 @@
 module MockAPIHelpers
   def eve_api(options = {})
     @eve_api ||= {}
-    @eve_api[ActiveSupport::Cache.expand_cache_key(options)] ||= Eve::API.new(options)
+    @eve_api[ActiveSupport::Cache.expand_cache_key(options)] ||= ::Eve::API.new(options)
   end
   alias api eve_api
 
@@ -19,6 +19,10 @@ module MockAPIHelpers
 
   def mock_http_response(base, service = nil)
     mock = mock('Net::HTTPOK', :body => mock_response_body(base, service))
+  end
+
+  def mock_service(base, service = nil)
+    Net::HTTP.should_receive(:post_form).any_number_of_times.and_return(mock_http_response(base, service))
   end
 end
 

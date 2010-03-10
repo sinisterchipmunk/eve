@@ -21,14 +21,14 @@ module Eve
       [@options.delete(:includes)].flatten.each do |mod|
         next unless mod
         mod = mod.to_s unless mod.kind_of?(String)
-        eigenclass.send(:include, "Eve::API::Services::#{mod.camelize}".constantize)
+        eigenclass.send(:include, "::Eve::API::Services::#{mod.camelize}".constantize)
       end
     end
 
     def instantiate_submodules
       [@options.delete(:submodules)].flatten.each do |mod|
         next unless mod
-        instance_variable_set("@#{mod}", Eve::API.new(:includes => mod, :submodules => nil))
+        instance_variable_set("@#{mod}", ::Eve::API.new(:includes => mod, :submodules => nil))
         eigenclass.send(:attr_reader, mod)
       end
     end
@@ -39,7 +39,7 @@ module Eve
 
     def default_options
       {
-        :submodules => [:map]
+        :submodules => [:map, :eve]
       }
     end
 
