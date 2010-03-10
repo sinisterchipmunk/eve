@@ -18,4 +18,10 @@ describe Eve::API::Services::Map do
       eve_api.map.jumps.should have_at_least(1).item
     end
   end
+
+  context "#fac_war_systems" do
+    it "should have multiple elements" do
+      eve_api.map.fac_war_systems.should have_at_least(1).item
+    end
+  end
 end
