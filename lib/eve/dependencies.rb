@@ -1,4 +1,6 @@
 require 'net/http'
 require 'hpricot'
 require 'active_support/core_ext'
+require 'active_support/cache'
+require 'active_support/memoizable'
 require 'yaml'

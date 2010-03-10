@@ -1,5 +1,5 @@
 When /^I request the server status$/ do
-  @result = Eve::API.server_status
+  @result = Eve::API.new.server_status
 end
 
 Then /^the result should include "([^\"]*)"$/ do |method_name|
