@@ -4,6 +4,10 @@ require 'hoe'
 require 'fileutils'
 require './lib/eve'
 
+def rcov_opts
+  IO.readlines("spec/rcov.opts").map {|l| l.chomp.split " "}.flatten
+end
+
 Hoe.plugin :newgem
 # Hoe.plugin :website
 # Hoe.plugin :cucumberfeatures
@@ -26,17 +30,6 @@ end
 require 'newgem/tasks'
 Dir['tasks/**/*.rake'].each { |t| load t }
 
-# TODO - want other tests/tasks run by default? Add them to the list
-# remove_task :default
-# task :default => [:spec, :features]
-['audit','test','test_deps','default','post_blog'].each do |task|
-  Rake.application.instance_variable_get('@tasks').delete(task)
-end
-
-task :post_blog do
-  # no-op
-end
-
 task :cleanup_rcov_files do
   rm_rf 'coverage.data'
 end
@@ -49,15 +42,13 @@ else
 end
 
 namespace :spec do
-
   desc "Run all specs with rcov"
   Spec::Rake::SpecTask.new(:rcov) do |t|
     t.spec_files = FileList['spec/**/*_spec.rb']
     t.spec_opts = ['--options', 'spec/spec.opts']
     t.rcov = true
     t.rcov_dir = 'coverage'
-    t.rcov_opts = ['--exclude', "features,kernel,load-diff-lcs\.rb,instance_exec\.rb,lib/spec.rb,lib/spec/runner.rb,^spec/*,bin/spec,examples,/gems,/Library/Ruby,\.autotest,#{ENV['GEM_HOME']}"]
-    t.rcov_opts << '--sort coverage --text-summary --aggregate coverage.data'
+    t.rcov_opts = rcov_opts
   end
 
   desc "Run files listed in spec/spec_files.txt"
@@ -74,8 +65,7 @@ begin
   if RUBY_VERSION =~ /^1.8/
     Cucumber::Rake::Task.new :features do |t|
       t.rcov = true
-      t.rcov_opts = ['--exclude', "features,kernel,load-diff-lcs\.rb,instance_exec\.rb,lib/spec.rb,lib/spec/runner.rb,^spec/*,bin/spec,examples,/gems,/Library/Ruby,\.autotest,#{ENV['GEM_HOME']}"]
-      t.rcov_opts << '--no-html --aggregate coverage.data'
+      t.rcov_opts = rcov_opts
       t.cucumber_opts = %w{--format progress}
     end
   else
@@ -85,12 +75,6 @@ begin
   end
 rescue LoadError
   puts "You need cucumber installed to run cucumber tasks"
-end
-
-desc "Run examples"
-Spec::Rake::SpecTask.new('spec') do |t|
-  t.spec_files = FileList['spec/**/*_spec.rb']
-  t.spec_opts = ['--options', 'spec/spec.opts', '--backtrace']
 end
 
 def egrep(pattern)
@@ -112,18 +96,6 @@ task :todo do
   egrep /(FIXME|TODO|TBD)/
 end
 
-desc "verify_committed, verify_rcov, post_news, release"
-task :complete_release => [:verify_committed, :verify_rcov, :post_news, :release]
-
-desc "Verifies that there is no uncommitted code"
-task :verify_committed do
-  IO.popen('git status') do |io|
-    io.each_line do |line|
-      raise "\n!!! Do a git commit first !!!\n\n" if line =~ /^#\s*modified:/
-    end
-  end
-end
-
 namespace :update do
   desc "update the manifest"
   task :manifest do
@@ -137,25 +109,4 @@ task :clobber_tmp do
   cmd = %q[rm -r tmp]
   puts cmd
   system cmd if test ?d, 'tmp'
-end
-
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
-end
-
-namespace :test do
-  %w(unit).each do |target|
-    Rcov::RcovTask.new(target) do |t|
-      t.libs << 'lib'
-      t.libs << "test"
-      t.rcov_opts = ['--exclude', "features,kernel,load-diff-lcs\.rb,instance_exec\.rb,lib/spec.rb,lib/spec/runner.rb,^spec/*,bin/spec,examples,/gems,/Library/Ruby,\.autotest,#{ENV['GEM_HOME']}"]
-      t.test_files = FileList["test/#{target}/**/*_test.rb"]
-      t.output_dir = "test/coverage/#{target}"
-      t.verbose = true
-      t.rcov_opts << '--aggregate coverage.data'
-    end
-  end
 end

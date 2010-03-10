@@ -1,2 +1,2 @@
 --exclude "spec/*,gems/*"
---rails
+--aggregate coverage.data
