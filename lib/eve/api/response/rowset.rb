@@ -16,7 +16,7 @@ module Eve
             row_element.children.each do |child|
               if child.kind_of?(Hpricot::Elem)
                 case child.name
-                  when 'rowset' then @rowset = Rowset.new(child)
+                  when 'rowset' then (@rowset = Rowset.new(child)).delegate_from(self)
                   else #raise ArgumentError, "Only more rowsets can be children of rows"
                 end
               end
@@ -45,6 +45,13 @@ module Eve
         def initialize(elem)
           super()
           parse_elem(elem)
+        end
+
+        def delegate_from(object)
+          klass = class << object; self; end
+          var_name = name.underscore
+          object.instance_variable_set("@#{var_name}", self)
+          klass.send(:attr_reader, var_name)
         end
 
         private

@@ -66,7 +66,7 @@ module Eve
           when 'result' then
             parse_children(node)
           when 'rowset' then
-            @rowset = Rowset.new(node)
+            (@rowset = Rowset.new(node)).delegate_from(self)  
           else wrap_method_around_node(node)
         end
       end
