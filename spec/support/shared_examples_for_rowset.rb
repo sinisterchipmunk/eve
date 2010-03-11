@@ -5,8 +5,8 @@ shared_examples_for "any Rowset" do
   # we wouldn't know if rowset.columns is actually what the test was expecting.
 
   unless @expected_columns.kind_of?(Array)
-    raise ArgumentError, "Expected @expected_columns to be an array (make sure it_should_behave_like 'Any Rowset' "+
-            "comes AFTER @expected_columns is assigned)"
+    raise ArgumentError, "Expected @expected_columns to be a hash or an array (make sure it_should_behave_like "+
+            "'Any Rowset' comes AFTER @expected_columns is assigned)"
   end
 
   @expected_columns.collect { |c| (c.kind_of?(String) ? c : c.to_s).underscore }.each do |expected|

@@ -36,7 +36,7 @@ module Eve
       end
 
       def response_for(body)
-        @response_type == :xml ? Eve::API::Response.new(body) : body
+        @response_type == :xml ? Eve::API::Response.new(body, options) : body
       end
 
       def cache_response(xml)
@@ -60,7 +60,8 @@ module Eve
           :base_uri => "http://api.eve-online.com",
           :extension => "xml.aspx",
           :camelize => true,
-          :response_type => :xml
+          :response_type => :xml,
+          :column_mapping => nil
         }
       end
     end

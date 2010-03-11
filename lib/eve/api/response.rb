@@ -6,7 +6,8 @@ module Eve
       attr_reader :xml, :api_version, :rowset
       delegate :[], :count, :length, :name, :columns, :key, :to => :rowset
       
-      def initialize(xml)
+      def initialize(xml, options = {})
+        @options = options
         xml = Hpricot::XML(xml).root if xml.kind_of?(String)
         @xml = xml
         @attributes = {}
@@ -66,7 +67,7 @@ module Eve
           when 'result' then
             parse_children(node)
           when 'rowset' then
-            (@rowset = Rowset.new(node)).delegate_from(self)  
+            (@rowset = Rowset.new(node, @options)).delegate_from(self)
           else wrap_method_around_node(node)
         end
       end

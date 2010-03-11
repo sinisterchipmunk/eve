@@ -6,9 +6,14 @@ module Eve
           attr_reader :rowset
           delegate :[], :count, :length, :name, :columns, :key, :to => :rowset
 
-          def initialize(columns, row_element)
+          def initialize(columns, row_element, options)
+            @options = options
             copy_attributes(columns, row_element)
             parse_children(row_element)
+          end
+
+          def inspect
+            "#<Eve::API::Response::Rowset::Row[#{rowset ? name : 'nil'}]>"
           end
 
           private
@@ -16,7 +21,7 @@ module Eve
             row_element.children.each do |child|
               if child.kind_of?(Hpricot::Elem)
                 case child.name
-                  when 'rowset' then (@rowset = Rowset.new(child)).delegate_from(self)
+                  when 'rowset' then (@rowset = Rowset.new(child, @options)).delegate_from(self)
                   else #raise ArgumentError, "Only more rowsets can be children of rows"
                 end
               end
@@ -24,7 +29,7 @@ module Eve
           end
 
           def copy_attributes(columns, row_element)
-            attributes = row_element.attributes.to_hash
+            attributes = row_element.attributes.to_hash.rename((@options[:column_mapping] || {}))
             missing_attributes = columns - attributes.keys
             extra_attributes = attributes.keys - columns
             raise Eve::Errors::InvalidRowset,
@@ -42,9 +47,14 @@ module Eve
         
         attr_reader :name, :key, :columns
 
-        def initialize(elem)
+        def initialize(elem, options)
           super()
+          @options = options
           parse_elem(elem)
+        end
+
+        def inspect
+          "#<Eve::API::Response::Rowset[#{name}]>"
         end
 
         def delegate_from(object)
@@ -78,7 +88,7 @@ module Eve
 
         #<row solarSystemID="30000001" allianceID="0" factionID="500007" solarSystemName="Tanoo" corporationID="0" />
         def parse_row(elem)
-          self << Row.new(columns, elem)
+          self << Row.new(columns, elem, @options)
         end
       end
     end
