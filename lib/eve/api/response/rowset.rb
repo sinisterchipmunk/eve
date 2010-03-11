@@ -1,19 +1,31 @@
 module Eve
   class API
     class Response
+      module Rowsets
+        def rowset_names
+          rowsets.collect { |c| puts c.name; c.name }
+        end
+
+        def add_rowset(rowset)
+          rowsets << rowset
+          rowset.delegate_from(self)
+        end
+
+        def rowsets; @rowsets ||= []; end
+
+        def inspect
+          "#<#{self.class.name}[#{rowset_names.join(', ')}]>"
+        end
+      end
+
       class Rowset < Array
         class Row
-          attr_reader :rowset
-          delegate :[], :count, :length, :name, :columns, :key, :to => :rowset
-
-          def initialize(columns, row_element, options)
+          include Eve::API::Response::Rowsets
+          
+          def initialize(columns, row_element, options = {})
             @options = options
             copy_attributes(columns, row_element)
             parse_children(row_element)
-          end
-
-          def inspect
-            "#<Eve::API::Response::Rowset::Row[#{rowset ? name : 'nil'}]>"
           end
 
           private
@@ -21,7 +33,7 @@ module Eve
             row_element.children.each do |child|
               if child.kind_of?(Hpricot::Elem)
                 case child.name
-                  when 'rowset' then (@rowset = Rowset.new(child, @options)).delegate_from(self)
+                  when 'rowset' then add_rowset(Rowset.new(child, @options))
                   else #raise ArgumentError, "Only more rowsets can be children of rows"
                 end
               end
@@ -47,14 +59,14 @@ module Eve
         
         attr_reader :name, :key, :columns
 
-        def initialize(elem, options)
+        def initialize(elem, options = {})
           super()
           @options = options
           parse_elem(elem)
         end
 
         def inspect
-          "#<Eve::API::Response::Rowset[#{name}]>"
+          "#<Eve::API::Response::Rowset[#{name}][#{size}]>"
         end
 
         def delegate_from(object)
@@ -66,8 +78,6 @@ module Eve
         end
 
         private
-        #<rowset name="solarSystems" key="solarSystemID"
-        #  columns="solarSystemID,allianceID,factionID,solarSystemName,corporationID">
         def parse_elem(elem)
           raise ArgumentError, "Expected an Hpricot::Elem, got #{elem.class}" unless elem.kind_of?(Hpricot::Elem)
           raise ArgumentError, "Expected a rowset element, got #{elem.name}" unless elem.name == 'rowset'
@@ -86,7 +96,6 @@ module Eve
           end if elem.children
         end
 
-        #<row solarSystemID="30000001" allianceID="0" factionID="500007" solarSystemName="Tanoo" corporationID="0" />
         def parse_row(elem)
           self << Row.new(columns, elem, @options)
         end

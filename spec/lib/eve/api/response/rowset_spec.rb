@@ -16,14 +16,6 @@ describe Eve::API::Response::Rowset do
       Eve::API::Response::Rowset.new((Hpricot::XML(mock_response_body('map', 'sovereignty')).root / "rowset").first)
     end
 
-    it "should delegate length to rowset" do
-      subject.should have(10).rows
-    end
-
-    it "should delegate [] to rowset" do
-      subject[0].should be_kind_of(Eve::API::Response::Rowset::Row)
-    end
-
     it "should define row attributes as methods" do
       subject[0].should respond_to(:solar_system_id)
     end

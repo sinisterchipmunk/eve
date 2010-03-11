@@ -3,15 +3,18 @@ require 'eve/api/response/rowset'
 module Eve
   class API
     class Response
-      attr_reader :xml, :api_version, :rowset
-      delegate :[], :count, :length, :name, :columns, :key, :to => :rowset
+      include Eve::API::Response::Rowsets
+      attr_reader :xml, :api_version
+
+      def inspect
+        return self.to_s
+      end
       
       def initialize(xml, options = {})
         @options = options
         xml = Hpricot::XML(xml).root if xml.kind_of?(String)
         @xml = xml
         @attributes = {}
-        @rowset = []
 
         if error = (@xml / 'error').first
           message = error.inner_text
@@ -67,7 +70,7 @@ module Eve
           when 'result' then
             parse_children(node)
           when 'rowset' then
-            (@rowset = Rowset.new(node, @options)).delegate_from(self)
+            add_rowset Rowset.new(node, @options)
           else wrap_method_around_node(node)
         end
       end

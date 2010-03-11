@@ -32,16 +32,20 @@ describe Eve::API::Response do
       Eve::API::Response.new(mock_http_response(:map, :sovereignty).body)
     end
 
-    it "defines rowset attributes on the response object: #name" do
-      subject.name.should == 'solarSystems'
+    it "delegates the name of the rowset into the rowset from the response object" do
+      subject.should respond_to(:solar_systems)
     end
 
-    it "defines rowset attributes on the response object: #key" do
-      subject.key.should == 'solarSystemID'
+    it "defines rowset attributes: #name" do
+      subject.solar_systems.name.should == 'solarSystems'
     end
 
-    it "defines rowset attributes on the response object: #columns" do
-      subject.columns.should == %w(solarSystemID allianceID factionID solarSystemName corporationID)
+    it "defines rowset attributes: #key" do
+      subject.solar_systems.key.should == 'solarSystemID'
+    end
+
+    it "defines rowset attributes: #columns" do
+      subject.solar_systems.columns.should == %w(solarSystemID allianceID factionID solarSystemName corporationID)
     end
   end
 end

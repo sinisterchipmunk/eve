@@ -2,16 +2,10 @@ require 'spec_helper'
 
 describe Eve::API::Services::Map do
   context "#sovereignty" do
-    before(:each) { @result = mock_service('map', 'sovereignty') }
-    @expected_columns = "solarSystemID,allianceID,factionID,solarSystemName,corporationID".split(/,/)
-    it_should_behave_like "any Rowset"
+    subject { mock_service('map', 'sovereignty').solar_systems }
 
-    it "creates a RowSet called :solar_systems" do
-      @result.should respond_to(:solar_systems)
-    end
-
-    it "produces 10 rows in the RowSet" do
-      @result.solar_systems.should have(10).systems
+    it "should behave like a Rowset" do
+      subject.should behave_like_rowset("solarSystemID,allianceID,factionID,solarSystemName,corporationID")
     end
   end
 end
