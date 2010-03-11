@@ -6,6 +6,9 @@ module Eve
         def certificate_tree;  request(:eve, :certificate_tree, :column_mapping => { 'level' => 'skillLevel' });  end
         def conquerable_station_list; request(:eve, :conquerable_station_list); end
         def error_list; request(:eve, :error_list); end
+        def fac_war_stats; request(:eve, :fac_war_stats); end
+
+        alias factional_warfare_stats fac_war_stats
       end
     end
   end
