@@ -9,6 +9,6 @@ $character_id    = '0123456789'
 # Set to false to disable mock web service responses. Real requests will be used
 # whenever Eve.cache does not suffice. The API information above must be real and
 # valid in this case.
-$mock_services  = false
+$mock_services  = true
 
 Dir[File.expand_path(File.join(File.dirname(__FILE__),'support','**','*.rb'))].each {|f| require f}
