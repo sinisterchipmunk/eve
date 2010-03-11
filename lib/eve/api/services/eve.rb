@@ -7,8 +7,10 @@ module Eve
         def conquerable_station_list; request(:eve, :conquerable_station_list); end
         def error_list; request(:eve, :error_list); end
         def fac_war_stats; request(:eve, :fac_war_stats); end
+        def fac_war_top_stats; request(:eve, :fac_war_top_stats); end
 
         alias factional_warfare_stats fac_war_stats
+        alias factional_warfare_top100 fac_war_top_stats
       end
     end
   end
