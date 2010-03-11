@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Eve::API::Services::Eve do
   context "#alliance_list" do
-    before(:each) { mock_service(:eve, :alliance_list); @result = eve_api.eve.alliance_list }
+    @expected_columns = "name,shortName,allianceID,executorCorpID,memberCount,startDate".split(/,/)
+    before(:each) { @result = mock_service(:eve, :alliance_list) }
+    it_should_behave_like "any Rowset"
 
     it "creates a list of alliances" do
       @result.should respond_to(:alliances)

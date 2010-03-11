@@ -23,6 +23,11 @@ module MockAPIHelpers
 
   def mock_service(base, service = nil)
     Net::HTTP.should_receive(:post_form).any_number_of_times.and_return(mock_http_response(base, service))
+    if service && eve_api.respond_to?(base)
+      eve_api.send(base).send(service)
+    else
+      eve_api
+    end
   end
 end
 

@@ -2,9 +2,12 @@ require 'spec_helper'
 
 describe Eve::API::Services::Map do
   context "#fac_war_systems" do
-    before(:each) { mock_service('map', 'fac_war_systems') }
+    @expected_columns = "solarSystemID,solarSystemName,occupyingFactionID,occupyingFactionName,contested".split(/,/)
+    before(:each) { @result = mock_service('map', 'fac_war_systems') }
+    it_should_behave_like "any Rowset"
+
     it "should have multiple elements" do
-      eve_api.map.fac_war_systems.should have_at_least(1).item
+      @result.should have_at_least(1).item
     end
   end
 end

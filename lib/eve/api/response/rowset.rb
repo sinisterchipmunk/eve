@@ -52,6 +52,7 @@ module Eve
           var_name = name.underscore
           object.instance_variable_set("@#{var_name}", self)
           klass.send(:attr_reader, var_name)
+          klass.send(:alias_method, var_name.camelize.dehumanize, var_name)
         end
 
         private
