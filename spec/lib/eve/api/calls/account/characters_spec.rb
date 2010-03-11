@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Eve::API::Services::Account do
   context "#characters" do
     context "with a valid api key" do
-      subject { mock_service(:account, :characters, :user_id => '01234567890', :api_key => 'a_valid_api_key') }
+      subject { mock_service(:account, :characters, :user_id => $user_id, :api_key => $limited_api_key) }
 
       it "should list account characters" do
         subject.characters.should behave_like_rowset('name,characterID,corporationName,corporationID') { |row|

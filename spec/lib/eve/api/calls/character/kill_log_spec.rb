@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Eve::API::Services::Character do
   context "#kill_log" do
     context "with a valid api key" do
-      subject { mock_service('character', 'kill_log', :user_id => '01234567890',
-                                                     :character_id => '1234567890',
-                                                     :api_key => 'a_valid_api_key') }
+      subject { mock_service('character', 'kill_log', :user_id => $user_id,
+                                                     :character_id => $character_id,
+                                                     :api_key => $full_api_key) }
 
       it "should provide a kill list" do
         subject.kills.should behave_like_rowset('killID,solarSystemID,killTime,moonID') { |kill|

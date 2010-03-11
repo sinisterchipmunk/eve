@@ -4,9 +4,9 @@ describe Eve::API::Services::Character do
   context "#skill_in_training" do
     context "with a valid api key" do
       context "with a character that is training" do
-        subject { mock_service('xml/character/skill_in_training.xml', :user_id => '01234567890',
-                                                       :character_id => '1234567890',
-                                                       :api_key => 'a_valid_api_key').character.skill_in_training }
+        subject { mock_service('xml/character/skill_in_training.xml', :user_id => $user_id,
+                                                       :character_id => $character_id,
+                                                       :api_key => $limited_api_key).character.skill_in_training }
 
 
         it "should return skill training information" do
@@ -22,9 +22,9 @@ describe Eve::API::Services::Character do
       end
 
       context "with a character that is not training" do
-        subject { mock_service('xml/character/skill_not_in_training.xml', :user_id => '01234567890',
-                                                       :character_id => '1234567890',
-                                                       :api_key => 'a_valid_api_key').character.skill_in_training }
+        subject { mock_service('xml/character/skill_not_in_training.xml', :user_id => $user_id,
+                                                       :character_id => $character_id,
+                                                       :api_key => $full_api_key).character.skill_in_training }
 
 
         it "should produce a result with #skill_in_training == 0" do

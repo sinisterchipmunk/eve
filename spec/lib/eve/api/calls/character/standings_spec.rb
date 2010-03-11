@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Eve::API::Services::Character do
   context "#standings" do
     context "with a valid api key" do
-      subject { mock_service('character', 'standings', :user_id => '01234567890',
-                                                     :character_id => '1234567890',
-                                                     :api_key => 'a_valid_api_key') }
+      subject { mock_service('character', 'standings', :user_id => $user_id,
+                                                     :character_id => $character_id,
+                                                     :api_key => $limited_api_key) }
 
       it "should return the character's training queue" do
         subject.standings_to.characters.should behave_like_rowset('toID,toName,standing')

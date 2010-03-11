@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Eve::API::Services::Character do
   context "#industry_jobs" do
     context "with a valid api key" do
-      subject { mock_service('character', 'industry_jobs', :user_id => '01234567890',
-                                                     :character_id => '1234567890',
-                                                     :api_key => 'a_valid_api_key') }
+      subject { mock_service('character', 'industry_jobs', :user_id => $user_id,
+                                                     :character_id => $character_id,
+                                                     :api_key => $full_api_key) }
 
       it "should provide an industry jobs list" do
         subject.jobs.should behave_like_rowset('jobID,assemblyLineID,containerID,installedItemID,
