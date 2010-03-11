@@ -41,9 +41,11 @@ module Eve
         # TODO: refactor me.
         original_method_name = node.name
         method_name = original_method_name.underscore
-        if node.children && !node.children.select { |c| c.is_a?(Hpricot::Elem) }.empty?
+        
+        if !node.children || !node.children.select { |c| c.is_a?(Hpricot::Elem) }.empty?
           @content = node.inner_text
           value = Eve::API::Response.new(node, @options.merge(:process_xml => false))
+          value.send(:copy_attributes, node.attributes.to_hash.keys, node)
           value.parse_children
         else
           value = YAML::load(node.inner_text)

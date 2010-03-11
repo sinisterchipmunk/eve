@@ -14,50 +14,28 @@ module Eve
         def rowsets; @rowsets ||= []; end
 
         def inspect
-          "#<#{self.class.name}[#{rowset_names.join(', ')}]>"
+          "#<#{self.class.name}[#{rowset_names.join(', ')}]#{s}>"
+        end
+
+        def copy_attributes(columns, row_element)
+          attributes = row_element.attributes.to_hash.rename((@options[:column_mapping] || {}))
+          #missing_attributes = columns - attributes.keys
+          #extra_attributes = attributes.keys - columns
+          #raise Eve::Errors::InvalidRowset,
+          #      "Missing attributes from row: #{missing_attributes.inspect}" if !missing_attributes.empty?
+          #raise Eve::Errors::InvalidRowset,
+          #      "Extra attributes in row: #{extra_attributes.inspect}" if !extra_attributes.empty?
+
+          eigenclass = class << self; self; end
+          columns.each do |column|
+            value = attributes[column]
+            eigenclass.send(:define_method, column.to_s.underscore) { value }
+            eigenclass.send(:alias_method, column, column.to_s.underscore)
+          end
         end
       end
 
       class Rowset < Array
-        class Row
-          include Eve::API::Response::Rowsets
-          
-          def initialize(columns, row_element, options = {})
-            @options = options
-            copy_attributes(columns, row_element)
-            parse_children(row_element)
-          end
-
-          private
-          def parse_children(row_element)
-            row_element.children.each do |child|
-              if child.kind_of?(Hpricot::Elem)
-                case child.name
-                  when 'rowset' then add_rowset(Rowset.new(child, @options))
-                  else #raise ArgumentError, "Only more rowsets can be children of rows"
-                end
-              end
-            end if row_element.children
-          end
-
-          def copy_attributes(columns, row_element)
-            attributes = row_element.attributes.to_hash.rename((@options[:column_mapping] || {}))
-            #missing_attributes = columns - attributes.keys
-            #extra_attributes = attributes.keys - columns
-            #raise Eve::Errors::InvalidRowset,
-            #      "Missing attributes from row: #{missing_attributes.inspect}" if !missing_attributes.empty?
-            #raise Eve::Errors::InvalidRowset,
-            #      "Extra attributes in row: #{extra_attributes.inspect}" if !extra_attributes.empty?
-
-            eigenclass = class << self; self; end
-            columns.each do |column|
-              value = attributes[column]
-              eigenclass.send(:define_method, column.to_s.underscore) { value }
-              eigenclass.send(:alias_method, column, column.to_s.underscore)
-            end
-          end
-        end
-        
         attr_reader :name, :key, :columns
 
         def initialize(elem, options = {})
@@ -85,7 +63,7 @@ module Eve
 
           @name = elem['name']
           @key = elem['key']
-          @columns = elem['columns'].split(/,/)
+          @columns = elem['columns'].split(/,/).collect { |c| c.strip }
 
           elem.children.each do |child|
             if child.is_a?(Hpricot::Elem)
@@ -98,7 +76,10 @@ module Eve
         end
 
         def parse_row(elem)
-          self << Row.new(columns, elem, @options)
+          row = Eve::API::Response.new(elem, @options)#Row.new(columns, elem, @options)
+          row.copy_attributes(columns, elem)
+          row.send(:parse_children, elem)
+          self << row
         end
       end
     end

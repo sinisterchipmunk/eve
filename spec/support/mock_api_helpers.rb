@@ -27,7 +27,7 @@ module MockAPIHelpers
     Net::HTTP.should_receive(:post_form).any_number_of_times.and_return(mock_http_response(base,
                                                                                            options[:service]))
     if options[:service] && eve_api(options).respond_to?(base)
-      eve_api(options).send(base).send(options[:service])
+      eve_api(options).send(base).send(options[:service], *(options[:args] || []))
     else
       eve_api(options)
     end
