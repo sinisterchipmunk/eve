@@ -9,6 +9,15 @@ module Eve
         def fac_war_stats; request(:eve, :fac_war_stats); end
         def fac_war_top_stats; request(:eve, :fac_war_top_stats); end
 
+        def ref_types
+          response = request(:eve, :ref_types)
+          result = {}
+          response.ref_types.each do |row|
+            result[row.ref_type_id] = row.ref_type_name
+          end
+          result
+        end
+
         def character(*names)
           response = request(:eve, :character_id, :names => names.flatten.join(','))
           result = {}
