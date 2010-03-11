@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2010-03-11 14:16:37</currentTime>
+  <result>
+    <rowset name="characters" key="characterID" columns="name,characterID">
+      <row name="Jolia Darkstrider" characterID="661196469" />
+      <row name="Murdock Jern" characterID="291344707" />
+      <row name="Frogs of Armageddon" characterID="1722047601" />
+      <row name="Gears of Progress" characterID="1196707484" />
+      <row name="Band of Brothers" characterID="394979878" />
+      <row name="The Dead Rabbits" characterID="1796285504" />
+    </rowset>
+  </result>
+  <cachedUntil>2010-04-11 14:16:37</cachedUntil>
+</eveapi>

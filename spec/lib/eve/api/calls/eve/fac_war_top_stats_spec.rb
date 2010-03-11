@@ -21,6 +21,7 @@ describe Eve::API::Services::Eve do
     context "#corporations" do
       subject { mock_service(:eve, :fac_war_top_stats).corporations }
 
+      
       %w(kills_yesterday kills_last_week kills_total).each do |rowset|
         it "has a valid rowset called ##{rowset}" do
           subject.send(rowset).should behave_like_rowset('corporationID,corporationName,kills')
