@@ -42,17 +42,18 @@ module Eve
 
           def copy_attributes(columns, row_element)
             attributes = row_element.attributes.to_hash.rename((@options[:column_mapping] || {}))
-            missing_attributes = columns - attributes.keys
-            extra_attributes = attributes.keys - columns
-            raise Eve::Errors::InvalidRowset,
-                  "Missing attributes from row: #{missing_attributes.inspect}" if !missing_attributes.empty?
-            raise Eve::Errors::InvalidRowset,
-                  "Extra attributes in row: #{extra_attributes.inspect}" if !extra_attributes.empty?
+            #missing_attributes = columns - attributes.keys
+            #extra_attributes = attributes.keys - columns
+            #raise Eve::Errors::InvalidRowset,
+            #      "Missing attributes from row: #{missing_attributes.inspect}" if !missing_attributes.empty?
+            #raise Eve::Errors::InvalidRowset,
+            #      "Extra attributes in row: #{extra_attributes.inspect}" if !extra_attributes.empty?
 
             eigenclass = class << self; self; end
-            attributes.each do |key, value|
-              eigenclass.send(:define_method, key.to_s.underscore) { value }
-              eigenclass.send(:alias_method, key, key.to_s.underscore)
+            columns.each do |column|
+              value = attributes[column]
+              eigenclass.send(:define_method, column.to_s.underscore) { value }
+              eigenclass.send(:alias_method, column, column.to_s.underscore)
             end
           end
         end

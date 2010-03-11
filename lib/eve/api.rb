@@ -17,11 +17,15 @@ module Eve
     end
 
     private
-    def validate_credentials(type, user_id = options[:user_id], api_key = options[:api_key])
+    def validate_credentials(type, *additional_requirements)
+      raise ArgumentError, "user_id is required" unless options[:user_id]
+      raise ArgumentError, "api_key is required" unless options[:api_key]
+      additional_requirements.each do |r|
+        raise ArgumentError, "#{r} is required" unless options[r]
+      end
+
       case type
         when :limited, :full # currently no difference. Wish we could validate on this.
-          raise ArgumentError, "user_id is required" unless user_id
-          raise ArgumentError, "api_key is required" unless api_key
         else raise ArgumentError, "Expected :limited or :full credential type"
       end
     end
@@ -48,7 +52,7 @@ module Eve
 
     def default_options
       {
-        :submodules => [:map, :eve, :account],
+        :submodules => [:map, :eve, :account, :character],
         :cache => true
       }
     end

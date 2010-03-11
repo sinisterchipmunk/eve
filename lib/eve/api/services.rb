@@ -3,6 +3,7 @@ require 'eve/api/services/misc'
 require 'eve/api/services/server'
 require 'eve/api/services/eve'
 require 'eve/api/services/account'
+require 'eve/api/services/character'
 
 module Eve
   class API
