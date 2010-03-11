@@ -2,6 +2,7 @@ require 'eve/api/services/map'
 require 'eve/api/services/misc'
 require 'eve/api/services/server'
 require 'eve/api/services/eve'
+require 'eve/api/services/account'
 
 module Eve
   class API

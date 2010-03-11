@@ -21,12 +21,12 @@ module MockAPIHelpers
     mock = mock('Net::HTTPOK', :body => mock_response_body(base, service))
   end
 
-  def mock_service(base, service = nil)
+  def mock_service(base, service = nil, options = {})
     Net::HTTP.should_receive(:post_form).any_number_of_times.and_return(mock_http_response(base, service))
-    if service && eve_api.respond_to?(base)
-      eve_api.send(base).send(service)
+    if service && eve_api(options).respond_to?(base)
+      eve_api(options).send(base).send(service)
     else
-      eve_api
+      eve_api(options)
     end
   end
 end

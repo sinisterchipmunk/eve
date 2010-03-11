@@ -5,6 +5,13 @@ class Hash
     ret
   end
 
+  def camelize_keys
+    stringify_keys.rename(inject({}) do |renamed, (key, value)|
+      renamed[key.to_s] = key.to_s.camelize
+      renamed
+    end)
+  end
+
   # Takes a hash whose keys must match keys in this hash. Those keys will be renamed to match the
   # corresponding value in the specified hash.
   #

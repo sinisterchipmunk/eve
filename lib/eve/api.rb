@@ -17,6 +17,15 @@ module Eve
     end
 
     private
+    def validate_credentials(type, user_id = options[:user_id], api_key = options[:api_key])
+      case type
+        when :limited, :full # currently no difference. Wish we could validate on this.
+          raise ArgumentError, "user_id is required" unless user_id
+          raise ArgumentError, "api_key is required" unless api_key
+        else raise ArgumentError, "Expected :limited or :full credential type"
+      end
+    end
+
     def send_includes
       [@options.delete(:includes)].flatten.each do |mod|
         next unless mod
@@ -28,7 +37,7 @@ module Eve
     def instantiate_submodules
       [@options.delete(:submodules)].flatten.each do |mod|
         next unless mod
-        instance_variable_set("@#{mod}", ::Eve::API.new(:includes => mod, :submodules => nil))
+        instance_variable_set("@#{mod}", ::Eve::API.new(options.merge(:includes => mod, :submodules => nil)))
         eigenclass.send(:attr_reader, mod)
       end
     end
@@ -39,7 +48,7 @@ module Eve
 
     def default_options
       {
-        :submodules => [:map, :eve]
+        :submodules => [:map, :eve, :account]
       }
     end
 

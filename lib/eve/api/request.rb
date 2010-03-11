@@ -52,7 +52,7 @@ module Eve
 
       private
       def post_options
-        options.without(default_options.keys)
+        self.options.without(default_options.keys).camelize_keys
       end
 
       def default_options
