@@ -18,17 +18,8 @@ module Eve
 
         if error = (@xml / 'error').first
           message = error.inner_text
-          code = error['code'].to_i
-          if Eve::Errors::API_ERROR_MAP.key?(code)
-            raise Eve::Errors::API_ERROR_MAP[code], message
-          else
-            code = "#{error['code'][0].chr}xx"
-            if Eve::Errors::API_ERROR_MAP.key?(code)
-              raise Eve::Errors::API_ERROR_MAP[code], message
-            else
-              raise "Unknown error, code #{error['code']} - #{message}"
-            end
-          end
+          code = error['code']
+          Eve::Errors.raise(:code => code, :message => message)
         end
         parse_xml(@xml)
       end

@@ -5,8 +5,37 @@ require 'eve/errors/miscellaneous_errors'
 
 module Eve
   module Errors
+    class << self
+      # Returns an error class by its code. If a match cannot be found, the closest match is used instead.
+      # For instance, '100' returns WalletNotLoaded; '199' returns UserInputError.
+      def find_by_code(code)
+        return API_ERROR_MAP[code.to_i] if API_ERROR_MAP.key?(code.to_i)
+        # exact match can't be found, look for x's
+        code = code.to_s
+        while code.length > 0
+          generic_code = code + "x"*(3-code.length)
+          return API_ERROR_MAP[generic_code] if API_ERROR_MAP.key?(generic_code)
+          code = code[0...-1]
+        end
+        UnknownError
+      end
+
+      def raise(*several_variants)
+        options = several_variants.extract_options!
+        super if options.empty?
+        if options[:code]
+          klass = find_by_code(options[:code])
+          message = options[:message]
+          raise klass, message, caller
+        end
+      end
+    end
+
     # Raised when a rowset cannot be processed.
     class InvalidRowset < StandardError; end
+
+    # Raised when something goes wrong and no other error can be found.
+    class UnknownError < StandardError; end
 
     unless defined?(API_ERROR_MAP)
       API_ERROR_MAP = {

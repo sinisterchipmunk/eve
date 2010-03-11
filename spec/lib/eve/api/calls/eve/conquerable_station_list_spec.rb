@@ -1,4 +1,3 @@
-# outposts - "stationID,stationName,stationTypeID,solarSystemID,corporationID,corporationName"
 require 'spec_helper'
 
 describe Eve::API::Services::Eve do
