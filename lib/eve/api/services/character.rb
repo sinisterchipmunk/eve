@@ -5,7 +5,7 @@ module Eve
         MAX_JOURNAL_ENTRIES = 1000
         
         #limited API key
-        def character_sheet; request(:char, :char_sheet); end
+        def character_sheet; request(:char, :character_sheet); end
         #limited API key
         def fac_war_stats; request(:char, :fac_war_stats); end
         #limited API key
