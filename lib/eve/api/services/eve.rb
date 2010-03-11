@@ -8,6 +8,7 @@ module Eve
         def error_list; request(:eve, :error_list); end
         def fac_war_stats; request(:eve, :fac_war_stats); end
         def fac_war_top_stats; request(:eve, :fac_war_top_stats); end
+        def skill_tree; request(:eve, :skill_tree); end
 
         def ref_types
           response = request(:eve, :ref_types)
