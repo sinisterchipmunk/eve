@@ -4,7 +4,7 @@ module Eve
   class API
     class Response
       include Eve::API::Response::Rowsets
-      attr_reader :api_version
+      attr_reader :api_version, :content
 
       def initialize(xml, options = {})
         @options = options
@@ -12,11 +12,11 @@ module Eve
         @xml = xml
         @attributes = {}
 
-        if error = (@xml / 'error').first
-          message = error.inner_text
-          code = error['code']
-          Eve::Errors.raise(:code => code, :message => message)
-        end
+        #if error = (@xml / 'error').first
+        #  message = error.inner_text
+        #  code = error['code']
+        #  Eve::Errors.raise(:code => code, :message => message)
+        #end
 
         parse_xml unless options[:process_xml] == false
       end
@@ -38,14 +38,25 @@ module Eve
       end
 
       def wrap_method_around_node(node = @xml)
+        # TODO: refactor me.
         original_method_name = node.name
         method_name = original_method_name.underscore
         if node.children && !node.children.select { |c| c.is_a?(Hpricot::Elem) }.empty?
+          @content = node.inner_text
           value = Eve::API::Response.new(node, @options.merge(:process_xml => false))
           value.parse_children
         else
           value = YAML::load(node.inner_text)
           value = check_for_datetime(value)
+          # now define any attributes as methods on the resultant object
+          node_attributes = node.attributes.to_hash
+          begin
+            k = class << value; self; end
+            node_attributes.to_hash.each do |key, v|
+              k.send(:define_method, key) { v }
+            end
+          rescue TypeError # stuff like 'no virtual class for Fixnum'
+          end unless node_attributes.empty?
         end
 
         @attributes[method_name] = value

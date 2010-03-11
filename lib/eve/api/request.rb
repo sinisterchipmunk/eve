@@ -26,7 +26,7 @@ module Eve
       end
 
       def cached_response
-        if xml = Eve.cache.read(cache_key)
+        if xml = (options[:cache] ? Eve.cache.read(cache_key) : nil)
           potential_response = response_for(xml)
           if !potential_response.respond_to?(:cached_until) || potential_response.cached_until >= Time.now
             return potential_response
@@ -40,8 +40,12 @@ module Eve
       end
 
       def cache_response(xml)
-        Eve.cache.write(cache_key, xml)
-        response_for xml
+        Eve.cache.write(cache_key, xml) if options[:cache]
+        r = response_for xml
+        if r.respond_to?(:error) && r.error
+          Eve::Errors.raise(:code => r.error.code, :message => r.error)
+        end
+        r
       end
 
       def cache_key
@@ -61,7 +65,8 @@ module Eve
           :extension => "xml.aspx",
           :camelize => true,
           :response_type => :xml,
-          :column_mapping => nil
+          :column_mapping => nil,
+          :cache => true
         }
       end
     end

@@ -48,7 +48,8 @@ module Eve
 
     def default_options
       {
-        :submodules => [:map, :eve, :account]
+        :submodules => [:map, :eve, :account],
+        :cache => true
       }
     end
 
