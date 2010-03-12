@@ -1,0 +1,20 @@
+# This information can be retrieved from http://www.eveonline.com/api/default.asp
+#
+# ! IMPORTANT !
+# Copy this file to "api_key.yml" in the same directory. This file ("sample_api_key.yml")
+# is not even used, and if you put your real API info into it there's a fair chance you'll
+# wind up accidentally committing it. The "api_key.yml" file is already in .gitignore, so
+# you won't do so if you remember to copy this file first.
+#
+# Note that it doesn't really matter what any of this stuff is if $mock_services is true,
+# which it really always should be unless you need to test end-to-end connectivity.
+#
+# Note, also, that the tests were designed around mock data. They WILL fail if you use real
+# data. However, you should be able to judge pretty easily by the error messages whether
+# they're failing because of the data mismatch, or whether they're failing for some other
+# (more catastrophic) reason.
+#
+User ID: your_user_id
+Limited API Key: your_limited_api_key
+Full API Key: your_full_api_key
+Character ID: your_character_id

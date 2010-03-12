@@ -1,22 +1,21 @@
+require 'eve/api/response/inspection'
+require 'eve/api/response/wrap_object'
+require 'eve/api/response/rowsets'
 require 'eve/api/response/rowset'
 
 module Eve
   class API
     class Response
+      include Eve::API::Response::WrapObject
       include Eve::API::Response::Rowsets
+      include Eve::API::Response::Inspection
       attr_reader :api_version, :content
 
       def initialize(xml, options = {})
         @options = options
         xml = Hpricot::XML(xml).root if xml.kind_of?(String)
         @xml = xml
-        @attributes = {}
-
-        #if error = (@xml / 'error').first
-        #  message = error.inner_text
-        #  code = error['code']
-        #  Eve::Errors.raise(:code => code, :message => message)
-        #end
+        #@attributes = {}
 
         parse_xml unless options[:process_xml] == false
       end
@@ -39,37 +38,20 @@ module Eve
 
       def wrap_method_around_node(node = @xml)
         # TODO: refactor me.
-        original_method_name = node.name
-        method_name = original_method_name.underscore
-        
         if !node.children || !node.children.select { |c| c.is_a?(Hpricot::Elem) }.empty?
           @content = node.inner_text
           value = Eve::API::Response.new(node, @options.merge(:process_xml => false))
           value.send(:copy_attributes, node.attributes.to_hash.keys, node)
           value.parse_children
         else
-          value = YAML::load(node.inner_text)
+          value = (YAML::load(node.inner_text) rescue node.inner_text)
           value = check_for_datetime(value)
           # now define any attributes as methods on the resultant object
           node_attributes = node.attributes.to_hash
-          begin
-            k = class << value; self; end
-            node_attributes.to_hash.each do |key, v|
-              k.send(:define_method, key) { v }
-            end
-          rescue TypeError # stuff like 'no virtual class for Fixnum'
-          end unless node_attributes.empty?
+          copy_attributes(node_attributes.keys, node, value)
         end
 
-        @attributes[method_name] = value
-        klass = class << self; self; end
-        klass.instance_eval do
-          define_method method_name do
-            @attributes[method_name]
-          end
-
-          alias_method original_method_name, method_name
-        end
+        wrap_object(node.name, value)
       end
 
       def parse_elem(node = @xml)

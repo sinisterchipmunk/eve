@@ -22,7 +22,11 @@ module Eve
       end
 
       def dispatch
-        cached_response || cache_response(Net::HTTP.post_form(URI.parse(uri), post_options).body)
+        r = (cached_response || cache_response(Net::HTTP.post_form(URI.parse(uri), post_options).body))
+        if r.respond_to?(:error) && r.error
+          Eve::Errors.raise(:code => r.error.code, :message => r.error)
+        end
+        r
       end
 
       def cached_response
@@ -41,11 +45,7 @@ module Eve
 
       def cache_response(xml)
         Eve.cache.write(cache_key, xml) if options[:cache]
-        r = response_for xml
-        if r.respond_to?(:error) && r.error
-          Eve::Errors.raise(:code => r.error.code, :message => r.error)
-        end
-        r
+        response_for xml
       end
 
       def cache_key

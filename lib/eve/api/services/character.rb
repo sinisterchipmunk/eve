@@ -76,7 +76,7 @@ module Eve
         end
         # full API key
         def wallet_transactions(options = {:walk => false})
-          r = request(:char, :market_transactions, options)
+          r = request(:char, :wallet_transactions, options)
           if options[:walk] && r.transactions.count >= MAX_JOURNAL_ENTRIES
             begin
               min_trans_id = nil
