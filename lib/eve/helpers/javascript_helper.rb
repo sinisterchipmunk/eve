@@ -42,6 +42,7 @@ module Eve
         link_to_function text, "CCPEVE.showMap(#{system_id})", *args
       end
 
+      # See http://wiki.eveonline.com/en/wiki/Ship_DNA for details
       def link_to_fitting(text, ship_dna_string, *args)
         link_to_function text, "CCPEVE.showFitting(#{ship_dna_string})", *args
       end
