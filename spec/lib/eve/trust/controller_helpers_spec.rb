@@ -10,7 +10,7 @@ describe Eve::Trust::ControllerHelpers do
   end
 
   it "should not consider the helper methods to be actions" do
-    TrustController.action_methods.sort.should == %w()
+    TrustController.action_methods.sort.should == %w(index)
   end
 
   context "from the IGB" do
@@ -37,7 +37,32 @@ describe Eve::Trust::ControllerHelpers do
 
     context "and an IGB template does not exist" do
       before(:all) { @rack_env.merge!('mock_methods' => { :default_template_exists? => false }) }
-      it "responds with an IGB-specific page" do
+      it "does not respond with an IGB-specific page" do
+        subject.template.template_format.should_not == :igb
+      end
+    end
+  end
+
+  context "from any other browser" do
+    before :all do
+      @rack_env = Rack::MockRequest.env_for("/").merge('REQUEST_URI' => '',
+                                 'HTTP_USER_AGENT' => 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101')
+    end
+
+    it "should not require trust" do
+      subject.headers['eve.trustme'].should be_blank
+    end
+
+    context "and an IGB template exists" do
+      before(:all) { @rack_env.merge!('mock_methods' => { :default_template_exists? => true }) }
+      it "does not respond with an IGB-specific page" do
+        subject.template.template_format.should_not == :igb
+      end
+    end
+
+    context "and an IGB template does not exist" do
+      before(:all) { @rack_env.merge!('mock_methods' => { :default_template_exists? => false }) }
+      it "does not respond with an IGB-specific page" do
         subject.template.template_format.should_not == :igb
       end
     end
