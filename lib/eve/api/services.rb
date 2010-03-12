@@ -4,6 +4,7 @@ require 'eve/api/services/server'
 require 'eve/api/services/eve'
 require 'eve/api/services/account'
 require 'eve/api/services/character'
+require 'eve/api/services/corporation'
 
 module Eve
   class API

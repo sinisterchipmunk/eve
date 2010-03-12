@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Eve::API::Services::Eve do
   context "#character_id" do
-    @@expected_hash = { "Jolia Darkstrider"   => "661196469" ,  # characters
-                        "Murdock Jern"        => "291344707" ,  # characters
-                        "Frogs of Armageddon" => "1722047601",  # corporations
-                        "Gears of Progress"   => "1196707484",  # corporations
-                        "Band of Brothers"    => "394979878" ,  # alliances
-                        "The Dead Rabbits"    => "1796285504" } # alliances
+    @@expected_hash = { "Jolia Darkstrider"   => 661196469 ,  # characters
+                        "Murdock Jern"        => 291344707 ,  # characters
+                        "Frogs of Armageddon" => 1722047601,  # corporations
+                        "Gears of Progress"   => 1196707484,  # corporations
+                        "Band of Brothers"    => 394979878 ,  # alliances
+                        "The Dead Rabbits"    => 1796285504 } # alliances
 
     subject do
       mock_service('xml/eve/character_id.xml')

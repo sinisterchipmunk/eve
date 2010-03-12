@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="1">
+  <currentTime>2007-12-02 19:41:53</currentTime>
+  <result>
+    <corporationID>150333466</corporationID>
+    <corporationName>Marcus Corp</corporationName>
+    <ticker>MATT2</ticker>
+    <ceoID>150302299</ceoID>
+    <ceoName>Marcus</ceoName>
+    <stationID>60003469</stationID>
+    <stationName>Jita IV - Caldari Business Tribunal Information Center</stationName>
+    <description>Another Corp</description>
+    <url />
+    <allianceID>150382481</allianceID>
+    <allianceName>Starbase Anchoring Alliance</allianceName>
+    <taxRate>0</taxRate>
+    <memberCount>1</memberCount>
+    <shares>1000</shares>
+    <logo>
+      <graphicID>0</graphicID>
+      <shape1>488</shape1>
+      <shape2>0</shape2>
+      <shape3>0</shape3>
+      <color1>0</color1>
+      <color2>0</color2>
+      <color3>0</color3>
+    </logo>
+  </result>
+  <cachedUntil>2007-12-03 01:41:53</cachedUntil>
+</eveapi>

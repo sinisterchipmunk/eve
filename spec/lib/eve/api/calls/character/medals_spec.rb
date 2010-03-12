@@ -11,7 +11,7 @@ describe Eve::API::Services::Character do
         subject.current_corporation.should behave_like_rowset('medalID,reason,status,issuerID,issued')
         subject.other_corporations.should behave_like_rowset(
                 'medalID,reason,status,issuerID,issued,corporationID,title,description')
-        subject.other_corporations[0].medal_id.should == "4106"
+        subject.other_corporations[0].medal_id.should == 4106
       end
     end
 

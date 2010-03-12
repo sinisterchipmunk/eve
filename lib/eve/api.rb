@@ -34,6 +34,28 @@ module Eve
     def []=(key, value); set(key, value); end
 
     private
+    class << self
+      def validate_credentials(key_type, *args)
+        case key_type
+          when :limited, :full
+            args.flatten!
+            options = args.extract_options!
+            method_names = options.delete(:for)
+            raise ArgumentError, "Unexpected options: #{options.keys.inspect}" unless options.empty?
+
+            method_names.each do |method_name|
+              define_method "#{method_name}_with_credential_validation" do |*a|
+                validate_credentials(key_type, *args)
+                send("#{method_name}_without_credential_validation", *a)
+              end
+              alias_method_chain method_name, :credential_validation
+            end
+
+          else raise ArgumentError, "Expected :limited or :full credential type"
+        end
+      end
+    end
+
     def validate_credentials(type, *additional_requirements)
       raise ArgumentError, "user_id is required" unless options[:user_id]
       raise ArgumentError, "api_key is required" unless options[:api_key]
@@ -75,7 +97,7 @@ module Eve
 
     def default_options
       {
-        :submodules => [:map, :eve, :account, :character],
+        :submodules => [:map, :eve, :account, :character, :corporation],
         :cache => true
       }
     end

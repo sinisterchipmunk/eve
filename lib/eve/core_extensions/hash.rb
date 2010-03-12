@@ -1,9 +1,27 @@
 class Hash
   def without(*keys)
-    ret = self.dup
-    keys.flatten.each { |key| ret.delete key }
-    ret
+    keys.flatten!
+    inject({}) do |hash, (key, value)|
+      hash.delete key
+      hash
+    end
   end
+
+  def without_values(*values)
+    values.flatten!
+    inject({}) do |hash, (key, value)|
+      hash.delete key if values.include?(value)
+      hash
+    end
+  end
+
+  # Returns a hash that is a copy of this one, except that all nil values have been removed, making them
+  # essentially "optional" keys.
+  def optionalize
+    without_values(nil)
+  end
+
+  alias without_nil_values optionalize
 
   def camelize_keys
     stringify_keys.rename(inject({}) do |renamed, (key, value)|

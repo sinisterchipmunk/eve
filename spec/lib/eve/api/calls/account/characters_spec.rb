@@ -8,7 +8,7 @@ describe Eve::API::Services::Account do
       it "should list account characters" do
         subject.characters.should behave_like_rowset('name,characterID,corporationName,corporationID') { |row|
           %w(Mary Marcus Dieinafire).should include(row.name)
-          %w(150267069 150302299 150340823).should include(row.character_id)
+          %w(150267069 150302299 150340823).should include(row.character_id.to_s)
         }
       end
     end

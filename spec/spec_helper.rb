@@ -19,4 +19,4 @@ $limited_api_key = cred_hash['Limited API Key'] || 'a_valid_limited_api_key'
 $full_api_key    = cred_hash['Full API Key']    || 'a_valid_full_api_key'
 $character_id    = cred_hash['Character ID']    || '0123456789'
 
-Dir[File.expand_path(File.join(File.dirname(__FILE__),'support','**','*.rb'))].each {|f| require f}
+Dir[File.expand_path(File.join(File.dirname(__FILE__),'support','**','*.rb'))].each { |f| require f }
