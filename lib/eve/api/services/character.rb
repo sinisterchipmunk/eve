@@ -2,8 +2,6 @@ module Eve
   class API
     module Services
       module Character
-        MAX_JOURNAL_ENTRIES = 1000
-        
         #limited API key
         def character_sheet; request(:char, :character_sheet); end
         #limited API key
@@ -37,18 +35,10 @@ module Eve
         # full API key
         def industry_jobs; request(:char, :industry_jobs); end
         # full API key
-        def kill_log(options = {:walk => false})
-          r = request(:char, :kill_log)
-          if options[:walk] && r.kills.count >= MAX_JOURNAL_ENTRIES
-            begin
-              min_kill_id = nil
-              r.kills.each { |kill| min_kill_id = kill.kill_id if min_kill_id.nil? || min_kill_id > kill.kill_id }
-              r.kills.concat kill_log(options.merge(:before_kill_id => min_kill_id))
-            rescue Eve::Errors::UserInputErrors::KillsPreviouslyLoaded
-              # walking is internal, so we should catch the error internally too.
-            end
-          end
-          r
+        def kill_log(options = {})
+          options.reverse_merge!({:walk => false, :walk_id => 'kill_id', :walk_association => 'kills' })
+          validate_options(options, :walk, :walk_id, :walk_association)
+          request(:char, :kill_log, options)
         end
         # full API key
         def mailing_lists; request(:char, :mailing_lists); end
@@ -61,32 +51,20 @@ module Eve
         # full API key
         def research; request(:char, :research); end
         # full API key
-        def wallet_journal(account_key = 1000, options = { :walk => false, :before_ref_id => nil })
-          r = request(:char, :wallet_journal, options.merge(:account_key => account_key))
-          if options[:walk] && r.entries.count >= MAX_JOURNAL_ENTRIES
-            begin
-              min_ref_id = nil
-              r.entries.each { |entry| min_ref_id = entry.ref_id if min_ref_id.nil? || min_ref_id > entry.ref_id }
-              r.entries.concat wallet_journal(account_key, options.merge(:before_ref_id => min_ref_id))
-            rescue Eve::Errors::UserInputErrors::WalletPreviouslyLoaded
-              # walking is internal, so we should catch the error internally too.
-            end
+        def wallet_journal(account_key = 1000, options = { })
+          if account_key.kind_of?(Hash)
+            options = account_key
+            account_key = 1000
           end
-          r
+          options.reverse_merge!({:walk => false, :walk_id => 'ref_id', :walk_association => 'entries' })
+          validate_options(options, :walk, :walk_id, :walk_association)
+          request(:char, :wallet_journal, options.merge(:account_key => account_key))
         end
         # full API key
-        def wallet_transactions(options = {:walk => false})
-          r = request(:char, :wallet_transactions, options)
-          if options[:walk] && r.transactions.count >= MAX_JOURNAL_ENTRIES
-            begin
-              min_trans_id = nil
-              r.transactions.each { |txn| min_trans_id = txn.transaction_id if min_trans_id.nil? || min_trans_id > txn.transaction_id }
-              r.transactions.concat wallet_transactions(options.merge(:before_trans_id => min_trans_id))
-            rescue Eve::Errors::UserInputErrors::InvalidBeforeTransID
-              # walking is internal, so we should catch the error internally too.
-            end
-          end
-          r
+        def wallet_transactions(options = {})
+          options.reverse_merge!({:walk => false, :walk_id => 'trans_id', :walk_association => 'transactions' })
+          validate_options(options, :walk, :walk_id, :walk_association)
+          request(:char, :wallet_transactions, options)
         end
 
         %w(account_balance asset_list industry_jobs kill_log mailing_lists mail_messages market_orders notifications

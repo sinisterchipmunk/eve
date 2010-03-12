@@ -6,7 +6,7 @@ require File.dirname(__FILE__) + '/../lib/eve'
 $mock_services  = true
 
 keyfile = File.join(File.dirname(__FILE__), 'api_key.yml')
-cred_hash = File.file?(keyfile) ? YAML::load(File.read(keyfile)) || {} : { }
+cred_hash = !$mock_services && File.file?(keyfile) ? YAML::load(File.read(keyfile)) || {} : { }
 
 # ! IMPORTANT !
 # It's a lot safer to put this information in a file called "api_key.yml" in the same

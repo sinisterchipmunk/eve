@@ -30,6 +30,12 @@ module Eve
       end
     end
 
+    def validate_options(options, *keys)
+      options.keys.each do |key|
+        raise ArgumentError, "Options should only include #{keys.inspect}" unless keys.include?(key)
+      end
+    end
+
     def send_includes
       [@options.delete(:includes)].flatten.each do |mod|
         next unless mod
