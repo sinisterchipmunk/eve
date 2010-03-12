@@ -5,6 +5,7 @@ require 'eve/dependencies'
 require 'eve/core_extensions'
 require 'eve/errors'
 require 'eve/api'
+require 'eve/trust'
 
 module Eve
   VERSION = '0.0.1'

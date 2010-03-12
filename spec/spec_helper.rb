@@ -1,3 +1,5 @@
+require 'action_pack'
+require 'action_controller'
 require File.dirname(__FILE__) + '/../lib/eve'
 
 # Set to false to disable mock web service responses. Real requests will be used
