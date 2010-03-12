@@ -51,7 +51,7 @@ module Eve
           value.send(:copy_attributes, node.attributes.to_hash.keys, node)
           value.parse_children
         else
-          value = (YAML::load(node.inner_text) rescue node.inner_text)
+          value = value_for(node.inner_text)
           value = check_for_datetime(value)
           # now define any attributes as methods on the resultant object
           node_attributes = node.attributes.to_hash

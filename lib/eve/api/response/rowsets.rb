@@ -27,8 +27,14 @@ module Eve
             klass.send(:include, WrapObject)
           end
           columns.each do |column|
-            into.send(:wrap_object, column, attributes[column])
+            into.send(:wrap_object, column, value_for(attributes[column]))
           end
+        end
+
+        def value_for(candidate)
+          candidate.kind_of?(String) ? YAML::load(candidate) : candidate
+        rescue
+          candidate
         end
       end
     end
