@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'action_pack'
 require 'action_controller'
 require File.dirname(__FILE__) + '/../lib/eve'
