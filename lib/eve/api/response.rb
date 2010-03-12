@@ -20,6 +20,13 @@ module Eve
         parse_xml unless options[:process_xml] == false
       end
 
+      def [](key)
+        key = key.to_s if !key.kind_of?(String)
+        key = key.underscore
+        instance_variable_get("@#{key}") ||
+                raise(ArgumentError, "No attribute called '#{key}' seems to exist in #{self.inspect}")
+      end
+
       protected
       def parse_xml(node = @xml)
         case node
@@ -39,7 +46,7 @@ module Eve
       def wrap_method_around_node(node = @xml)
         # TODO: refactor me.
         if !node.children || !node.children.select { |c| c.is_a?(Hpricot::Elem) }.empty?
-          @content = node.inner_text
+          @content = node.inner_text.strip if !node.children
           value = Eve::API::Response.new(node, @options.merge(:process_xml => false))
           value.send(:copy_attributes, node.attributes.to_hash.keys, node)
           value.parse_children

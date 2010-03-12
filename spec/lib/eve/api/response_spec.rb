@@ -25,6 +25,22 @@ describe Eve::API::Response do
     it "should respond_to :cached_until" do
       should respond_to(:cached_until)
     end
+
+    it "should provide access to attributes via [] operator" do
+      subject[:api_version].should_not be_nil
+    end
+
+    it "should provide access to attributes via [] operator" do
+      subject[:apiVersion].should_not be_nil
+    end
+
+    it "should provide access to attributes via [] operator" do
+      subject[:online_players].should_not be_nil
+    end
+
+    it "should provide access to attributes via [] operator" do
+      subject[:onlinePlayers].should_not be_nil
+    end
   end
 
   context "with a rowset" do
