@@ -1,8 +1,14 @@
+api_key.yml
+**/api_key.yml
 .idea
 .svn
 coverage.data
 coverage
 **/coverage
+pkg
+dry-run
+doc
+t.rb
 
 #ignore thumbnails created by windows
 Thumbs.db

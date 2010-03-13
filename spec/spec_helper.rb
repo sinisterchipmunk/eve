@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'action_pack'
 require 'action_controller'
-require File.dirname(__FILE__) + '/../lib/eve'
+require 'eve'
 
 # Set to false to disable mock web service responses. Real requests will be used
 # whenever Eve.cache does not suffice. The API information above must be real and

@@ -4,55 +4,64 @@
 
 == DESCRIPTION:
 
-FIX (describe your package)
+A Ruby library for interfacing with all aspects of the EVE Online MMO. It is designed for use within a Ruby on Rails
+project, but does not require Rails as a dependency. That means there's nothing preventing you from writing a
+stand-alone application or script using this library.
+
+This package is divided into 3 major components, and are listed below. Click on any item to see more information and
+usage examples.
+
+* {API libraries}[link:classes/Eve/API.html]
+  * Handles interfacing with the EVE Online API. It allows you to easily query the server for various information about
+    the server status, a given player, or his/her in-game character.
+  * Eventually, this may be extended to incorporate other EVE-related APIs, such as the EVE-Central and EVE Metrics
+    APIs.
+
+* Controller helpers (+ApplicationController+)
+  * There are several helper methods added to ApplicationController, and they are designed to facilitate interaction
+    with the in-game browser (IGB). In particular, these helpers allow you to establish trust with the client browser,
+    which will then provide more information about the player's current in-game status (such as his/her current
+    location).
+  * The controller helpers also automatically detect whether the client is, in fact, using the EVE IGB, or whether they
+    are using some other browser. If a view with the ".igb.erb" extension is found, the controller will render that view
+    by default for IGB clients. If the client is using some other browser, or a view with the ".igb.erb" extension is
+    not found, then the default view will be rendered instead.
+  * To take advantage of these helpers, your application must extend ApplicationController, which is a default in Ruby
+    on Rails.
+
+* View helpers (+Eve::Helpers+)
+  * There are several helper methods added to ActionView, and they are designed to facilitate easy and intuitive
+    generation of proprietary IGB JavaScript calls.
+  * These helpers are automatically made accessible to all instances of ActionView::Base.
+  * To take advantage of these helpers, your application must make use of ActionView::Base, which is the default in Ruby
+    on Rails.
 
 == FEATURES/PROBLEMS:
 
-Still in development. Maybe, what, 65% done?
+* Still in development. Maybe, what, 85% done?
 
 == SYNOPSIS:
 
-See the RDoc documentation for a detailed listing of all APIs and their arguments.
+=== {API libraries}[link:files/api_libraries_rdoc.html]
+See the link above for more detailed examples and explanations.
 
   require 'rubygems'
   require 'eve'
   #
   # Get the current server status
   api = Eve::API.new()
-  server_status = api.server_status
-  puts "Server reports status #{server_status.server_open ? "ONLINE" : "OFFLINE"}"
-  puts "\tCurrent time is #{server_status.current_time}"
-  puts "\t#{server_status.online_players} players currently online"
-  puts
+  result = api.server_status
   #
   # Get a list of characters
   api = Eve::API.new(:user_id => $user_id, :api_key => $limited_api_key)
   result = api.account.characters
-  puts "Choose a character:"
-  result.characters.each_with_index { |char, index| puts "\t#{index}: #{char.name} (#{char.character_id})" }
-  choice = gets.chomp.to_i
-  puts
   #
   # Get a character sheet
   api.set(:api_key => $full_api_key, :character_id => result.characters[choice].character_id)
-  character_sheet = api.character.character_sheet
-  puts "#{character_sheet.name}:"
-  print "\tCharisma:    \t #{character_sheet.attributes.charisma}    \n"
-  print "\tIntelligence:\t #{character_sheet.attributes.intelligence}\n"
-  print "\tMemory:      \t #{character_sheet.attributes.memory}      \n"
-  print "\tPerception:  \t #{character_sheet.attributes.perception}  \n"
-  print "\tWillpower:   \t #{character_sheet.attributes.willpower}   \n"
-  puts
+  result = api.character.character_sheet
   #
   # Get the current training queue
   result = api.character.skill_queue
-  result.skillqueue.each do |skill|
-    result.skillqueue.columns.each do |column|
-      print column, ":\t\t", skill[column], "\n"
-    end
-    puts
-  end
-
 
 == REQUIREMENTS:
 
