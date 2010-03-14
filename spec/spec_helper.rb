@@ -1,7 +1,3 @@
-require 'rubygems'
-require 'action_pack'
-require 'action_controller'
-require 'action_view'
 require 'lib/eve'
 
 # Set to false to disable mock web service responses. Real requests will be used
