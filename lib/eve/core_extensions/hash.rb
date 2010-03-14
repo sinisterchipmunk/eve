@@ -2,7 +2,7 @@ class Hash
   def without(*keys)
     keys.flatten!
     inject({}) do |hash, (key, value)|
-      hash.delete key
+      hash[key] = value unless keys.include?(key)
       hash
     end
   end
@@ -10,7 +10,7 @@ class Hash
   def without_values(*values)
     values.flatten!
     inject({}) do |hash, (key, value)|
-      hash.delete key if values.include?(value)
+      hash[key] = value unless values.include?(value)
       hash
     end
   end
@@ -41,8 +41,11 @@ class Hash
   #   { :a => 1 }.rename(:a => :b)
   #     => {:b => 1}
   #
-  def rename(buf)
-    buf.each { |old_key, new_key| self[new_key] = delete(old_key) if keys.include?(old_key) }
-    self
+  def rename(to)
+    merge!(inject({}) do |hash, (old_key, value)|
+      hash[to[old_key] || old_key] = value
+      delete(old_key)
+      hash
+    end)
   end
 end

@@ -6,6 +6,18 @@ describe Eve::API::Response do
       Eve::API::Response.new(mock_http_response(:server, :server_status).body)
     end
 
+    it "should be convertible to Hash" do
+      subject.to_hash.should == {"current_time"=>DateTime.parse("Wed, 10 Mar 2010 01:03:36 +0000"),
+                                 "cached_until"=>DateTime.parse("Sat, 10 Mar 2040 01:06:36 +0000"),
+                                 "online_players"=>31835,
+                                 "server_open"=>true,
+                                 "api_version"=>"2"}
+    end
+
+    it "should be convertible to YAML" do
+      subject.to_yaml.should == subject.to_hash.to_yaml
+    end
+
     it "should respond_to :api_version" do
       should respond_to(:api_version)
     end

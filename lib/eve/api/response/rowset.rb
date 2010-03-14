@@ -21,6 +21,10 @@ module Eve
           klass.send(:alias_method, var_name.camelize.dehumanize, var_name)
         end
 
+        def to_yaml(*args)
+          to_a.to_yaml(*args)
+        end
+
         private
         def parse_elem(elem)
           raise ArgumentError, "Expected an Hpricot::Elem, got #{elem.class}" unless elem.kind_of?(Hpricot::Elem)

@@ -12,7 +12,7 @@ module Eve
         unless [:xml,:string].include? options[:response_type]
           raise ArgumentError, "Expected :response_type to be :xml or :string"
         end
-        
+
         @options = options.dup
         @service = options[:camelize] ? service.camelize : service
         @namespace = namespace
@@ -56,7 +56,7 @@ module Eve
 
       private
       def post_options
-        self.options.without(default_options.keys).camelize_keys
+        options.without(default_options.keys).camelize_keys
       end
 
       def default_options

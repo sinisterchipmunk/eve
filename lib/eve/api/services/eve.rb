@@ -19,7 +19,7 @@ module Eve
           result
         end
 
-        def character(*names)
+        def character_id(*names)
           response = request(:eve, :character_id, :names => names.flatten.join(','))
           result = {}
           [:characters, :corporations, :alliances].each do |field|
@@ -30,14 +30,30 @@ module Eve
           result
         end
 
-        alias character_id character
-        alias characters character
-        alias corporation character
-        alias corporation_id character
-        alias corporations character
-        alias alliance character
-        alias alliance_id character
-        alias alliances character
+        def character_name(*ids)
+          response = request(:eve, :character_name, :ids => ids.flatten.join(','))
+          result = {}
+          [:characters, :corporations, :alliances].each do |field|
+            if response.respond_to?(field)
+              response.send(field).each { |row| result[row.name] = row.name }
+            end
+          end
+          result
+        end
+
+        alias character_ids character_id
+        alias corporation_ids character_id
+        alias corporation_id character_id
+        alias corporation_ids character_id
+        alias alliance_ids character_id
+        alias alliance_id character_id
+
+        alias character_names character_name
+        alias corporation_names character_names
+        alias corporation_name character_name
+        alias corporation_names character_names
+        alias alliance_names character_names
+        alias alliance_name character_name
 
         alias factional_warfare_stats fac_war_stats
         alias factional_warfare_top100 fac_war_top_stats

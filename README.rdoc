@@ -8,16 +8,71 @@ A Ruby library for interfacing with all aspects of the EVE Online MMO. It is des
 project, but does not require Rails as a dependency. That means there's nothing preventing you from writing a
 stand-alone application or script using this library.
 
+== QUICK START:
+
+=== Including The Gem
+In Rails:
+  config.gem 'eve'
+In Pure Ruby:
+  require 'rubygems'
+  require 'eve'
+
+=== Usage Example: Controller
+  class MyEveCompatibleController < ApplicationController
+    requires_trust  # or, requires_trust "with a custom trust message: please click yes"
+  end
+
+=== Usage Example: View Helpers
+  <%=link_to_evemail "Check Your Mail!"%>
+
+  <%if igb.trusted?%>
+    <p>Thanks for your trust! I see you're currently in <%=igb.solar_system_name%>.</p>
+    <p>Here's some information about our secret headquarters:</p>
+    <ul>
+      <li><%=link_to_route "Click For Directions", "Jita"%></li>
+      <li><%=link_to_map "Show On Map", "Jita"%></li>
+    </ul>
+  <%end%>
+
+=== Usage Example: EVE API
+  # Get the current server status
+  api = Eve::API.new()
+  server_status = api.server_status
+  puts "Server reports status #{server_status.server_open ? "ONLINE" : "OFFLINE"}"
+  puts "\tCurrent time is #{server_status.current_time}"
+  puts "\t#{server_status.online_players} players currently online"
+  puts
+  #
+  # Get a list of characters
+  api = Eve::API.new(:user_id => $user_id, :api_key => $limited_api_key)
+  result = api.account.characters
+  puts "Choose a character:"
+  result.characters.each_with_index { |char, index| puts "\t#{index}: #{char.name} (#{char.character_id})" }
+  choice = 2#gets.chomp.to_i
+  puts
+  #
+  # Get the current training queue. Need a full API key and a character ID for that.
+  api.set(:api_key => $full_api_key, :character_id => result.characters[choice].character_id)
+  result = api.character.skill_queue
+  result.skillqueue.each do |skill|
+    result.skillqueue.columns.each do |column|
+      print column.ljust(20), ":\t", skill[column], "\n"
+    end
+    puts
+  end
+
+== DETAILS:
+
 This package is divided into 3 major components, and are listed below. Click on any item to see more information and
 usage examples.
 
-* {API libraries}[link:classes/Eve/API.html]
+* API libraries: Eve::API
   * Handles interfacing with the EVE Online API. It allows you to easily query the server for various information about
     the server status, a given player, or his/her in-game character.
   * Eventually, this may be extended to incorporate other EVE-related APIs, such as the EVE-Central and EVE Metrics
     APIs.
 
-* Controller helpers (+ApplicationController+)
+* Controller helpers: ApplicationController
   * There are several helper methods added to ApplicationController, and they are designed to facilitate interaction
     with the in-game browser (IGB). In particular, these helpers allow you to establish trust with the client browser,
     which will then provide more information about the player's current in-game status (such as his/her current
@@ -29,16 +84,12 @@ usage examples.
   * To take advantage of these helpers, your application must extend ApplicationController, which is a default in Ruby
     on Rails.
 
-* View helpers (+Eve::Helpers+)
+* View helpers: Eve::Helpers::JavascriptHelper
   * There are several helper methods added to ActionView, and they are designed to facilitate easy and intuitive
     generation of proprietary IGB JavaScript calls.
   * These helpers are automatically made accessible to all instances of ActionView::Base.
   * To take advantage of these helpers, your application must make use of ActionView::Base, which is the default in Ruby
     on Rails.
-
-== FEATURES/PROBLEMS:
-
-* Still in development. Maybe, what, 85% done?
 
 == REQUIREMENTS:
 

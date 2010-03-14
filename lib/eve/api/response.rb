@@ -20,6 +20,24 @@ module Eve
         parse_xml unless options[:process_xml] == false
       end
 
+      def to_hash
+        hash = {}
+        (instance_variables - protected_instance_variables + (@name.blank? ? [] : ["@name"])).each do |ivar|
+          value = instance_variable_get(ivar)
+          value = case value
+            when Rowset then value.to_a
+            when Response then value.to_hash
+            else value
+          end
+          hash[ivar[1..-1]] = value
+        end
+        hash
+      end
+
+      def to_yaml(*args)
+        to_hash.to_yaml(*args)
+      end
+
       def [](key)
         key = key.to_s if !key.kind_of?(String)
         key = key.underscore
