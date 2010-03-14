@@ -72,7 +72,7 @@ usage examples.
   * Eventually, this may be extended to incorporate other EVE-related APIs, such as the EVE-Central and EVE Metrics
     APIs.
 
-* Controller helpers: ApplicationController
+* Controller helpers: Eve::Trust
   * There are several helper methods added to ApplicationController, and they are designed to facilitate interaction
     with the in-game browser (IGB). In particular, these helpers allow you to establish trust with the client browser,
     which will then provide more information about the player's current in-game status (such as his/her current
@@ -84,7 +84,7 @@ usage examples.
   * To take advantage of these helpers, your application must extend ApplicationController, which is a default in Ruby
     on Rails.
 
-* View helpers: Eve::Helpers::JavascriptHelper
+* View helpers: Eve::Helpers
   * There are several helper methods added to ActionView, and they are designed to facilitate easy and intuitive
     generation of proprietary IGB JavaScript calls.
   * These helpers are automatically made accessible to all instances of ActionView::Base.

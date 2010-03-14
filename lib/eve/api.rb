@@ -120,7 +120,7 @@ module Eve
   # Response objects are generated automatically, and should be able to accommodate any changes in the API reasonably
   # well.
   #
-  # The classes listed above attempt to document the return values of each API call. However, if you are still unsure of
+  # The classes listed above attempt to document the API calls. However, if you are unsure of
   # how to process the return value of a particular API call, don't be afraid to check it out directly:
   #   irb(main):004:0> puts api.server_status.to_yaml
   #   ---

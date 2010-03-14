@@ -2,7 +2,7 @@ module Eve
   module Trust
     module ControllerHelpers
       # None of this exists unless ActionController exists first.
-      if defined?(ActionController) && defined?(ActionController::Base)
+      if defined?(ActionController::Base)
         class ::ApplicationController < ActionController::Base
           hide_action :trust_message, :trust_message=, :require_trust, :detect_igb, :template_exists?,
                       :set_igb_or_default, :default_template_exists?, :mock_methods_for_testing!,
