@@ -40,29 +40,6 @@ usage examples.
 
 * Still in development. Maybe, what, 85% done?
 
-== SYNOPSIS:
-
-=== {API libraries}[link:files/api_libraries_rdoc.html]
-See the link above for more detailed examples and explanations.
-
-  require 'rubygems'
-  require 'eve'
-  #
-  # Get the current server status
-  api = Eve::API.new()
-  result = api.server_status
-  #
-  # Get a list of characters
-  api = Eve::API.new(:user_id => $user_id, :api_key => $limited_api_key)
-  result = api.account.characters
-  #
-  # Get a character sheet
-  api.set(:api_key => $full_api_key, :character_id => result.characters[choice].character_id)
-  result = api.character.character_sheet
-  #
-  # Get the current training queue
-  result = api.character.skill_queue
-
 == REQUIREMENTS:
 
   hpricot

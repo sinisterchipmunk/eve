@@ -34,7 +34,7 @@ Rake::RDocTask.new(:docs) do |rdoc|
            'lib/**/*.rb', 'doc/**/*.rdoc']#, 'spec/*.rb']
   rdoc.rdoc_files.add(files)
   rdoc.main = 'README.rdoc'
-  rdoc.title = 'My RDoc'
+  rdoc.title = 'EVE Documentation'
   #rdoc.template = '/path/to/gems/allison-2.0/lib/allison'
   rdoc.rdoc_dir = 'doc'
   rdoc.options << '--line-numbers' << '--inline-source'

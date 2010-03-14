@@ -2,7 +2,7 @@ module Eve
   module Helpers
     module JavascriptHelper
       def type_id(which)
-        which = which.to_s unless which.kind_of?(String)
+        which = which.to_s.humanize unless which.kind_of?(String)
         which.downcase!
         case which
           when 'alliance' then 16159
@@ -21,38 +21,38 @@ module Eve
       end
 
       def link_to_info(text, type_id, item_id = nil, *args)
-        function = "CCPEVE.showInfo(#{type_id}"
-        function.concat ", #{item_id}" if item_id
+        function = "CCPEVE.showInfo(#{type_id.inspect}"
+        function.concat ", #{item_id.inspect}" if item_id
         function.concat ")"
         link_to_function text, function, *args
       end
 
       def link_to_preview(text, type_id, *args)
-        link_to_function text, "CCPEVE.showPreview(#{type_id})", *args
+        link_to_function text, "CCPEVE.showPreview(#{type_id.inspect})", *args
       end
 
       def link_to_route(text, destination_id, source_id = nil, *args)
-        function = "CCPEVE.showInfo(#{destination_id}"
-        function.concat ", #{source_id}" if source_id
+        function = "CCPEVE.showRouteTo(#{destination_id.inspect}"
+        function.concat ", #{source_id.inspect}" if source_id
         function.concat ")"
         link_to_function text, function, *args
       end
 
       def link_to_map(text, system_id = nil, *args)
-        link_to_function text, "CCPEVE.showMap(#{system_id})", *args
+        link_to_function text, "CCPEVE.showMap(#{system_id ? system_id.inspect : ''})", *args
       end
 
       # See http://wiki.eveonline.com/en/wiki/Ship_DNA for details
       def link_to_fitting(text, ship_dna_string, *args)
-        link_to_function text, "CCPEVE.showFitting(#{ship_dna_string})", *args
+        link_to_function text, "CCPEVE.showFitting(#{ship_dna_string.inspect})", *args
       end
 
       def link_to_contract(text, solar_system_id, contract_id, *args)
-        link_to_function text, "CCPEVE.showContract(#{solar_system_id}, #{contract_id})", *args
+        link_to_function text, "CCPEVE.showContract(#{solar_system_id.inspect}, #{contract_id.inspect})", *args
       end
 
       def link_to_market_details(text, type_id, *args)
-        link_to_function text, "CCPEVE.showMarketDetails(#{type_id})", *args
+        link_to_function text, "CCPEVE.showMarketDetails(#{type_id.inspect})", *args
       end
 
       def link_to_trust_request(text, trust_url = "http://#{request.host}/", *args)
@@ -67,12 +67,12 @@ module Eve
 
       # requires trust
       def link_to_destination(text, solar_system_id, *args)
-        link_to_function text, "CCPEVE.setDestination(#{solar_system_id})", *args
+        link_to_function text, "CCPEVE.setDestination(#{solar_system_id.inspect})", *args
       end
 
       # requires trust
       def link_to_waypoint(text, solar_system_id, *args)
-        link_to_function text, "CCPEVE.addWaypoint(#{solar_system_id})", *args
+        link_to_function text, "CCPEVE.addWaypoint(#{solar_system_id.inspect})", *args
       end
 
       # requires trust
