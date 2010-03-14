@@ -10,6 +10,15 @@ module Eve
         def fac_war_top_stats; request(:eve, :fac_war_top_stats); end
         def skill_tree; request(:eve, :skill_tree); end
 
+        # Returns a list of transaction types used in the Journal Entries
+        # Response Example:
+        #   result = api.eve.ref_types
+        #   result.ref_types                    #=> (Rowset)
+        #   result.ref_types[0].ref_type_id     #=> 0
+        #   result.ref_types[0].ref_type_name   #=> "Undefined"
+        #   result.ref_types[1].ref_type_id     #=> 1
+        #   result.ref_types[1].ref_type_name   #=> "Player Trading"
+        #   . . .
         def ref_types
           response = request(:eve, :ref_types)
           result = {}
@@ -19,6 +28,8 @@ module Eve
           result
         end
 
+        # Character ID to Name conversion. Accepts a list of character names, and returns the name for each name
+        # in the form of a Hash. Despite the name, it can also accept corporation and alliance names.
         def character_id(*names)
           response = request(:eve, :character_id, :names => names.flatten.join(','))
           result = {}
@@ -30,6 +41,8 @@ module Eve
           result
         end
 
+        # Character ID to Name conversion. Accepts a list of character IDs, and returns the name for each ID
+        # in the form of a Hash. Despite the name, it can also accept corporation and alliance IDs.
         def character_name(*ids)
           response = request(:eve, :character_name, :ids => ids.flatten.join(','))
           result = {}

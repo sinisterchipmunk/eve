@@ -23,6 +23,13 @@ module Eve
         end
         # full API key
         def industry_jobs; request(:char, :industry_jobs); end
+
+        # This API call only returns 1000 entries. Often, you will need to gather all entries, and not just the
+        # most recent 1000. If this is true for your application, simply pass the :walk option and this EVE library
+        # will automatically "walk" backward in time until the server reports that there are no more entries available.
+        #
+        # Walking is disabled by default, so you need to pass the :walk => true option if you wish to enable this.
+        #
         # full API key
         def kill_log(options = {})
           options.reverse_merge!({:walk => false, :walk_id => 'before_kill_id', :walk_association => 'kills' })
@@ -39,6 +46,13 @@ module Eve
         def notifications; request(:char, :notifications); end
         # full API key
         def research; request(:char, :research); end
+
+        # This API call only returns 1000 entries. Often, you will need to gather all entries, and not just the
+        # most recent 1000. If this is true for your application, simply pass the :walk option and this EVE library
+        # will automatically "walk" backward in time until the server reports that there are no more entries available.
+        #
+        # Walking is disabled by default, so you need to pass the :walk => true option if you wish to enable this.
+        #
         # full API key
         def wallet_journal(account_key = 1000, options = { })
           if account_key.kind_of?(Hash)
@@ -49,6 +63,13 @@ module Eve
           validate_options(options, :walk, :walk_id, :walk_association)
           request(:char, :wallet_journal, options.merge(:account_key => account_key))
         end
+
+        # This API call only returns 1000 entries. Often, you will need to gather all entries, and not just the
+        # most recent 1000. If this is true for your application, simply pass the :walk option and this EVE library
+        # will automatically "walk" backward in time until the server reports that there are no more entries available.
+        #
+        # Walking is disabled by default, so you need to pass the :walk => true option if you wish to enable this.
+        #
         # full API key
         def wallet_transactions(options = {})
           options.reverse_merge!({:walk => false, :walk_id => 'before_trans_id', :walk_association => 'transactions' })

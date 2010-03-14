@@ -123,10 +123,14 @@ module Eve
   # The classes listed above attempt to document the return values of each API call. However, if you are still unsure of
   # how to process the return value of a particular API call, don't be afraid to check it out directly:
   #   irb(main):004:0> puts api.server_status.to_yaml
-  #       => #<(Response) api_version=>"2" cached_until=>Sun, 14 Mar 2010 03:21:27 +0000
-  #            current_time=>Sun, 14 Mar 2010 03:18:27 +0000 online_players=>32480 server_open=>true>
+  #   ---
+  #   current_time: 2010-03-14T04:41:51+00:00
+  #   cached_until: 2010-03-14T04:44:51+00:00
+  #   online_players: 30694
+  #   server_open: true
+  #   api_version: "2"
   #
-  # In this example, #server_status provides 5 methods: #api_version, #cached_until, #current_time, #online_players,
+  # In this example, #server_status provides 5 fields: #api_version, #cached_until, #current_time, #online_players,
   # and #server_open.
   #
   # Some fields in a given response are essentially arrays with some additional fields. These are called Rowsets. For
