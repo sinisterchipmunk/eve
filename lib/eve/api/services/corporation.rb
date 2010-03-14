@@ -142,7 +142,7 @@ module Eve
           end
           options.reverse_merge!({:walk => false, :walk_id => 'before_trans_id', :walk_association => 'transactions' })
           validate_options(options, :walk, :walk_id, :walk_association)
-          request(:corp, :wallet_journal, options.merge(:account_key => account_key))
+          request(:corp, :wallet_transactions, options.merge(:account_key => account_key))
         end
       end
     end
