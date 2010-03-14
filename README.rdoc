@@ -48,7 +48,7 @@ In Pure Ruby:
   result = api.account.characters
   puts "Choose a character:"
   result.characters.each_with_index { |char, index| puts "\t#{index}: #{char.name} (#{char.character_id})" }
-  choice = 2#gets.chomp.to_i
+  choice = gets.chomp.to_i
   puts
   #
   # Get the current training queue. Need a full API key and a character ID for that.
