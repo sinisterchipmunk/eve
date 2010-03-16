@@ -50,7 +50,7 @@ module Eve
   #
   # == View Format
   # In Rails, the View is usually rendered in HTML format. That means the view template is usually called
-  # +some_action_name.html.erb+, where "some_action_name" is the name of the current action and "html" is the file
+  # +some_action_name.html.erb+ , where "some_action_name" is the name of the current action and "html" is the file
   # format. This library exposes a new format, "igb", which allows you to render an IGB-specific response. This response
   # is expected to be in IGB-compatible HTML format. Here's an example of what an IGB file might look like:
   #

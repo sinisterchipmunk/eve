@@ -84,7 +84,7 @@ usage examples.
   * To take advantage of these helpers, your application must extend ApplicationController, which is a default in Ruby
     on Rails.
 
-* View helpers: Eve::Helpers
+* View helpers: Eve::Helpers::JavascriptHelper
   * There are several helper methods added to ActionView, and they are designed to facilitate easy and intuitive
     generation of proprietary IGB JavaScript calls.
   * These helpers are automatically made accessible to all instances of ActionView::Base.

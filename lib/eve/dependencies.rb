@@ -11,3 +11,8 @@ require 'yaml'
 require 'action_pack'
 require 'action_controller'
 require 'action_view'
+
+gem_path = File.expand_path(File.dirname(__FILE__), "..")
+$LOAD_PATH.unshift gem_path
+ActiveSupport::Dependencies.load_paths.unshift gem_path
+ActiveSupport::Dependencies.load_once_paths.unshift gem_path
