@@ -21,6 +21,7 @@ $hoe = Hoe.spec 'eve' do
           "within a Ruby on Rails project, but does not require Rails as a dependency. That means there‘s nothing "+
           "preventing you from writing a stand-alone application or script using this library."
   self.developer('Colin MacKenzie IV', 'sinisterchipmunk@gmail.com')
+  self.url = ('http://github.com/sinisterchipmunk/eve')
   self.extra_deps << ["activesupport",">=2.3.5"] << ["hpricot",">=0.8.2"] << ["actionpack",">=2.3.5"]
   self.extra_dev_deps << ["cucumber",">=0.6.2"] << ["rspec",">=1.3.0"] << ["rcov",">=0.9.8"]
   self.rspec_options = ['--options', 'spec/spec.opts']
