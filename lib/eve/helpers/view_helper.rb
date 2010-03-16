@@ -5,6 +5,7 @@ module Eve
       def self.included(base)
         base.instance_eval do
           delegate :igb, :to => :controller
+          delegate :igb?, :to => :igb
         end
       end
     end

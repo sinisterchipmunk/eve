@@ -1,5 +1,7 @@
 module Eve
   module Helpers
+    # In addition to the helpers listed below, this library also exposes the "igb" method as described in
+    # Eve::Trust.
     module JavascriptHelper
       # Returns the numeric type ID for a string, so you don't have to manage "magic numbers" in your application.
       # The argument can be a string or a symbol, and is case insensitive. Underscores will be converted to spaces.
