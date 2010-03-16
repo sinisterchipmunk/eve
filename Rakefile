@@ -16,10 +16,12 @@ Hoe.plugin :newgem
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.spec 'eve' do
   self.version = Eve::VERSION
-  #self.summary = Spec::VERSION::SUMMARY
-  self.description = "Interfaces with the Eve Online API and In-Game Browser. Provides helpers for generating Eve-specific JavaScript"
+  #self.summary = Eve::VERSION::SUMMARY
+  self.description = "A Ruby library for interfacing with all aspects of the EVE Online MMO. It is designed for use "+
+          "within a Ruby on Rails project, but does not require Rails as a dependency. That means there‘s nothing "+
+          "preventing you from writing a stand-alone application or script using this library."
   self.developer('Colin MacKenzie IV', 'sinisterchipmunk@gmail.com')
-  self.extra_deps << ["activesupport",">=2.3.5"] << ["hpricot",">=0.8.2"]
+  self.extra_deps << ["activesupport",">=2.3.5"] << ["hpricot",">=0.8.2"] << ["actionpack",">=2.3.5"]
   self.extra_dev_deps << ["cucumber",">=0.6.2"] << ["rspec",">=1.3.0"] << ["rcov",">=0.9.8"]
   self.rspec_options = ['--options', 'spec/spec.opts']
   #self.history_file = 'History.rdoc'
