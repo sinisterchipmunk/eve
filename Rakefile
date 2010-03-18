@@ -18,7 +18,7 @@ $hoe = Hoe.spec 'eve' do
   self.version = Eve::VERSION
   #self.summary = Eve::VERSION::SUMMARY
   self.description = "A Ruby library for interfacing with all aspects of the EVE Online MMO. It is designed for use "+
-          "within a Ruby on Rails project, but does not require Rails as a dependency. That means there‘s nothing "+
+          "within a Ruby on Rails project, but does not require Rails as a dependency. That means there is nothing "+
           "preventing you from writing a stand-alone application or script using this library."
   self.developer('Colin MacKenzie IV', 'sinisterchipmunk@gmail.com')
   self.url = ('http://github.com/sinisterchipmunk/eve')
