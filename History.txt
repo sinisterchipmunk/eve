@@ -1,4 +1,7 @@
 === 0.0.1 2010-03-09
 
+* 1 bugfix:
+  * Resolved interference with before filters added after the gem has been loaded
+
 * 1 major enhancement:
   * Initial release

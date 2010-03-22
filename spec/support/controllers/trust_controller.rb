@@ -1,4 +1,4 @@
-class TrustController < ApplicationController
+class TrustController < ActionController::Base
   requires_trust
 
   def index

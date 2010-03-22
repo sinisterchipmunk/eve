@@ -9,7 +9,7 @@ require 'eve/trust'
 require 'eve/helpers'
 
 module Eve
-  VERSION = '1.0.0'
+  VERSION = '1.0.1'
 
   class << self
     def cache_store
