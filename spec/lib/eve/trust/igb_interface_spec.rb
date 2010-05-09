@@ -56,6 +56,16 @@ describe Eve::Trust::IgbInterface do
     end
   end
 
+  context "using new igb - moondoggie" do
+    before(:all) do
+      @rack_env = Rack::MockRequest.env_for("/").merge('REQUEST_URI' => '', 'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/532.0 (KHTML, like Gecko) Chrome/3.0.195.27 Safari/532.0 EVE-IGB ')
+    end
+
+    it "should be considered an igb" do
+      subject.igb?.should be_true
+    end
+  end
+
   context "without any IGB headers" do
     before(:all) do
       @rack_env = Rack::MockRequest.env_for("/").merge('REQUEST_URI' => '', 'HTTP_USER_AGENT' => 'eve-minibrowser')

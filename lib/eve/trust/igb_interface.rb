@@ -14,7 +14,7 @@ module Eve
       end
 
       def igb?
-        request.user_agent && request.user_agent[/eve\-minibrowser/i]
+        request.user_agent && (request.user_agent[/eve\-minibrowser/i] || request.user_agent[/EVE\-IGB/])
       end
 
       # Validation string (HTTP_EVE_VALIDATION_STRING) is only a wishlist item, and is not actually implemented in the
