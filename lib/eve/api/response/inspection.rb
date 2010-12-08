@@ -5,7 +5,7 @@ module Eve
         def protected_instance_variables
           (respond_to?(:content) && !content.blank? ? [] : ["@content"]) +
           #(respond_to?(:rowsets) && !rowsets.empty? ? rowsets.collect { |r| "@#{r.name}" } : []) +
-          %w(@rowsets @options @xml @columns @row @name)
+          [:@rowsets, :@options, :@xml, :@columns, :@row, :@name]
         end
 
         def inspected_name

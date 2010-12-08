@@ -3,7 +3,7 @@ source "http://rubygems.org"
 # Example:
 gem "activesupport", ">= 3.0"
 gem "actionpack", ">= 3.0"
-gem "hpricot", ">= 0.8.2"
+gem "hpricot", "= 0.8.2"
 gem 'sc-core-ext'
 
 # Add dependencies to develop your gem here.

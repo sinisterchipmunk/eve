@@ -34,7 +34,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     git (1.2.5)
-    hpricot (0.8.3)
+    hpricot (0.8.2)
     i18n (0.5.0)
     jeweler (1.5.1)
       bundler (~> 1.0.0)
@@ -94,7 +94,7 @@ DEPENDENCIES
   actionpack (>= 3.0)
   activesupport (>= 3.0)
   bundler (~> 1.0.0)
-  hpricot (>= 0.8.2)
+  hpricot (= 0.8.2)
   jeweler (~> 1.5.1)
   rails
   rcov
