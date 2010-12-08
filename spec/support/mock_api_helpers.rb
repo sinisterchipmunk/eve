@@ -30,8 +30,11 @@ module MockAPIHelpers
     end
     if options[:service] && eve_api(options).respond_to?(base)
       eve_api(options).send(base).send(options[:service], *(options[:args] || []))
-    elsif options[:service]
-      raise "Service specified but API doesn't respond to '#{base}'"
+    # If having trouble with mock services, this may be of some help, but it alters how the API can be
+    # interacted with (most notably for spec/lib/eve/api/calls/server_status_spec.rb) so it should be
+    # disabled when no issues are showing up.
+#    elsif options[:service]
+#      raise "Service '#{options[:service]}' specified but API doesn't respond to '#{base}'"
     else
       eve_api(options)
     end
