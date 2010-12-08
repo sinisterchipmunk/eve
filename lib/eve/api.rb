@@ -217,7 +217,8 @@ module Eve
       [@options[:includes]].flatten.each do |mod|
         next unless mod
         mod = mod.to_s unless mod.kind_of?(String)
-        eigenclass.send(:include, "::Eve::API::Services::#{mod.camelize}".constantize)
+        mod = "::Eve::API::Services::#{mod.camelize}".constantize
+        eigenclass.send(:include, mod)
       end
     end
 
@@ -226,6 +227,7 @@ module Eve
         next unless mod
         instance_variable_set("@#{mod}", ::Eve::API.new(options.merge(:includes => mod, :submodules => nil)))
         eigenclass.send(:attr_reader, mod)
+        eigenclass.send(:public, mod)
       end
     end
 

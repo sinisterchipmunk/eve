@@ -30,6 +30,8 @@ module MockAPIHelpers
     end
     if options[:service] && eve_api(options).respond_to?(base)
       eve_api(options).send(base).send(options[:service], *(options[:args] || []))
+    elsif options[:service]
+      raise "Service specified but API doesn't respond to '#{base}'"
     else
       eve_api(options)
     end

@@ -14,6 +14,7 @@ module Eve
   class MockRailsApplication < Rails::Application
     config.encoding = 'utf-8'
     config.filter_parameters += [:password]
+    config.active_support.deprecation = :log
     routes.draw do
       match '/', :controller => 'trust', :action => 'index'
     end
