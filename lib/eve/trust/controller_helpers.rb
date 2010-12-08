@@ -51,13 +51,19 @@ module Eve
           def set_igb
             request.format = :igb
           end
+          
+          unless defined?(default_template_name)
+            def default_template_name
+              action_name
+            end
+          end
 
           def default_template_exists?(format = response.template.template_format)
             template_exists?(default_template_name, format)
           end
 
           def template_exists?(template_name, format = response.template.template_format)
-            self.view_paths.find_template(template_name, format)
+            lookup_context.find_template(template_name, format)
           rescue ActionView::MissingTemplate, Errno::ENOENT
             false
           end

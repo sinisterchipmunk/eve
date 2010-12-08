@@ -9,8 +9,6 @@ require 'eve/trust'
 require 'eve/helpers'
 
 module Eve
-  VERSION = '1.0.2'
-
   class << self
     def cache_store
       @cache_store ||= [:file_store, "tmp/eve.cache"]

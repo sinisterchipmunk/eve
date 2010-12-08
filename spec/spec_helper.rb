@@ -1,4 +1,26 @@
-require 'lib/eve'
+require 'rubygems'
+require File.join(File.dirname(__FILE__), '../lib/eve')
+require 'rails'
+##require "active_record/railtie"
+require "action_controller/railtie"
+##require "action_mailer/railtie"
+##require "active_resource/railtie"
+require "rails/test_unit/railtie"
+#require 'rails/all'
+require 'rspec/rails'
+
+# set up Rails3 required classes
+module Eve
+  class MockRailsApplication < Rails::Application
+    config.encoding = 'utf-8'
+    config.filter_parameters += [:password]
+    routes.draw do
+      match '/', :controller => 'trust', :action => 'index'
+    end
+  end
+end
+
+Eve::MockRailsApplication.initialize!
 
 # Set to false to disable mock web service responses. Real requests will be used
 # whenever Eve.cache does not suffice. The API information above must be real and

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Eve::Trust::IgbInterface do
-  @@igb_headers = {
+  igb_headers = {
           'HTTP_USER_AGENT' => 'eve-minibrowser',
           'HTTP_EVE_TRUSTED' => 'yes',
           'HTTP_EVE_SERVERIP' => '1.2.3.4',
@@ -18,7 +18,7 @@ describe Eve::Trust::IgbInterface do
           'HTTP_EVE_STATIONID' => '1234',
           'HTTP_EVE_CORPROLE' => '0'
   }
-  @@igb_requested_headers = {
+  igb_requested_headers = {
           'HTTP_EVE_MILITIANAME' => 'militia name',
           'HTTP_EVE_MILITIAID' => '1234567',
           'HTTP_EVE_REGIONID' => '1929',
@@ -29,7 +29,7 @@ describe Eve::Trust::IgbInterface do
           'HTTP_EVE_VALIDATION_STRING' => 'abcdefghijklmnopqrstuvwxyz'
   }
 
-  subject { Eve::Trust::IgbInterface.new(ActionController::Request.new(@rack_env)) }
+  subject { Eve::Trust::IgbInterface.new(ActionDispatch::Request.new(@rack_env)) }
 
   shared_examples_for "any igb with trust" do
     it "should be trusted" do
@@ -87,14 +87,14 @@ describe Eve::Trust::IgbInterface do
   context "with trust" do
     it_should_behave_like "any igb with trust"
     before(:all) do
-      @rack_env = Rack::MockRequest.env_for("/").merge('REQUEST_URI' => '').merge(@@igb_headers)
+      @rack_env = Rack::MockRequest.env_for("/").merge('REQUEST_URI' => '').merge(igb_headers)
     end
 
     context "after requests are implemented" do
       it_should_behave_like "any igb with trust"
 
       before(:all) do
-        @rack_env = Rack::MockRequest.env_for("/").merge('REQUEST_URI' => '').merge(@@igb_headers).merge(@@igb_requested_headers)
+        @rack_env = Rack::MockRequest.env_for("/").merge('REQUEST_URI' => '').merge(igb_headers).merge(igb_requested_headers)
       end
 
       it "should load the additional data" do
