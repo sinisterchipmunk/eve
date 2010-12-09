@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Eve::Helpers::JavascriptHelper do
+describe Eve::JavascriptHelper do
   subject { ActionView::Base.new }
 
   it "should link to mailing list" do
@@ -11,7 +11,7 @@ describe Eve::Helpers::JavascriptHelper do
     subject.link_to_channel("link", '1').should == '<a href="#" onclick="CCPEVE.joinChannel(&quot;1&quot;); return false;">link</a>'
   end
 
-  it "should link to waypoing" do
+  it "should link to waypoint" do
     subject.link_to_waypoint("link", '1').should == '<a href="#" onclick="CCPEVE.addWaypoint(&quot;1&quot;); return false;">link</a>'
   end
 

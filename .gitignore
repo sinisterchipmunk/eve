@@ -9,6 +9,7 @@ pkg
 dry-run
 doc
 t.rb
+rdoc
 
 #ignore thumbnails created by windows
 Thumbs.db

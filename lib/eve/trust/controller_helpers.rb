@@ -79,8 +79,9 @@ module Eve
         # TODO see if this is necessary. I'm not sure how to test it since we mock up this very method during testing.
         formats = lookup_context.formats
         lookup_context.formats = [format]
-        lookup_context.exists?(default_template_name)
+        result = lookup_context.exists?(default_template_name)
         lookup_context.formats = formats
+        result
       end
     end
   end

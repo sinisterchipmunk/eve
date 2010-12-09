@@ -1,11 +1,6 @@
 require 'net/http'
 require 'hpricot'
 require 'yaml'
-require 'rails'
-# we just required Rails -- are these next 3 necessary?
-require 'action_pack'
-require 'action_controller'
-require 'action_view'
 
 require 'sc-core-ext'
 
@@ -18,6 +13,36 @@ $LOAD_PATH.unshift gem_path
 
 module Eve
   autoload :Errors, "eve/errors"
-  autoload :Helpers, "eve/helpers"
+  autoload :API, "eve/api"
+  autoload :Errors, "eve/errors"
+  autoload :JavascriptHelper, "eve/javascript_helper"
   autoload :Trust, "eve/trust"
+
+  # Railtie for bootstrapping to Rails
+  begin
+    require 'rails'
+    # we just required Rails -- are these next 3 necessary?
+    require 'action_pack'
+    require 'action_controller'
+    require 'action_view'
+
+    class Railtie < Rails::Railtie
+      if defined?(Mime::Type)
+        Mime::Type.register_alias "text/html", :eve
+        Mime::Type.register_alias "text/html", :igb
+      end
+
+      config.after_initialize do
+        # controller extensions
+        ActionController::Base.send(:include, Eve::Trust::ControllerHelpers)
+
+        # view extensions
+        ActionView::Base.send(:delegate, :igb,  :to => :controller)
+        ActionView::Base.send(:delegate, :igb?, :to => :igb)
+        ActionView::Base.send(:include, Eve::JavascriptHelper)
+      end
+    end
+  rescue LoadError
+    # no rails? no problem.
+  end
 end
