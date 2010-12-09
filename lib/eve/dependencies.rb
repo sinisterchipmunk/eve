@@ -1,9 +1,12 @@
 require 'net/http'
 require 'hpricot'
 require 'yaml'
+require 'rails'
+# we just required Rails -- are these next 3 necessary?
 require 'action_pack'
 require 'action_controller'
 require 'action_view'
+
 require 'sc-core-ext'
 
 gem_path = File.expand_path(File.dirname(__FILE__), "..")

@@ -1,11 +1,10 @@
-require 'eve/trust/mime_types'
 require 'eve/trust/controller_helpers'
 require 'eve/trust/igb_interface'
 
 module Eve
   # == Trust
   # The primary purpose for the ActionController is to figure out which View should be rendered, and what data to send
-  # to that View. In keeping with this design, a few helper methods have been established that allow you to establish
+  # to that View. In keeping with this paradigm, a few helper methods have been added that allow you to establish
   # trust with the In-Game Browser (IGB), which in turn provides access to more useful information such as the player's
   # current location. To establish trust with a compatible browser, simply add one line to your controller:
   #

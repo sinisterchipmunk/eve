@@ -73,7 +73,11 @@ describe TrustController do
     end
 
     context "and an IGB template does not exist" do
-      before(:each) { request.env.merge!('mock_methods' => { :default_template_exists? => false }); get :index   }
+      before(:each) do
+#        request.env.merge!('mock_methods' => { :default_template_exists? => false })
+        get :index
+      end
+      
       it "does not respond with an IGB-specific page" do
         p response
         response.formats.should_not include(:igb)
