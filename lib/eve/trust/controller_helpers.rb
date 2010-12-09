@@ -31,6 +31,7 @@ module Eve
       end
 
       def require_trust(trust_message = self.class.trust_message)
+        p igb?, igb.trusted?
         if igb? && !igb.trusted?
           deliver_trust_message(trust_message)
           return false
@@ -47,7 +48,7 @@ module Eve
 
       def deliver_trust_message(trust_message = self.class.trust_message)
         trust_uri = "http://#{request.host}/"
-        head 'eve.trustme' => "#{trust_uri}::#{trust_message}"
+        head :unauthorized, 'Eve.trustme' => "#{trust_uri}::#{trust_message}"
       end
 
       def detect_igb
