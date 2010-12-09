@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Eve::API::Response</title>
+
+	<link rel="stylesheet" href="../../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#classes">Classes</a>
+          <a href="../../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../../lib/eve/api/response_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/eve/api/response.rb">lib/eve/api/response.rb</a></li>
+					
+						<li><a href="../../lib/eve/api/response/wrap_object_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/eve/api/response/wrap_object.rb">lib/eve/api/response/wrap_object.rb</a></li>
+					
+						<li><a href="../../lib/eve/api/response/rowsets_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/eve/api/response/rowsets.rb">lib/eve/api/response/rowsets.rb</a></li>
+					
+						<li><a href="../../lib/eve/api/response/rowset_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/eve/api/response/rowset.rb">lib/eve/api/response/rowset.rb</a></li>
+					
+						<li><a href="../../lib/eve/api/response/inspection_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/eve/api/response/inspection.rb">lib/eve/api/response/inspection.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+			<div id="namespace-list-section" class="section">
+				<h3 class="section-header">Namespace</h3>
+				<ul class="link-list">
+					
+					<li><span class="type">MODULE</span> <a href="Response/Inspection.html">Eve::API::Response::Inspection</a></li>
+					
+					<li><span class="type">MODULE</span> <a href="Response/Rowsets.html">Eve::API::Response::Rowsets</a></li>
+					
+					<li><span class="type">MODULE</span> <a href="Response/WrapObject.html">Eve::API::Response::WrapObject</a></li>
+					
+					<li><span class="type">CLASS</span> <a href="Response/Rowset.html">Eve::API::Response::Rowset</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-%5B%5D">#[]</a></li>
+					
+					<li><a href="#method-i-check_for_datetime">#check_for_datetime</a></li>
+					
+					<li><a href="#method-i-parse_children">#parse_children</a></li>
+					
+					<li><a href="#method-i-parse_elem">#parse_elem</a></li>
+					
+					<li><a href="#method-i-parse_xml">#parse_xml</a></li>
+					
+					<li><a href="#method-i-to_hash">#to_hash</a></li>
+					
+					<li><a href="#method-i-to_yaml">#to_yaml</a></li>
+					
+					<li><a href="#method-i-wrap_method_around_node">#wrap_method_around_node</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+			<div id="includes-section" class="section">
+				<h3 class="section-header">Included Modules</h3>
+				<ul class="link-list">
+				
+				
+					<li><a class="include" href="Response/WrapObject.html">Eve::API::Response::WrapObject</a></li>
+				
+				
+				
+					<li><a class="include" href="Response/Rowsets.html">Eve::API::Response::Rowsets</a></li>
+				
+				
+				
+					<li><a class="include" href="Response/Inspection.html">Eve::API::Response::Inspection</a></li>
+				
+				
+				</ul>
+			</div>
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../../Eve.html">Eve</a></li>
+				
+					<li><a href="../../Eve/API.html">Eve::API</a></li>
+				
+					<li><a href="../../Eve/API/Connectivity.html">Eve::API::Connectivity</a></li>
+				
+					<li><a href="../../Eve/API/Request.html">Eve::API::Request</a></li>
+				
+					<li><a href="../../Eve/API/Response.html">Eve::API::Response</a></li>
+				
+					<li><a href="../../Eve/API/Response/Inspection.html">Eve::API::Response::Inspection</a></li>
+				
+					<li><a href="../../Eve/API/Response/Rowset.html">Eve::API::Response::Rowset</a></li>
+				
+					<li><a href="../../Eve/API/Response/Rowset/object;.html">Eve::API::Response::Rowset::object;</a></li>
+				
+					<li><a href="../../Eve/API/Response/Rowsets.html">Eve::API::Response::Rowsets</a></li>
+				
+					<li><a href="../../Eve/API/Response/WrapObject.html">Eve::API::Response::WrapObject</a></li>
+				
+					<li><a href="../../Eve/API/Services.html">Eve::API::Services</a></li>
+				
+					<li><a href="../../Eve/API/Services/Account.html">Eve::API::Services::Account</a></li>
+				
+					<li><a href="../../Eve/API/Services/Character.html">Eve::API::Services::Character</a></li>
+				
+					<li><a href="../../Eve/API/Services/Corporation.html">Eve::API::Services::Corporation</a></li>
+				
+					<li><a href="../../Eve/API/Services/Eve.html">Eve::API::Services::Eve</a></li>
+				
+					<li><a href="../../Eve/API/Services/Map.html">Eve::API::Services::Map</a></li>
+				
+					<li><a href="../../Eve/API/Services/Misc.html">Eve::API::Services::Misc</a></li>
+				
+					<li><a href="../../Eve/API/Services/Server.html">Eve::API::Services::Server</a></li>
+				
+					<li><a href="../../Eve/Errors.html">Eve::Errors</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationError.html">Eve::Errors::AuthenticationError</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors.html">Eve::Errors::AuthenticationErrors</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/AuthenticationFailure.html">Eve::Errors::AuthenticationErrors::AuthenticationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/CachedKeyAuthFailure.html">Eve::Errors::AuthenticationErrors::CachedKeyAuthFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/InadequateSecurityLevel.html">Eve::Errors::AuthenticationErrors::InadequateSecurityLevel</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/LastAuthenticationFailure.html">Eve::Errors::AuthenticationErrors::LastAuthenticationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/LoginDenied.html">Eve::Errors::AuthenticationErrors::LoginDenied</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/MissingRoles.html">Eve::Errors::AuthenticationErrors::MissingRoles</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/NotAvailable.html">Eve::Errors::AuthenticationErrors::NotAvailable</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/NotInAlliance.html">Eve::Errors::AuthenticationErrors::NotInAlliance</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/WrongAccount.html">Eve::Errors::AuthenticationErrors::WrongAccount</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalError.html">Eve::Errors::InternalError</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors.html">Eve::Errors::InternalErrors</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/CSVMismatch.html">Eve::Errors::InternalErrors::CSVMismatch</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/CacheUtilMissing.html">Eve::Errors::InternalErrors::CacheUtilMissing</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/CharacterInformationFailure.html">Eve::Errors::InternalErrors::CharacterInformationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/CorporationInformationFailure.html">Eve::Errors::InternalErrors::CorporationInformationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/FactionMemberInformationFailure.html">Eve::Errors::InternalErrors::FactionMemberInformationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidAccountKey.html">Eve::Errors::InternalErrors::InvalidAccountKey</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidAttribute.html">Eve::Errors::InternalErrors::InvalidAttribute</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidBloodline.html">Eve::Errors::InternalErrors::InvalidBloodline</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidCharID.html">Eve::Errors::InternalErrors::InvalidCharID</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidCorpID.html">Eve::Errors::InternalErrors::InvalidCorpID</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidCredentials.html">Eve::Errors::InternalErrors::InvalidCredentials</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidGender.html">Eve::Errors::InternalErrors::InvalidGender</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidInput.html">Eve::Errors::InternalErrors::InvalidInput</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidOrNotLoaded.html">Eve::Errors::InternalErrors::InvalidOrNotLoaded</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidRace.html">Eve::Errors::InternalErrors::InvalidRace</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidRefType.html">Eve::Errors::InternalErrors::InvalidRefType</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidUserID.html">Eve::Errors::InternalErrors::InvalidUserID</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/MailNotAvailable.html">Eve::Errors::InternalErrors::MailNotAvailable</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/MedalInformationFailure.html">Eve::Errors::InternalErrors::MedalInformationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/MissingCorporation.html">Eve::Errors::InternalErrors::MissingCorporation</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/NotificationsNotAvailable.html">Eve::Errors::InternalErrors::NotificationsNotAvailable</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/NullAttributeID.html">Eve::Errors::InternalErrors::NullAttributeID</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/RolesQueryFailure.html">Eve::Errors::InternalErrors::RolesQueryFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/StarbaseDetailFailure.html">Eve::Errors::InternalErrors::StarbaseDetailFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/TQTimeFailure.html">Eve::Errors::InternalErrors::TQTimeFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/UnexpectedDatabaseFailure.html">Eve::Errors::InternalErrors::UnexpectedDatabaseFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/UserInformationFailure.html">Eve::Errors::InternalErrors::UserInformationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InvalidRowset.html">Eve::Errors::InvalidRowset</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousError.html">Eve::Errors::MiscellaneousError</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors.html">Eve::Errors::MiscellaneousErrors</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors/BackendDatabaseDisabled.html">Eve::Errors::MiscellaneousErrors::BackendDatabaseDisabled</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors/BetaInProgress.html">Eve::Errors::MiscellaneousErrors::BetaInProgress</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors/RateLimited.html">Eve::Errors::MiscellaneousErrors::RateLimited</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors/SiteDatabaseDisabled.html">Eve::Errors::MiscellaneousErrors::SiteDatabaseDisabled</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors/TestErrorForced.html">Eve::Errors::MiscellaneousErrors::TestErrorForced</a></li>
+				
+					<li><a href="../../Eve/Errors/UnknownError.html">Eve::Errors::UnknownError</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputError.html">Eve::Errors::UserInputError</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors.html">Eve::Errors::UserInputErrors</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/AccountKeyOutOfBounds.html">Eve::Errors::UserInputErrors::AccountKeyOutOfBounds</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/AssetsAlreadyDownloaded.html">Eve::Errors::UserInputErrors::AssetsAlreadyDownloaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/CharacterNotEnlisted.html">Eve::Errors::UserInputErrors::CharacterNotEnlisted</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/CorporationNotEnlisted.html">Eve::Errors::UserInputErrors::CorporationNotEnlisted</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/IndustryJobsAlreadyDownloaded.html">Eve::Errors::UserInputErrors::IndustryJobsAlreadyDownloaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidAccountKey.html">Eve::Errors::UserInputErrors::InvalidAccountKey</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidBeforeKillID.html">Eve::Errors::UserInputErrors::InvalidBeforeKillID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidBeforeRefID.html">Eve::Errors::UserInputErrors::InvalidBeforeRefID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidBeforeTransID.html">Eve::Errors::UserInputErrors::InvalidBeforeTransID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidCharacterID.html">Eve::Errors::UserInputErrors::InvalidCharacterID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidIDList.html">Eve::Errors::UserInputErrors::InvalidIDList</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidInteger.html">Eve::Errors::UserInputErrors::InvalidInteger</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidItemID.html">Eve::Errors::UserInputErrors::InvalidItemID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidNameList.html">Eve::Errors::UserInputErrors::InvalidNameList</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/KeyNotFound.html">Eve::Errors::UserInputErrors::KeyNotFound</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/KillsExhausted.html">Eve::Errors::UserInputErrors::KillsExhausted</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/KillsNotLoaded.html">Eve::Errors::UserInputErrors::KillsNotLoaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/KillsPreviouslyLoaded.html">Eve::Errors::UserInputErrors::KillsPreviouslyLoaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/MarketOrdersAlreadyDownloaded.html">Eve::Errors::UserInputErrors::MarketOrdersAlreadyDownloaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/MissingUserID.html">Eve::Errors::UserInputErrors::MissingUserID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/RetryLater.html">Eve::Errors::UserInputErrors::RetryLater</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/VersionEscalationNotAllowed.html">Eve::Errors::UserInputErrors::VersionEscalationNotAllowed</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/VersionMismatch.html">Eve::Errors::UserInputErrors::VersionMismatch</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/WalletExhausted.html">Eve::Errors::UserInputErrors::WalletExhausted</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/WalletNotLoaded.html">Eve::Errors::UserInputErrors::WalletNotLoaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/WalletPreviouslyLoaded.html">Eve::Errors::UserInputErrors::WalletPreviouslyLoaded</a></li>
+				
+					<li><a href="../../Eve/Helpers.html">Eve::Helpers</a></li>
+				
+					<li><a href="../../Eve/Helpers/JavascriptHelper.html">Eve::Helpers::JavascriptHelper</a></li>
+				
+					<li><a href="../../Eve/Helpers/ViewHelper.html">Eve::Helpers::ViewHelper</a></li>
+				
+					<li><a href="../../Eve/Railtie.html">Eve::Railtie</a></li>
+				
+					<li><a href="../../Eve/Trust.html">Eve::Trust</a></li>
+				
+					<li><a href="../../Eve/Trust/ControllerHelpers.html">Eve::Trust::ControllerHelpers</a></li>
+				
+					<li><a href="../../Eve/Trust/IgbInterface.html">Eve::Trust::IgbInterface</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Eve::API::Response</h1>
+
+		<div id="description">
+			
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="api-version-attribute-method" class="method-detail">
+				<a name="api_version"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">api_version</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="content-attribute-method" class="method-detail">
+				<a name="content"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">content</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(xml, options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/response.rb, line 14</span>
+14:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">xml</span>, <span class="ruby-identifier">options</span> = {})
+15:         <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+16:         <span class="ruby-identifier">xml</span> = <span class="ruby-constant">Hpricot</span><span class="ruby-operator">::</span><span class="ruby-constant">XML</span>(<span class="ruby-identifier">xml</span>).<span class="ruby-identifier">root</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
+17:         <span class="ruby-ivar">@xml</span> = <span class="ruby-identifier">xml</span>
+18:         <span class="ruby-comment cmt">#@attributes = {}</span>
+19: 
+20:         <span class="ruby-identifier">parse_xml</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:process_xml</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword kw">false</span>
+21:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="--method" class="method-detail ">
+				<a name="method-i-%5B%5D"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">[]</span><span
+						class="method-args">(key)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/response.rb, line 41</span>
+41:       <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>)
+42:         <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">key</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
+43:         <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">underscore</span>
+44:         <span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{key}&quot;</span>) <span class="ruby-operator">||</span>
+45:                 <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;No attribute called '#{key}' seems to exist in #{self.inspect}&quot;</span>)
+46:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="to-hash-method" class="method-detail ">
+				<a name="method-i-to_hash"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">to_hash</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="to-hash-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/response.rb, line 23</span>
+23:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>
+24:         <span class="ruby-identifier">hash</span> = {}
+25:         (<span class="ruby-identifier">instance_variables</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">protected_instance_variables</span> <span class="ruby-operator">+</span> (<span class="ruby-ivar">@name</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">?</span> [] <span class="ruby-operator">:</span> [<span class="ruby-value str">&quot;@name&quot;</span>])).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ivar</span><span class="ruby-operator">|</span>
+26:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">ivar</span>)
+27:           <span class="ruby-identifier">value</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">value</span>
+28:             <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Rowset</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_a</span>
+29:             <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Response</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_hash</span>
+30:             <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">value</span>
+31:           <span class="ruby-keyword kw">end</span>
+32:           <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">ivar</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]] = <span class="ruby-identifier">value</span>
+33:         <span class="ruby-keyword kw">end</span>
+34:         <span class="ruby-identifier">hash</span>
+35:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="to-yaml-method" class="method-detail ">
+				<a name="method-i-to_yaml"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">to_yaml</span><span
+						class="method-args">(*args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="to-yaml-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/response.rb, line 37</span>
+37:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_yaml</span>(*<span class="ruby-identifier">args</span>)
+38:         <span class="ruby-identifier">to_hash</span>.<span class="ruby-identifier">to_yaml</span>(*<span class="ruby-identifier">args</span>)
+39:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="protected-instance-method-details" class="method-section section">
+			<h3 class="section-header">Protected Instance Methods</h3>
+
+		
+			<div id="check-for-datetime-method" class="method-detail ">
+				<a name="method-i-check_for_datetime"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">check_for_datetime</span><span
+						class="method-args">(value)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="check-for-datetime-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/response.rb, line 56</span>
+56:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_for_datetime</span>(<span class="ruby-identifier">value</span>)
+57:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\A[0-9]{4}\-[0-9]{2}\-[0-9]{2} [0-9]{2}\:[0-9]{2}\:[0-9]{2}\z/</span>
+58:           <span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">value</span>)
+59:         <span class="ruby-keyword kw">else</span>
+60:           <span class="ruby-identifier">value</span>
+61:         <span class="ruby-keyword kw">end</span>
+62:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="parse-children-method" class="method-detail ">
+				<a name="method-i-parse_children"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">parse_children</span><span
+						class="method-args">(node = @xml)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="parse-children-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/response.rb, line 95</span>
+95:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_children</span>(<span class="ruby-identifier">node</span> = <span class="ruby-ivar">@xml</span>)
+96:         <span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> <span class="ruby-identifier">parse_xml</span>(<span class="ruby-identifier">child</span>) } <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>
+97:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="parse-elem-method" class="method-detail ">
+				<a name="method-i-parse_elem"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">parse_elem</span><span
+						class="method-args">(node = @xml)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="parse-elem-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/response.rb, line 82</span>
+82:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_elem</span>(<span class="ruby-identifier">node</span> = <span class="ruby-ivar">@xml</span>)
+83:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span>
+84:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'eveapi'</span> <span class="ruby-keyword kw">then</span>
+85:             <span class="ruby-ivar">@api_version</span> = <span class="ruby-identifier">node</span>[<span class="ruby-value str">'version'</span>]
+86:             <span class="ruby-identifier">parse_children</span>(<span class="ruby-identifier">node</span>)
+87:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'result'</span> <span class="ruby-keyword kw">then</span>
+88:             <span class="ruby-identifier">parse_children</span>(<span class="ruby-identifier">node</span>)
+89:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'rowset'</span> <span class="ruby-keyword kw">then</span>
+90:             <span class="ruby-identifier">add_rowset</span> <span class="ruby-constant">Rowset</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">node</span>, <span class="ruby-ivar">@options</span>)
+91:           <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">wrap_method_around_node</span>(<span class="ruby-identifier">node</span>)
+92:         <span class="ruby-keyword kw">end</span>
+93:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="parse-xml-method" class="method-detail ">
+				<a name="method-i-parse_xml"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">parse_xml</span><span
+						class="method-args">(node = @xml)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="parse-xml-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/response.rb, line 49</span>
+49:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_xml</span>(<span class="ruby-identifier">node</span> = <span class="ruby-ivar">@xml</span>)
+50:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">node</span>
+51:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Hpricot</span><span class="ruby-operator">::</span><span class="ruby-constant">Elem</span>
+52:             <span class="ruby-identifier">parse_elem</span>(<span class="ruby-identifier">node</span>)
+53:         <span class="ruby-keyword kw">end</span>
+54:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="wrap-method-around-node-method" class="method-detail ">
+				<a name="method-i-wrap_method_around_node"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">wrap_method_around_node</span><span
+						class="method-args">(node = @xml)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="wrap-method-around-node-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/response.rb, line 64</span>
+64:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wrap_method_around_node</span>(<span class="ruby-identifier">node</span> = <span class="ruby-ivar">@xml</span>)
+65:         <span class="ruby-comment cmt"># TODO: refactor me.</span>
+66:         <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hpricot</span><span class="ruby-operator">::</span><span class="ruby-constant">Elem</span>) }.<span class="ruby-identifier">empty?</span>
+67:           <span class="ruby-ivar">@content</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">inner_text</span>.<span class="ruby-identifier">strip</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">node</span>.<span class="ruby-identifier">children</span>
+68:           <span class="ruby-identifier">value</span> = <span class="ruby-constant">Eve</span><span class="ruby-operator">::</span><span class="ruby-constant">API</span><span class="ruby-operator">::</span><span class="ruby-constant">Response</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">node</span>, <span class="ruby-ivar">@options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:process_xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>))
+69:           <span class="ruby-identifier">value</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:copy_attributes</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">to_hash</span>.<span class="ruby-identifier">keys</span>, <span class="ruby-identifier">node</span>)
+70:           <span class="ruby-identifier">value</span>.<span class="ruby-identifier">parse_children</span>
+71:         <span class="ruby-keyword kw">else</span>
+72:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value_for</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">inner_text</span>)
+73:           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">check_for_datetime</span>(<span class="ruby-identifier">value</span>)
+74:           <span class="ruby-comment cmt"># now define any attributes as methods on the resultant object</span>
+75:           <span class="ruby-identifier">node_attributes</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">to_hash</span>
+76:           <span class="ruby-identifier">copy_attributes</span>(<span class="ruby-identifier">node_attributes</span>.<span class="ruby-identifier">keys</span>, <span class="ruby-identifier">node</span>, <span class="ruby-identifier">value</span>)
+77:         <span class="ruby-keyword kw">end</span>
+78: 
+79:         <span class="ruby-identifier">wrap_object</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
+80:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

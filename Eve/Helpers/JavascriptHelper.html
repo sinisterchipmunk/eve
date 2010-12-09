@@ -1,0 +1,1082 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Module: Eve::Helpers::JavascriptHelper</title>
+
+	<link rel="stylesheet" href="../../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="module">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#classes">Classes</a>
+          <a href="../../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../../lib/eve/helpers/javascript_helper_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/eve/helpers/javascript_helper.rb">lib/eve/helpers/javascript_helper.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-link_to_channel">#link_to_channel</a></li>
+					
+					<li><a href="#method-i-link_to_contract">#link_to_contract</a></li>
+					
+					<li><a href="#method-i-link_to_destination">#link_to_destination</a></li>
+					
+					<li><a href="#method-i-link_to_evemail">#link_to_evemail</a></li>
+					
+					<li><a href="#method-i-link_to_fitting">#link_to_fitting</a></li>
+					
+					<li><a href="#method-i-link_to_info">#link_to_info</a></li>
+					
+					<li><a href="#method-i-link_to_mailing_list">#link_to_mailing_list</a></li>
+					
+					<li><a href="#method-i-link_to_map">#link_to_map</a></li>
+					
+					<li><a href="#method-i-link_to_market_details">#link_to_market_details</a></li>
+					
+					<li><a href="#method-i-link_to_preview">#link_to_preview</a></li>
+					
+					<li><a href="#method-i-link_to_route">#link_to_route</a></li>
+					
+					<li><a href="#method-i-link_to_trust_request">#link_to_trust_request</a></li>
+					
+					<li><a href="#method-i-link_to_waypoint">#link_to_waypoint</a></li>
+					
+					<li><a href="#method-i-request_trust">#request_trust</a></li>
+					
+					<li><a href="#method-i-type_id">#type_id</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../../Eve.html">Eve</a></li>
+				
+					<li><a href="../../Eve/API.html">Eve::API</a></li>
+				
+					<li><a href="../../Eve/API/Connectivity.html">Eve::API::Connectivity</a></li>
+				
+					<li><a href="../../Eve/API/Request.html">Eve::API::Request</a></li>
+				
+					<li><a href="../../Eve/API/Response.html">Eve::API::Response</a></li>
+				
+					<li><a href="../../Eve/API/Response/Inspection.html">Eve::API::Response::Inspection</a></li>
+				
+					<li><a href="../../Eve/API/Response/Rowset.html">Eve::API::Response::Rowset</a></li>
+				
+					<li><a href="../../Eve/API/Response/Rowset/object;.html">Eve::API::Response::Rowset::object;</a></li>
+				
+					<li><a href="../../Eve/API/Response/Rowsets.html">Eve::API::Response::Rowsets</a></li>
+				
+					<li><a href="../../Eve/API/Response/WrapObject.html">Eve::API::Response::WrapObject</a></li>
+				
+					<li><a href="../../Eve/API/Services.html">Eve::API::Services</a></li>
+				
+					<li><a href="../../Eve/API/Services/Account.html">Eve::API::Services::Account</a></li>
+				
+					<li><a href="../../Eve/API/Services/Character.html">Eve::API::Services::Character</a></li>
+				
+					<li><a href="../../Eve/API/Services/Corporation.html">Eve::API::Services::Corporation</a></li>
+				
+					<li><a href="../../Eve/API/Services/Eve.html">Eve::API::Services::Eve</a></li>
+				
+					<li><a href="../../Eve/API/Services/Map.html">Eve::API::Services::Map</a></li>
+				
+					<li><a href="../../Eve/API/Services/Misc.html">Eve::API::Services::Misc</a></li>
+				
+					<li><a href="../../Eve/API/Services/Server.html">Eve::API::Services::Server</a></li>
+				
+					<li><a href="../../Eve/Errors.html">Eve::Errors</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationError.html">Eve::Errors::AuthenticationError</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors.html">Eve::Errors::AuthenticationErrors</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/AuthenticationFailure.html">Eve::Errors::AuthenticationErrors::AuthenticationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/CachedKeyAuthFailure.html">Eve::Errors::AuthenticationErrors::CachedKeyAuthFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/InadequateSecurityLevel.html">Eve::Errors::AuthenticationErrors::InadequateSecurityLevel</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/LastAuthenticationFailure.html">Eve::Errors::AuthenticationErrors::LastAuthenticationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/LoginDenied.html">Eve::Errors::AuthenticationErrors::LoginDenied</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/MissingRoles.html">Eve::Errors::AuthenticationErrors::MissingRoles</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/NotAvailable.html">Eve::Errors::AuthenticationErrors::NotAvailable</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/NotInAlliance.html">Eve::Errors::AuthenticationErrors::NotInAlliance</a></li>
+				
+					<li><a href="../../Eve/Errors/AuthenticationErrors/WrongAccount.html">Eve::Errors::AuthenticationErrors::WrongAccount</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalError.html">Eve::Errors::InternalError</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors.html">Eve::Errors::InternalErrors</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/CSVMismatch.html">Eve::Errors::InternalErrors::CSVMismatch</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/CacheUtilMissing.html">Eve::Errors::InternalErrors::CacheUtilMissing</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/CharacterInformationFailure.html">Eve::Errors::InternalErrors::CharacterInformationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/CorporationInformationFailure.html">Eve::Errors::InternalErrors::CorporationInformationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/FactionMemberInformationFailure.html">Eve::Errors::InternalErrors::FactionMemberInformationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidAccountKey.html">Eve::Errors::InternalErrors::InvalidAccountKey</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidAttribute.html">Eve::Errors::InternalErrors::InvalidAttribute</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidBloodline.html">Eve::Errors::InternalErrors::InvalidBloodline</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidCharID.html">Eve::Errors::InternalErrors::InvalidCharID</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidCorpID.html">Eve::Errors::InternalErrors::InvalidCorpID</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidCredentials.html">Eve::Errors::InternalErrors::InvalidCredentials</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidGender.html">Eve::Errors::InternalErrors::InvalidGender</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidInput.html">Eve::Errors::InternalErrors::InvalidInput</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidOrNotLoaded.html">Eve::Errors::InternalErrors::InvalidOrNotLoaded</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidRace.html">Eve::Errors::InternalErrors::InvalidRace</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidRefType.html">Eve::Errors::InternalErrors::InvalidRefType</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/InvalidUserID.html">Eve::Errors::InternalErrors::InvalidUserID</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/MailNotAvailable.html">Eve::Errors::InternalErrors::MailNotAvailable</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/MedalInformationFailure.html">Eve::Errors::InternalErrors::MedalInformationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/MissingCorporation.html">Eve::Errors::InternalErrors::MissingCorporation</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/NotificationsNotAvailable.html">Eve::Errors::InternalErrors::NotificationsNotAvailable</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/NullAttributeID.html">Eve::Errors::InternalErrors::NullAttributeID</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/RolesQueryFailure.html">Eve::Errors::InternalErrors::RolesQueryFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/StarbaseDetailFailure.html">Eve::Errors::InternalErrors::StarbaseDetailFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/TQTimeFailure.html">Eve::Errors::InternalErrors::TQTimeFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/UnexpectedDatabaseFailure.html">Eve::Errors::InternalErrors::UnexpectedDatabaseFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InternalErrors/UserInformationFailure.html">Eve::Errors::InternalErrors::UserInformationFailure</a></li>
+				
+					<li><a href="../../Eve/Errors/InvalidRowset.html">Eve::Errors::InvalidRowset</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousError.html">Eve::Errors::MiscellaneousError</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors.html">Eve::Errors::MiscellaneousErrors</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors/BackendDatabaseDisabled.html">Eve::Errors::MiscellaneousErrors::BackendDatabaseDisabled</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors/BetaInProgress.html">Eve::Errors::MiscellaneousErrors::BetaInProgress</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors/RateLimited.html">Eve::Errors::MiscellaneousErrors::RateLimited</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors/SiteDatabaseDisabled.html">Eve::Errors::MiscellaneousErrors::SiteDatabaseDisabled</a></li>
+				
+					<li><a href="../../Eve/Errors/MiscellaneousErrors/TestErrorForced.html">Eve::Errors::MiscellaneousErrors::TestErrorForced</a></li>
+				
+					<li><a href="../../Eve/Errors/UnknownError.html">Eve::Errors::UnknownError</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputError.html">Eve::Errors::UserInputError</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors.html">Eve::Errors::UserInputErrors</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/AccountKeyOutOfBounds.html">Eve::Errors::UserInputErrors::AccountKeyOutOfBounds</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/AssetsAlreadyDownloaded.html">Eve::Errors::UserInputErrors::AssetsAlreadyDownloaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/CharacterNotEnlisted.html">Eve::Errors::UserInputErrors::CharacterNotEnlisted</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/CorporationNotEnlisted.html">Eve::Errors::UserInputErrors::CorporationNotEnlisted</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/IndustryJobsAlreadyDownloaded.html">Eve::Errors::UserInputErrors::IndustryJobsAlreadyDownloaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidAccountKey.html">Eve::Errors::UserInputErrors::InvalidAccountKey</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidBeforeKillID.html">Eve::Errors::UserInputErrors::InvalidBeforeKillID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidBeforeRefID.html">Eve::Errors::UserInputErrors::InvalidBeforeRefID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidBeforeTransID.html">Eve::Errors::UserInputErrors::InvalidBeforeTransID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidCharacterID.html">Eve::Errors::UserInputErrors::InvalidCharacterID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidIDList.html">Eve::Errors::UserInputErrors::InvalidIDList</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidInteger.html">Eve::Errors::UserInputErrors::InvalidInteger</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidItemID.html">Eve::Errors::UserInputErrors::InvalidItemID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/InvalidNameList.html">Eve::Errors::UserInputErrors::InvalidNameList</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/KeyNotFound.html">Eve::Errors::UserInputErrors::KeyNotFound</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/KillsExhausted.html">Eve::Errors::UserInputErrors::KillsExhausted</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/KillsNotLoaded.html">Eve::Errors::UserInputErrors::KillsNotLoaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/KillsPreviouslyLoaded.html">Eve::Errors::UserInputErrors::KillsPreviouslyLoaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/MarketOrdersAlreadyDownloaded.html">Eve::Errors::UserInputErrors::MarketOrdersAlreadyDownloaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/MissingUserID.html">Eve::Errors::UserInputErrors::MissingUserID</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/RetryLater.html">Eve::Errors::UserInputErrors::RetryLater</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/VersionEscalationNotAllowed.html">Eve::Errors::UserInputErrors::VersionEscalationNotAllowed</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/VersionMismatch.html">Eve::Errors::UserInputErrors::VersionMismatch</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/WalletExhausted.html">Eve::Errors::UserInputErrors::WalletExhausted</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/WalletNotLoaded.html">Eve::Errors::UserInputErrors::WalletNotLoaded</a></li>
+				
+					<li><a href="../../Eve/Errors/UserInputErrors/WalletPreviouslyLoaded.html">Eve::Errors::UserInputErrors::WalletPreviouslyLoaded</a></li>
+				
+					<li><a href="../../Eve/Helpers.html">Eve::Helpers</a></li>
+				
+					<li><a href="../../Eve/Helpers/JavascriptHelper.html">Eve::Helpers::JavascriptHelper</a></li>
+				
+					<li><a href="../../Eve/Helpers/ViewHelper.html">Eve::Helpers::ViewHelper</a></li>
+				
+					<li><a href="../../Eve/Railtie.html">Eve::Railtie</a></li>
+				
+					<li><a href="../../Eve/Trust.html">Eve::Trust</a></li>
+				
+					<li><a href="../../Eve/Trust/ControllerHelpers.html">Eve::Trust::ControllerHelpers</a></li>
+				
+					<li><a href="../../Eve/Trust/IgbInterface.html">Eve::Trust::IgbInterface</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="module">Eve::Helpers::JavascriptHelper</h1>
+
+		<div id="description">
+			<p>
+In addition to the helpers listed below, this library also exposes the
+&#8220;igb&#8221; method as described in <a
+href="../Trust.html">Eve::Trust</a>.
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="link-to-channel-method" class="method-detail ">
+				<a name="method-i-link_to_channel"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_channel</span><span
+						class="method-args">(text, channel_name, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Causes the user to attempt to join the named channel. Normal channel access
+control rules apply. If the user is unable to join the channel, the method
+fails silently.
+</p>
+<pre>
+ channel_name (String)
+   The name of the channel which the user will join.
+</pre>
+<p>
+This method requires that the user grant <a href="../Trust.html">Trust</a>
+to the calling site.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-channel-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 183</span>
+183:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_channel</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">channel_name</span>, *<span class="ruby-identifier">args</span>)
+184:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.joinChannel(#{channel_name.inspect})&quot;</span>, *<span class="ruby-identifier">args</span>
+185:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-contract-method" class="method-detail ">
+				<a name="method-i-link_to_contract"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_contract</span><span
+						class="method-args">(text, solar_system_id, contract_id, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Creatse a hyperlink that results in opening the contract window and
+displaying the contract represented by the contract_id argument. Contracts
+are, however, assigned per-solar-system, and so a solar_system_id must also
+be provided.
+</p>
+<pre>
+ solar_system_id (Number)
+   The ID number of the solar system in which the contract is located.
+ contract_id (Number)
+   The ID number of the contract to display.</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-contract-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 101</span>
+101:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_contract</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">solar_system_id</span>, <span class="ruby-identifier">contract_id</span>, *<span class="ruby-identifier">args</span>)
+102:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.showContract(#{solar_system_id.inspect}, #{contract_id.inspect})&quot;</span>, *<span class="ruby-identifier">args</span>
+103:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-destination-method" class="method-detail ">
+				<a name="method-i-link_to_destination"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_destination</span><span
+						class="method-args">(text, solar_system_id, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Sets the client&#8217;s autopilot destination to the specified solar
+system.
+</p>
+<pre>
+ solar_system_id (Number)
+   The numerical identifier of the solar system to which you wish to set the client's autopilot destination.
+</pre>
+<p>
+This method requires that the user grant <a href="../Trust.html">Trust</a>
+to the calling site.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-destination-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 161</span>
+161:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_destination</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">solar_system_id</span>, *<span class="ruby-identifier">args</span>)
+162:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.setDestination(#{solar_system_id.inspect})&quot;</span>, *<span class="ruby-identifier">args</span>
+163:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-evemail-method" class="method-detail ">
+				<a name="method-i-link_to_evemail"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_evemail</span><span
+						class="method-args">(text, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Creates a hyperlink that results in opening the client&#8217;s EVE mail
+inbox.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-evemail-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 35</span>
+35:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_evemail</span>(<span class="ruby-identifier">text</span>, *<span class="ruby-identifier">args</span>)
+36:         <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">text</span>, <span class="ruby-value str">&quot;CCPEVE.openEveMail()&quot;</span>, *<span class="ruby-identifier">args</span>)
+37:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-fitting-method" class="method-detail ">
+				<a name="method-i-link_to_fitting"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_fitting</span><span
+						class="method-args">(text, ship_dna_string, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Creates a hyperlink that results in opening the fitting window and displays
+the fitting represented by fitting.
+</p>
+<pre>
+ fitting (String)
+   A Ship DNA string.
+</pre>
+<p>
+See <a
+href="http://wiki.eveonline.com/en/wiki/Ship_DNA">wiki.eveonline.com/en/wiki/Ship_DNA</a>
+for details
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-fitting-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 89</span>
+89:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_fitting</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">ship_dna_string</span>, *<span class="ruby-identifier">args</span>)
+90:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.showFitting(#{ship_dna_string.inspect})&quot;</span>, *<span class="ruby-identifier">args</span>
+91:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-info-method" class="method-detail ">
+				<a name="method-i-link_to_info"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_info</span><span
+						class="method-args">(text, type_id, item_id = nil, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Creates a hyperlink that results in the &#8220;show info&#8221; dialog
+being displayed on the client&#8217;s screen. If item_id is given, the show
+info window will open for that item.
+</p>
+<pre>
+ type_id (Number)
+   Type ID of item to show info on.
+ item_id (Number)
+   Optional item ID of specific item of type type_id to show info on. This is required for specific types of
+   items, such as solar systems, stations, regions, and constellations.</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-info-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 48</span>
+48:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_info</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">type_id</span>, <span class="ruby-identifier">item_id</span> = <span class="ruby-keyword kw">nil</span>, *<span class="ruby-identifier">args</span>)
+49:         <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;CCPEVE.showInfo(#{type_id.inspect}&quot;</span>
+50:         <span class="ruby-identifier">function</span>.<span class="ruby-identifier">concat</span> <span class="ruby-node">&quot;, #{item_id.inspect}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">item_id</span>
+51:         <span class="ruby-identifier">function</span>.<span class="ruby-identifier">concat</span> <span class="ruby-value str">&quot;)&quot;</span>
+52:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">function</span>, *<span class="ruby-identifier">args</span>
+53:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-mailing-list-method" class="method-detail ">
+				<a name="method-i-link_to_mailing_list"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_mailing_list</span><span
+						class="method-args">(text, mailing_list_name, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Causes the user to subscribe to the named mailing list.
+</p>
+<pre>
+ mailing_list_name (String)
+   The name of the mailing list which the user will join.
+</pre>
+<p>
+This method requires that the user grant <a href="../Trust.html">Trust</a>
+to the calling site.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-mailing-list-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 193</span>
+193:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_mailing_list</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">mailing_list_name</span>, *<span class="ruby-identifier">args</span>)
+194:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.joinMailingList(#{mailing_list_name.inspect})&quot;</span>, *<span class="ruby-identifier">args</span>
+195:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-map-method" class="method-detail ">
+				<a name="method-i-link_to_map"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_map</span><span
+						class="method-args">(text, system_id = nil, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Creates a hyperlink that results in opening the map. If system_id is given,
+the map will focus on that system.
+</p>
+<pre>
+ system_id (Number)
+   Optional ID of solar system to focus map on.</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-map-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 79</span>
+79:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_map</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">system_id</span> = <span class="ruby-keyword kw">nil</span>, *<span class="ruby-identifier">args</span>)
+80:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.showMap(#{system_id ? system_id.inspect : ''})&quot;</span>, *<span class="ruby-identifier">args</span>
+81:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-market-details-method" class="method-detail ">
+				<a name="method-i-link_to_market_details"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_market_details</span><span
+						class="method-args">(text, type_id, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Creates a hyperlink which results in opening the market details window and
+displays the information about the item represented by type_id.
+</p>
+<pre>
+ typeID (Number)
+   Type ID to display market details about</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-market-details-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 111</span>
+111:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_market_details</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">type_id</span>, *<span class="ruby-identifier">args</span>)
+112:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.showMarketDetails(#{type_id.inspect})&quot;</span>, *<span class="ruby-identifier">args</span>
+113:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-preview-method" class="method-detail ">
+				<a name="method-i-link_to_preview"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_preview</span><span
+						class="method-args">(text, type_id, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Creates a hyperlink that results in opening the preview window for type_id.
+</p>
+<pre>
+ type_id (Number)
+   Type ID of item to preview.</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-preview-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 60</span>
+60:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_preview</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">type_id</span>, *<span class="ruby-identifier">args</span>)
+61:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.showPreview(#{type_id.inspect})&quot;</span>, *<span class="ruby-identifier">args</span>
+62:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-route-method" class="method-detail ">
+				<a name="method-i-link_to_route"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_route</span><span
+						class="method-args">(text, destination_id, source_id = nil, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Creates a hyperlink that results in showing the route to the destination_id
+from the source_id. If source_id is not given, the source system is taken
+to be the system the user is currently in.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-route-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 67</span>
+67:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_route</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">destination_id</span>, <span class="ruby-identifier">source_id</span> = <span class="ruby-keyword kw">nil</span>, *<span class="ruby-identifier">args</span>)
+68:         <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;CCPEVE.showRouteTo(#{destination_id.inspect}&quot;</span>
+69:         <span class="ruby-identifier">function</span>.<span class="ruby-identifier">concat</span> <span class="ruby-node">&quot;, #{source_id.inspect}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">source_id</span>
+70:         <span class="ruby-identifier">function</span>.<span class="ruby-identifier">concat</span> <span class="ruby-value str">&quot;)&quot;</span>
+71:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">function</span>, *<span class="ruby-identifier">args</span>
+72:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-trust-request-method" class="method-detail ">
+				<a name="method-i-link_to_trust_request"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_trust_request</span><span
+						class="method-args">(text, trust_url = "http://#{request.host}/", *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Produces a hyperlink that will result in a pop-up a trust prompt in the
+client, allowing the user to either grant the trust request, ignore it, or
+always ignore trust requests from your site.
+</p>
+<pre>
+ trust_url (String)
+   This is a fully-qualified domain name and path (e.g. http://wiki.eveonline.com/w/) to which your site would
+   like the user to grant trust.
+</pre>
+<p>
+The page will not be automatically refreshed if the user grants the trust
+request. <a href="../Trust.html">Trust</a> will take effect the next time
+the user refreshes the page, or navigates within the site.
+</p>
+<p>
+Note that trust_url is processed and only the protocol, domain and path
+will be used from it. If you supply a query string or anchor, they will be
+discarded. It is recommended that you primarily pass in only
+fully-qualified domain names without paths (e.g. <a
+href="http://wiki.eveonline.com">wiki.eveonline.com</a> instead of <a
+href="http://wiki.eveonline.com/w/index.php">wiki.eveonline.com/w/index.php</a>),
+as this avoids pestering the user for trust on every page.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-trust-request-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 130</span>
+130:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_trust_request</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">trust_url</span> = <span class="ruby-node">&quot;http://#{request.host}/&quot;</span>, *<span class="ruby-identifier">args</span>)
+131:         <span class="ruby-identifier">trust_url</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-identifier">trust_url</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>)) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">trust_url</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+132:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.requestTrust(#{trust_url.inspect})&quot;</span>, *<span class="ruby-identifier">args</span>
+133:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="link-to-waypoint-method" class="method-detail ">
+				<a name="method-i-link_to_waypoint"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">link_to_waypoint</span><span
+						class="method-args">(text, solar_system_id, *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Adds the specified solar system to the end of the client&#8217;s autopilot
+route. If the solar system is already in the route, no changes are made and
+the method fails silently.
+</p>
+<pre>
+ solar_system_id (Number)
+   The numerical identifier of the solar system which you wish to append to the client's autopilot route.
+</pre>
+<p>
+This method requires that the user grant <a href="../Trust.html">Trust</a>
+to the calling site.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="link-to-waypoint-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 172</span>
+172:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_waypoint</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">solar_system_id</span>, *<span class="ruby-identifier">args</span>)
+173:         <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.addWaypoint(#{solar_system_id.inspect})&quot;</span>, *<span class="ruby-identifier">args</span>
+174:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="request-trust-method" class="method-detail ">
+				<a name="method-i-request_trust"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">request_trust</span><span
+						class="method-args">(trust_url = "http://#{request.host}/", *args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This will generate a method call that produces a pop-up a trust prompt in
+the client, allowing the user to either grant the trust request, ignore it,
+or always ignore trust requests from your site.
+</p>
+<pre>
+ trust_url (String)
+   This is a fully-qualified domain name and path (e.g. http://wiki.eveonline.com/w/) to which your site would
+   like the user to grant trust.
+</pre>
+<p>
+The page will not be automatically refreshed if the user grants the trust
+request. <a href="../Trust.html">Trust</a> will take effect the next time
+the user refreshes the page, or navigates within the site.
+</p>
+<p>
+Note that trust_url is processed and only the protocol, domain and path
+will be used from it. If you supply a query string or anchor, they will be
+discarded. It is recommended that you primarily pass in only
+fully-qualified domain names without paths (e.g. <a
+href="http://wiki.eveonline.com">wiki.eveonline.com</a> instead of <a
+href="http://wiki.eveonline.com/w/index.php">wiki.eveonline.com/w/index.php</a>),
+as this avoids pestering the user for trust on every page.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="request-trust-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 150</span>
+150:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">request_trust</span>(<span class="ruby-identifier">trust_url</span> = <span class="ruby-node">&quot;http://#{request.host}/&quot;</span>, *<span class="ruby-identifier">args</span>)
+151:         <span class="ruby-identifier">trust_url</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-identifier">trust_url</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>)) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">trust_url</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+152:         <span class="ruby-identifier">javascript_tag</span> <span class="ruby-node">&quot;CCPEVE.requestTrust(#{trust_url.inspect});&quot;</span>, *<span class="ruby-identifier">args</span>
+153:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="type-id-method" class="method-detail ">
+				<a name="method-i-type_id"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">type_id</span><span
+						class="method-args">(which)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns the numeric type ID for a string, so you don&#8217;t have to manage
+&#8220;magic numbers&#8221; in your application. The argument can be a
+string or a symbol, and is case insensitive. Underscores will be converted
+to spaces.
+</p>
+<p>
+Examples:
+</p>
+<pre>
+  type_id('alliance')       # =&gt; 16159
+  type_id('character')      # =&gt; 1377
+  type_id('corporation')    # =&gt; 2
+  type_id('constellation')  # =&gt; 4
+  type_id('region')         # =&gt; 3
+  type_id('Solar System')   # =&gt; 5
+  type_id(:solar_system)    # =&gt; 5
+  type_id(:station)         # =&gt; 3867</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="type-id-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/helpers/javascript_helper.rb, line 19</span>
+19:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">type_id</span>(<span class="ruby-identifier">which</span>)
+20:         <span class="ruby-identifier">which</span> = <span class="ruby-identifier">which</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">humanize</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">which</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
+21:         <span class="ruby-identifier">which</span>.<span class="ruby-identifier">downcase!</span>
+22:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">which</span>
+23:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'alliance'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">16159</span>
+24:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'character'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">1377</span>
+25:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'corporation'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">2</span>
+26:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'constellation'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">4</span>
+27:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'region'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">3</span>
+28:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'solar system'</span>, <span class="ruby-value str">'solarsystem'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">5</span>
+29:           <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'station'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">3867</span>
+30:           <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Unknown type: #{which}&quot;</span>
+31:         <span class="ruby-keyword kw">end</span>
+32:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

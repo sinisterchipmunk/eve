@@ -1,0 +1,1167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Module: Eve::API::Services::Corporation</title>
+
+	<link rel="stylesheet" href="../../../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../../../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="module">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../../index.html">Home</a>
+          <a href="../../../index.html#classes">Classes</a>
+          <a href="../../../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../../../lib/eve/api/services/corporation_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/eve/api/services/corporation.rb">lib/eve/api/services/corporation.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-account_balance">#account_balance</a></li>
+					
+					<li><a href="#method-i-asset_list">#asset_list</a></li>
+					
+					<li><a href="#method-i-container_log">#container_log</a></li>
+					
+					<li><a href="#method-i-corporation_sheet">#corporation_sheet</a></li>
+					
+					<li><a href="#method-i-fac_war_stats">#fac_war_stats</a></li>
+					
+					<li><a href="#method-i-industry_jobs">#industry_jobs</a></li>
+					
+					<li><a href="#method-i-kill_log">#kill_log</a></li>
+					
+					<li><a href="#method-i-market_orders">#market_orders</a></li>
+					
+					<li><a href="#method-i-medals">#medals</a></li>
+					
+					<li><a href="#method-i-member_medals">#member_medals</a></li>
+					
+					<li><a href="#method-i-member_security">#member_security</a></li>
+					
+					<li><a href="#method-i-member_security_log">#member_security_log</a></li>
+					
+					<li><a href="#method-i-member_tracking">#member_tracking</a></li>
+					
+					<li><a href="#method-i-shareholders">#shareholders</a></li>
+					
+					<li><a href="#method-i-standings">#standings</a></li>
+					
+					<li><a href="#method-i-starbase_detail">#starbase_detail</a></li>
+					
+					<li><a href="#method-i-starbase_list">#starbase_list</a></li>
+					
+					<li><a href="#method-i-titles">#titles</a></li>
+					
+					<li><a href="#method-i-wallet_journal">#wallet_journal</a></li>
+					
+					<li><a href="#method-i-wallet_transactions">#wallet_transactions</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../../../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../../../Eve.html">Eve</a></li>
+				
+					<li><a href="../../../Eve/API.html">Eve::API</a></li>
+				
+					<li><a href="../../../Eve/API/Connectivity.html">Eve::API::Connectivity</a></li>
+				
+					<li><a href="../../../Eve/API/Request.html">Eve::API::Request</a></li>
+				
+					<li><a href="../../../Eve/API/Response.html">Eve::API::Response</a></li>
+				
+					<li><a href="../../../Eve/API/Response/Inspection.html">Eve::API::Response::Inspection</a></li>
+				
+					<li><a href="../../../Eve/API/Response/Rowset.html">Eve::API::Response::Rowset</a></li>
+				
+					<li><a href="../../../Eve/API/Response/Rowset/object;.html">Eve::API::Response::Rowset::object;</a></li>
+				
+					<li><a href="../../../Eve/API/Response/Rowsets.html">Eve::API::Response::Rowsets</a></li>
+				
+					<li><a href="../../../Eve/API/Response/WrapObject.html">Eve::API::Response::WrapObject</a></li>
+				
+					<li><a href="../../../Eve/API/Services.html">Eve::API::Services</a></li>
+				
+					<li><a href="../../../Eve/API/Services/Account.html">Eve::API::Services::Account</a></li>
+				
+					<li><a href="../../../Eve/API/Services/Character.html">Eve::API::Services::Character</a></li>
+				
+					<li><a href="../../../Eve/API/Services/Corporation.html">Eve::API::Services::Corporation</a></li>
+				
+					<li><a href="../../../Eve/API/Services/Eve.html">Eve::API::Services::Eve</a></li>
+				
+					<li><a href="../../../Eve/API/Services/Map.html">Eve::API::Services::Map</a></li>
+				
+					<li><a href="../../../Eve/API/Services/Misc.html">Eve::API::Services::Misc</a></li>
+				
+					<li><a href="../../../Eve/API/Services/Server.html">Eve::API::Services::Server</a></li>
+				
+					<li><a href="../../../Eve/Errors.html">Eve::Errors</a></li>
+				
+					<li><a href="../../../Eve/Errors/AuthenticationError.html">Eve::Errors::AuthenticationError</a></li>
+				
+					<li><a href="../../../Eve/Errors/AuthenticationErrors.html">Eve::Errors::AuthenticationErrors</a></li>
+				
+					<li><a href="../../../Eve/Errors/AuthenticationErrors/AuthenticationFailure.html">Eve::Errors::AuthenticationErrors::AuthenticationFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/AuthenticationErrors/CachedKeyAuthFailure.html">Eve::Errors::AuthenticationErrors::CachedKeyAuthFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/AuthenticationErrors/InadequateSecurityLevel.html">Eve::Errors::AuthenticationErrors::InadequateSecurityLevel</a></li>
+				
+					<li><a href="../../../Eve/Errors/AuthenticationErrors/LastAuthenticationFailure.html">Eve::Errors::AuthenticationErrors::LastAuthenticationFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/AuthenticationErrors/LoginDenied.html">Eve::Errors::AuthenticationErrors::LoginDenied</a></li>
+				
+					<li><a href="../../../Eve/Errors/AuthenticationErrors/MissingRoles.html">Eve::Errors::AuthenticationErrors::MissingRoles</a></li>
+				
+					<li><a href="../../../Eve/Errors/AuthenticationErrors/NotAvailable.html">Eve::Errors::AuthenticationErrors::NotAvailable</a></li>
+				
+					<li><a href="../../../Eve/Errors/AuthenticationErrors/NotInAlliance.html">Eve::Errors::AuthenticationErrors::NotInAlliance</a></li>
+				
+					<li><a href="../../../Eve/Errors/AuthenticationErrors/WrongAccount.html">Eve::Errors::AuthenticationErrors::WrongAccount</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalError.html">Eve::Errors::InternalError</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors.html">Eve::Errors::InternalErrors</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/CSVMismatch.html">Eve::Errors::InternalErrors::CSVMismatch</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/CacheUtilMissing.html">Eve::Errors::InternalErrors::CacheUtilMissing</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/CharacterInformationFailure.html">Eve::Errors::InternalErrors::CharacterInformationFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/CorporationInformationFailure.html">Eve::Errors::InternalErrors::CorporationInformationFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/FactionMemberInformationFailure.html">Eve::Errors::InternalErrors::FactionMemberInformationFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidAccountKey.html">Eve::Errors::InternalErrors::InvalidAccountKey</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidAttribute.html">Eve::Errors::InternalErrors::InvalidAttribute</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidBloodline.html">Eve::Errors::InternalErrors::InvalidBloodline</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidCharID.html">Eve::Errors::InternalErrors::InvalidCharID</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidCorpID.html">Eve::Errors::InternalErrors::InvalidCorpID</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidCredentials.html">Eve::Errors::InternalErrors::InvalidCredentials</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidGender.html">Eve::Errors::InternalErrors::InvalidGender</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidInput.html">Eve::Errors::InternalErrors::InvalidInput</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidOrNotLoaded.html">Eve::Errors::InternalErrors::InvalidOrNotLoaded</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidRace.html">Eve::Errors::InternalErrors::InvalidRace</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidRefType.html">Eve::Errors::InternalErrors::InvalidRefType</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/InvalidUserID.html">Eve::Errors::InternalErrors::InvalidUserID</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/MailNotAvailable.html">Eve::Errors::InternalErrors::MailNotAvailable</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/MedalInformationFailure.html">Eve::Errors::InternalErrors::MedalInformationFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/MissingCorporation.html">Eve::Errors::InternalErrors::MissingCorporation</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/NotificationsNotAvailable.html">Eve::Errors::InternalErrors::NotificationsNotAvailable</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/NullAttributeID.html">Eve::Errors::InternalErrors::NullAttributeID</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/RolesQueryFailure.html">Eve::Errors::InternalErrors::RolesQueryFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/StarbaseDetailFailure.html">Eve::Errors::InternalErrors::StarbaseDetailFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/TQTimeFailure.html">Eve::Errors::InternalErrors::TQTimeFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/UnexpectedDatabaseFailure.html">Eve::Errors::InternalErrors::UnexpectedDatabaseFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/InternalErrors/UserInformationFailure.html">Eve::Errors::InternalErrors::UserInformationFailure</a></li>
+				
+					<li><a href="../../../Eve/Errors/InvalidRowset.html">Eve::Errors::InvalidRowset</a></li>
+				
+					<li><a href="../../../Eve/Errors/MiscellaneousError.html">Eve::Errors::MiscellaneousError</a></li>
+				
+					<li><a href="../../../Eve/Errors/MiscellaneousErrors.html">Eve::Errors::MiscellaneousErrors</a></li>
+				
+					<li><a href="../../../Eve/Errors/MiscellaneousErrors/BackendDatabaseDisabled.html">Eve::Errors::MiscellaneousErrors::BackendDatabaseDisabled</a></li>
+				
+					<li><a href="../../../Eve/Errors/MiscellaneousErrors/BetaInProgress.html">Eve::Errors::MiscellaneousErrors::BetaInProgress</a></li>
+				
+					<li><a href="../../../Eve/Errors/MiscellaneousErrors/RateLimited.html">Eve::Errors::MiscellaneousErrors::RateLimited</a></li>
+				
+					<li><a href="../../../Eve/Errors/MiscellaneousErrors/SiteDatabaseDisabled.html">Eve::Errors::MiscellaneousErrors::SiteDatabaseDisabled</a></li>
+				
+					<li><a href="../../../Eve/Errors/MiscellaneousErrors/TestErrorForced.html">Eve::Errors::MiscellaneousErrors::TestErrorForced</a></li>
+				
+					<li><a href="../../../Eve/Errors/UnknownError.html">Eve::Errors::UnknownError</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputError.html">Eve::Errors::UserInputError</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors.html">Eve::Errors::UserInputErrors</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/AccountKeyOutOfBounds.html">Eve::Errors::UserInputErrors::AccountKeyOutOfBounds</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/AssetsAlreadyDownloaded.html">Eve::Errors::UserInputErrors::AssetsAlreadyDownloaded</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/CharacterNotEnlisted.html">Eve::Errors::UserInputErrors::CharacterNotEnlisted</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/CorporationNotEnlisted.html">Eve::Errors::UserInputErrors::CorporationNotEnlisted</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/IndustryJobsAlreadyDownloaded.html">Eve::Errors::UserInputErrors::IndustryJobsAlreadyDownloaded</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/InvalidAccountKey.html">Eve::Errors::UserInputErrors::InvalidAccountKey</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/InvalidBeforeKillID.html">Eve::Errors::UserInputErrors::InvalidBeforeKillID</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/InvalidBeforeRefID.html">Eve::Errors::UserInputErrors::InvalidBeforeRefID</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/InvalidBeforeTransID.html">Eve::Errors::UserInputErrors::InvalidBeforeTransID</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/InvalidCharacterID.html">Eve::Errors::UserInputErrors::InvalidCharacterID</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/InvalidIDList.html">Eve::Errors::UserInputErrors::InvalidIDList</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/InvalidInteger.html">Eve::Errors::UserInputErrors::InvalidInteger</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/InvalidItemID.html">Eve::Errors::UserInputErrors::InvalidItemID</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/InvalidNameList.html">Eve::Errors::UserInputErrors::InvalidNameList</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/KeyNotFound.html">Eve::Errors::UserInputErrors::KeyNotFound</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/KillsExhausted.html">Eve::Errors::UserInputErrors::KillsExhausted</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/KillsNotLoaded.html">Eve::Errors::UserInputErrors::KillsNotLoaded</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/KillsPreviouslyLoaded.html">Eve::Errors::UserInputErrors::KillsPreviouslyLoaded</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/MarketOrdersAlreadyDownloaded.html">Eve::Errors::UserInputErrors::MarketOrdersAlreadyDownloaded</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/MissingUserID.html">Eve::Errors::UserInputErrors::MissingUserID</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/RetryLater.html">Eve::Errors::UserInputErrors::RetryLater</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/VersionEscalationNotAllowed.html">Eve::Errors::UserInputErrors::VersionEscalationNotAllowed</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/VersionMismatch.html">Eve::Errors::UserInputErrors::VersionMismatch</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/WalletExhausted.html">Eve::Errors::UserInputErrors::WalletExhausted</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/WalletNotLoaded.html">Eve::Errors::UserInputErrors::WalletNotLoaded</a></li>
+				
+					<li><a href="../../../Eve/Errors/UserInputErrors/WalletPreviouslyLoaded.html">Eve::Errors::UserInputErrors::WalletPreviouslyLoaded</a></li>
+				
+					<li><a href="../../../Eve/Helpers.html">Eve::Helpers</a></li>
+				
+					<li><a href="../../../Eve/Helpers/JavascriptHelper.html">Eve::Helpers::JavascriptHelper</a></li>
+				
+					<li><a href="../../../Eve/Helpers/ViewHelper.html">Eve::Helpers::ViewHelper</a></li>
+				
+					<li><a href="../../../Eve/Railtie.html">Eve::Railtie</a></li>
+				
+					<li><a href="../../../Eve/Trust.html">Eve::Trust</a></li>
+				
+					<li><a href="../../../Eve/Trust/ControllerHelpers.html">Eve::Trust::ControllerHelpers</a></li>
+				
+					<li><a href="../../../Eve/Trust/IgbInterface.html">Eve::Trust::IgbInterface</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="module">Eve::API::Services::Corporation</h1>
+
+		<div id="description">
+			
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="account-balance-method" class="method-detail ">
+				<a name="method-i-account_balance"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">account_balance</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+full <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="account-balance-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 29</span>
+29:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">account_balance</span>
+30:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+31:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:account_balance</span>)
+32:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="asset-list-method" class="method-detail ">
+				<a name="method-i-asset_list"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">asset_list</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+full <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="asset-list-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 35</span>
+35:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">asset_list</span>
+36:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+37:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:asset_list</span>)
+38:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="container-log-method" class="method-detail ">
+				<a name="method-i-container_log"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">container_log</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+full <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="container-log-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 41</span>
+41:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">container_log</span>
+42:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+43:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:container_log</span>)
+44:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="corporation-sheet-method" class="method-detail ">
+				<a name="method-i-corporation_sheet"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">corporation_sheet</span><span
+						class="method-args">(corporation_id = nil)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+limited or no <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="corporation-sheet-source">
+<pre>
+   <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 6</span>
+6:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">corporation_sheet</span>(<span class="ruby-identifier">corporation_id</span> = <span class="ruby-keyword kw">nil</span>)
+7:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:corporation_sheet</span>, {<span class="ruby-value">:corporation_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">corporation_id</span>}.<span class="ruby-identifier">optionalize</span>)
+8:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="fac-war-stats-method" class="method-detail ">
+				<a name="method-i-fac_war_stats"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">fac_war_stats</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+limited <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="fac-war-stats-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 11</span>
+11:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fac_war_stats</span>
+12:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:limited</span>, <span class="ruby-value">:character_id</span>
+13:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:fac_war_stats</span>)
+14:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="industry-jobs-method" class="method-detail ">
+				<a name="method-i-industry_jobs"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">industry_jobs</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+full <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="industry-jobs-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 47</span>
+47:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">industry_jobs</span>
+48:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+49:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:industry_jobs</span>)
+50:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="kill-log-method" class="method-detail ">
+				<a name="method-i-kill_log"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">kill_log</span><span
+						class="method-args">(options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This <a href="../../API.html">API</a> call only returns 1000 entries.
+Often, you will need to gather all entries, and not just the most recent
+1000. If this is true for your application, simply pass the :walk option
+and this EVE library will automatically &#8220;walk&#8221; backward in time
+until the server reports that there are no more entries available.
+</p>
+<p>
+Walking is disabled by default, so you need to pass the :walk => true
+option if you wish to enable this.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="kill-log-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 109</span>
+109:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">kill_log</span>(<span class="ruby-identifier">options</span> = {})
+110:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+111:           <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge!</span>({<span class="ruby-value">:walk</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-value">:walk_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'before_kill_id'</span>, <span class="ruby-value">:walk_association</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'kills'</span> })
+112:           <span class="ruby-identifier">validate_options</span>(<span class="ruby-identifier">options</span>, <span class="ruby-value">:walk</span>, <span class="ruby-value">:walk_id</span>, <span class="ruby-value">:walk_association</span>)
+113:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:kill_log</span>, <span class="ruby-identifier">options</span>)
+114:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="market-orders-method" class="method-detail ">
+				<a name="method-i-market_orders"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">market_orders</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+full <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="market-orders-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 53</span>
+53:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">market_orders</span>
+54:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+55:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:market_orders</span>)
+56:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="medals-method" class="method-detail ">
+				<a name="method-i-medals"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">medals</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+limited <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="medals-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 17</span>
+17:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">medals</span>
+18:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:limited</span>, <span class="ruby-value">:character_id</span>
+19:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:medals</span>)
+20:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="member-medals-method" class="method-detail ">
+				<a name="method-i-member_medals"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">member_medals</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+limited <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="member-medals-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 23</span>
+23:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">member_medals</span>
+24:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:limited</span>, <span class="ruby-value">:character_id</span>
+25:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:member_medals</span>)
+26:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="member-security-method" class="method-detail ">
+				<a name="method-i-member_security"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">member_security</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+full <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="member-security-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 59</span>
+59:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">member_security</span>
+60:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+61:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:member_security</span>)
+62:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="member-security-log-method" class="method-detail ">
+				<a name="method-i-member_security_log"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">member_security_log</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+full <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="member-security-log-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 65</span>
+65:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">member_security_log</span>
+66:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+67:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:member_security_log</span>)
+68:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="member-tracking-method" class="method-detail ">
+				<a name="method-i-member_tracking"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">member_tracking</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+full <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="member-tracking-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 71</span>
+71:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">member_tracking</span>
+72:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+73:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:member_tracking</span>)
+74:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="shareholders-method" class="method-detail ">
+				<a name="method-i-shareholders"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">shareholders</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+full <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="shareholders-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 77</span>
+77:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shareholders</span>
+78:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+79:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:shareholders</span>)
+80:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="standings-method" class="method-detail ">
+				<a name="method-i-standings"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">standings</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+full <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="standings-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 83</span>
+83:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">standings</span>
+84:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+85:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:standings</span>)
+86:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="starbase-detail-method" class="method-detail ">
+				<a name="method-i-starbase_detail"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">starbase_detail</span><span
+						class="method-args">(item_id, version = 2)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="starbase-detail-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 94</span>
+94:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">starbase_detail</span>(<span class="ruby-identifier">item_id</span>, <span class="ruby-identifier">version</span> = <span class="ruby-value">2</span>)
+95:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+96:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:starbase_detail</span>, {<span class="ruby-value">:item_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item_id</span>, <span class="ruby-value">:version</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">version</span>})
+97:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="starbase-list-method" class="method-detail ">
+				<a name="method-i-starbase_list"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">starbase_list</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="starbase-list-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 99</span>
+ 99:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">starbase_list</span>
+100:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+101:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:starbase_list</span>, <span class="ruby-value">:version</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>)
+102:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="titles-method" class="method-detail ">
+				<a name="method-i-titles"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">titles</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+full <a href="../../API.html">API</a> key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="titles-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 89</span>
+89:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">titles</span>
+90:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+91:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:titles</span>)
+92:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="wallet-journal-method" class="method-detail ">
+				<a name="method-i-wallet_journal"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">wallet_journal</span><span
+						class="method-args">(account_key = 1000, options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This <a href="../../API.html">API</a> call only returns 1000 entries.
+Often, you will need to gather all entries, and not just the most recent
+1000. If this is true for your application, simply pass the :walk option
+and this EVE library will automatically &#8220;walk&#8221; backward in time
+until the server reports that there are no more entries available.
+</p>
+<p>
+Walking is disabled by default, so you need to pass the :walk => true
+option if you wish to enable this.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="wallet-journal-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 121</span>
+121:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wallet_journal</span>(<span class="ruby-identifier">account_key</span> = <span class="ruby-value">1000</span>, <span class="ruby-identifier">options</span> = {})
+122:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+123:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">account_key</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+124:             <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-identifier">account_key</span>
+125:             <span class="ruby-identifier">account_key</span> = <span class="ruby-value">1000</span>
+126:           <span class="ruby-keyword kw">end</span>
+127:           <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge!</span>({<span class="ruby-value">:walk</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-value">:walk_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'before_ref_id'</span>, <span class="ruby-value">:walk_association</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'entries'</span> })
+128:           <span class="ruby-identifier">validate_options</span>(<span class="ruby-identifier">options</span>, <span class="ruby-value">:walk</span>, <span class="ruby-value">:walk_id</span>, <span class="ruby-value">:walk_association</span>)
+129:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:wallet_journal</span>, <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:account_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">account_key</span>))
+130:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="wallet-transactions-method" class="method-detail ">
+				<a name="method-i-wallet_transactions"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">wallet_transactions</span><span
+						class="method-args">(account_key = 1000, options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This <a href="../../API.html">API</a> call only returns 1000 entries.
+Often, you will need to gather all entries, and not just the most recent
+1000. If this is true for your application, simply pass the :walk option
+and this EVE library will automatically &#8220;walk&#8221; backward in time
+until the server reports that there are no more entries available.
+</p>
+<p>
+Walking is disabled by default, so you need to pass the :walk => true
+option if you wish to enable this.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="wallet-transactions-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/eve/api/services/corporation.rb, line 137</span>
+137:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wallet_transactions</span>(<span class="ruby-identifier">account_key</span> = <span class="ruby-value">1000</span>, <span class="ruby-identifier">options</span> = {})
+138:           <span class="ruby-identifier">validate_credentials</span> <span class="ruby-value">:full</span>, <span class="ruby-value">:character_id</span>
+139:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">account_key</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+140:             <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-identifier">account_key</span>
+141:             <span class="ruby-identifier">account_key</span> = <span class="ruby-value">1000</span>
+142:           <span class="ruby-keyword kw">end</span>
+143:           <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge!</span>({<span class="ruby-value">:walk</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-value">:walk_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'before_trans_id'</span>, <span class="ruby-value">:walk_association</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'transactions'</span> })
+144:           <span class="ruby-identifier">validate_options</span>(<span class="ruby-identifier">options</span>, <span class="ruby-value">:walk</span>, <span class="ruby-value">:walk_id</span>, <span class="ruby-value">:walk_association</span>)
+145:           <span class="ruby-identifier">request</span>(<span class="ruby-value">:corp</span>, <span class="ruby-value">:wallet_transactions</span>, <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:account_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">account_key</span>))
+146:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
