@@ -5,7 +5,7 @@ describe TrustController do
   render_views
   
   it "should not consider the helper methods to be actions" do
-    TrustController.action_methods.sort.should == %w(index)
+    TrustController.action_methods.sort.should == %w(html_and_igb html_only igb_only index no_templates)
   end
 
   context "from the IGB" do
@@ -24,21 +24,37 @@ describe TrustController do
       # um, we've already established trust: is there anything else in the controller that needs testing?
     end
 
-    context "and an IGB template exists" do
-      before(:each) { controller.should_receive(:default_template_exists?).with(:igb).and_return(true) }
+    context "and only an IGB template exists" do
+      #before(:each) { controller.should_receive(:default_template_exists?).with(:igb).and_return(true) }
 
       it "responds with an IGB-specific page" do
-        get :index
-        request.format.should == :igb
+        get :igb_only
+        response.body.should == "IGB Only"
+        #request.format.should == :igb
+      end
+    end
+    
+    context "and IGB and HTML templates exist" do
+      it "responds with an IGB page" do
+        get :html_and_igb
+        response.body.should == "HTML and IGB (IGB)"
+        #request.format.should == :igb
       end
     end
 
-    context "and an IGB template does not exist" do
-      before(:each) { controller.should_receive(:default_template_exists?).with(:igb).and_return(false) }
+    context "and only an HTML template exists" do
+      #before(:each) { controller.should_receive(:default_template_exists?).with(:igb).and_return(false) }
 
       it "does not respond with an IGB-specific page" do
-        get :index
-        request.format.should_not == :igb
+        get :html_only
+        response.body.should == "HTML Only"
+        #request.format.should_not == :igb
+      end
+    end
+    
+    context "and no templates exist" do
+      it "raises a template error" do
+        proc { get :no_templates }.should raise_error(ActionView::MissingTemplate)
       end
     end
   end

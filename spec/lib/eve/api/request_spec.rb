@@ -4,6 +4,7 @@ describe Eve::API::Request do
   subject { Eve::API::Request.new('server', 'server_status') }
 
   it "should dispatch and return a Response" do
+    Net::HTTP.should_receive(:post_form).once.and_return(mock_http_response(subject.namespace, subject.service))
     response = subject.dispatch
     response.should be_a(Eve::API::Response)
   end

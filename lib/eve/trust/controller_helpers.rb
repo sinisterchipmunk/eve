@@ -47,7 +47,7 @@ module Eve
 
       def deliver_trust_message(trust_message = self.class.trust_message)
         trust_uri = "http://#{request.host}/"
-        head :unauthorized, 'Eve.trustme' => "#{trust_uri}::#{trust_message}"
+        headers['Eve.trustme'] = "#{trust_uri}::#{trust_message}"
       end
 
       def detect_igb
@@ -75,13 +75,12 @@ module Eve
         end
       end
 
-      def default_template_exists?(format = request.format)#(format = response.template.template_format)
-        # TODO see if this is necessary. I'm not sure how to test it since we mock up this very method during testing.
+      def default_template_exists?(format = request.format)
         formats = lookup_context.formats
         lookup_context.formats = [format]
-        result = lookup_context.exists?(default_template_name)
+        lookup_context.exists?(default_template_name, controller_path)
+      ensure
         lookup_context.formats = formats
-        result
       end
     end
   end

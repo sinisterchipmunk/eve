@@ -15,6 +15,7 @@ module Eve
     config.encoding = 'utf-8'
     config.filter_parameters += [:password]
     config.active_support.deprecation = :log
+    config.paths.app.views.push "spec/support/views"
   end
 end
 

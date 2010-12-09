@@ -27,12 +27,13 @@ module Eve
     require 'action_view'
 
     class Railtie < Rails::Railtie
-      if defined?(Mime::Type)
-        Mime::Type.register_alias "text/html", :eve
-        Mime::Type.register_alias "text/html", :igb
-      end
-
       config.after_initialize do
+        if defined?(Mime::Type)
+          # *.igb.erb format
+          Mime::Type.register_alias "text/html", :eve
+          Mime::Type.register_alias "text/html", :igb
+        end
+
         # controller extensions
         ActionController::Base.send(:include, Eve::Trust::ControllerHelpers)
 
