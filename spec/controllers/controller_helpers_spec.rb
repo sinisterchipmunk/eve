@@ -2,6 +2,8 @@ require 'spec_helper'
 
 # TrustController is our test controller. It defines a single #index action.
 describe TrustController do
+  render_views
+  
 #  response do
 #    
 ##    response = ActionDispatch::TestRequest.new(@rack_env)
@@ -23,7 +25,8 @@ describe TrustController do
 
   context "from the IGB" do
     before do
-      request.env['HTTP_USER_AGENT'] = 'eve-minibrowser'
+#      request.headers['HTTP_USER_AGENT'] = 'eve-minibrowser'
+      request.user_agent = "eve-minibrowser"
       get :index
     end
 
@@ -42,45 +45,47 @@ describe TrustController do
     end
 
     context "and an IGB template exists" do
-#      before(:all) { @rack_env.merge!('mock_methods' => { :default_template_exists? => true }) }
+      before(:each) { request.headers.merge!('mock_methods' => { :default_template_exists? => true }) }
       it "responds with an IGB-specific page" do
-        response.formats.should include(:igb)
+        controller.formats.should include(:igb)
       end
     end
 
     context "and an IGB template does not exist" do
-#      before(:all) { @rack_env.merge!('mock_methods' => { :default_template_exists? => false }) }
+      before(:each) { request.headers.merge!('mock_methods' => { :default_template_exists? => false }) }
       it "does not respond with an IGB-specific page" do
-        response.formats.should_not include(:igb)
+        controller.formats.should_not include(:igb)
       end
     end
   end
 
   context "from any other browser" do
-#    before :all do
+    before :each do
+      request.user_agent = 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101'
+#      request.headers.merge("HTTP_USER_AGENT" => 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101')
 #      @rack_env = Rack::MockRequest.env_for("/").merge('HTTP_USER_AGENT' => 'Mozilla/5.001 (windows; U; NT4.0; en-US; rv:1.0) Gecko/25250101')
-#    end
+    end
 
     it "should not require trust" do
       response.headers['eve.trustme'].should be_blank
     end
 
     context "and an IGB template exists" do
-#      before(:all) { @rack_env.merge!('mock_methods' => { :default_template_exists? => true }) }
+      before(:each) { request.headers.merge!('mock_methods' => { :default_template_exists? => true }) }
       it "does not respond with an IGB-specific page" do
-        response.formats.should_not include(:igb)
+        controller.formats.should_not include(:igb)
       end
     end
 
     context "and an IGB template does not exist" do
       before(:each) do
-#        request.env.merge!('mock_methods' => { :default_template_exists? => false })
+        request.headers.merge!('mock_methods' => { :default_template_exists? => false })
         get :index
       end
       
       it "does not respond with an IGB-specific page" do
-        p response
-        response.formats.should_not include(:igb)
+#        p response
+        controller.formats.should_not include(:igb)
       end
     end
   end
