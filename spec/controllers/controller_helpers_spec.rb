@@ -11,30 +11,34 @@ describe TrustController do
   context "from the IGB" do
     before do
       request.user_agent = "eve-minibrowser"
-      get :index
     end
 
     context "without trust" do
       it "should require trust" do
+        get :index
         response.headers['Eve.trustme'].should_not be_blank
       end
     end
 
     context "with trust" do
-
+      # um, we've already established trust: is there anything else in the controller that needs testing?
     end
 
     context "and an IGB template exists" do
-      before(:each) { request.headers.merge!('mock_methods' => { :default_template_exists? => true }) }
+      before(:each) { controller.should_receive(:default_template_exists?).with(:igb).and_return(true) }
+
       it "responds with an IGB-specific page" do
-        controller.formats.should include(:igb)
+        get :index
+        request.format.should == :igb
       end
     end
 
     context "and an IGB template does not exist" do
-      before(:each) { request.headers.merge!('mock_methods' => { :default_template_exists? => false }) }
+      before(:each) { controller.should_receive(:default_template_exists?).with(:igb).and_return(false) }
+
       it "does not respond with an IGB-specific page" do
-        controller.formats.should_not include(:igb)
+        get :index
+        request.format.should_not == :igb
       end
     end
   end
@@ -45,24 +49,25 @@ describe TrustController do
     end
 
     it "should not require trust" do
+      get :index
       response.headers['Eve.trustme'].should be_blank
     end
 
     context "and an IGB template exists" do
-      before(:each) { request.headers.merge!('mock_methods' => { :default_template_exists? => true }) }
+      before(:each) { controller.should_not_receive(:default_template_exists?) }
+
       it "does not respond with an IGB-specific page" do
-        controller.formats.should_not include(:igb)
+        get :index
+        request.format.should_not == :igb
       end
     end
 
     context "and an IGB template does not exist" do
-      before(:each) do
-        request.headers.merge!('mock_methods' => { :default_template_exists? => false })
-        get :index
-      end
-      
+      before(:each) { controller.should_not_receive(:default_template_exists?) }
+
       it "does not respond with an IGB-specific page" do
-        controller.formats.should_not include(:igb)
+        get :index
+        request.format.should_not == :igb
       end
     end
   end

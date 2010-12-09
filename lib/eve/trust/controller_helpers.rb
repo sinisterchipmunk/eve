@@ -31,7 +31,6 @@ module Eve
       end
 
       def require_trust(trust_message = self.class.trust_message)
-        p igb?, igb.trusted?
         if igb? && !igb.trusted?
           deliver_trust_message(trust_message)
           return false
@@ -52,7 +51,6 @@ module Eve
       end
 
       def detect_igb
-        mock_methods_for_testing! if Rails.env != 'production' && request.headers['mock_methods']
         if igb.igb?
           set_igb_or_default
         end
@@ -71,28 +69,18 @@ module Eve
       
       unless defined?(default_template_name)
         def default_template_name
+          # FIXME: I didn't check how Rails3 actually decides which template to render --
+          # we should really follow the same rules so we don't break anything unintentionally.
           action_name
         end
       end
 
-      def default_template_exists?(format = response.template.template_format)
-        template_exists?(default_template_name, format)
-      end
-
-      def template_exists?(template_name, format = response.template.template_format)
-        lookup_context.find_template(template_name, format)
-      rescue ActionView::MissingTemplate, Errno::ENOENT
-        false
-      end
-
-      # a quick and dirty mocking solution. I should really make it better, but it works fine, and doesn't interfere
-      # with anything in prod, so I'll procrastinate a bit.
-      def mock_methods_for_testing! #:nodoc:
-        request.headers['mock_methods'].each do |method_name, return_value|
-          (class << self; self; end).instance_eval do
-            define_method(method_name) { |*not_used| return_value }
-          end
-        end
+      def default_template_exists?(format = request.format)#(format = response.template.template_format)
+        # TODO see if this is necessary. I'm not sure how to test it since we mock up this very method during testing.
+        formats = lookup_context.formats
+        lookup_context.formats = [format]
+        lookup_context.exists?(default_template_name)
+        lookup_context.formats = formats
       end
     end
   end
