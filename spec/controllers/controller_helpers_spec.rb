@@ -25,12 +25,9 @@ describe TrustController do
     end
 
     context "and only an IGB template exists" do
-      #before(:each) { controller.should_receive(:default_template_exists?).with(:igb).and_return(true) }
-
       it "responds with an IGB-specific page" do
         get :igb_only
         response.body.should == "IGB Only"
-        #request.format.should == :igb
       end
     end
     
@@ -38,17 +35,13 @@ describe TrustController do
       it "responds with an IGB page" do
         get :html_and_igb
         response.body.should == "HTML and IGB (IGB)"
-        #request.format.should == :igb
       end
     end
 
     context "and only an HTML template exists" do
-      #before(:each) { controller.should_receive(:default_template_exists?).with(:igb).and_return(false) }
-
       it "does not respond with an IGB-specific page" do
         get :html_only
         response.body.should == "HTML Only"
-        #request.format.should_not == :igb
       end
     end
     
@@ -69,21 +62,29 @@ describe TrustController do
       response.headers['Eve.trustme'].should be_blank
     end
 
-    context "and an IGB template exists" do
-      before(:each) { controller.should_not_receive(:default_template_exists?) }
-
-      it "does not respond with an IGB-specific page" do
-        get :index
-        request.format.should_not == :igb
+    context "and only an IGB template exists" do
+      it "raises a template error" do
+        proc { get :igb_only }.should raise_error(ActionView::MissingTemplate)
+      end
+    end
+    
+    context "and IGB and HTML templates exist" do
+      it "responds with an IGB page" do
+        get :html_and_igb
+        response.body.should == "HTML and IGB (HTML)"
       end
     end
 
-    context "and an IGB template does not exist" do
-      before(:each) { controller.should_not_receive(:default_template_exists?) }
-
+    context "and only an HTML template exists" do
       it "does not respond with an IGB-specific page" do
-        get :index
-        request.format.should_not == :igb
+        get :html_only
+        response.body.should == "HTML Only"
+      end
+    end
+    
+    context "and no templates exist" do
+      it "raises a template error" do
+        proc { get :no_templates }.should raise_error(ActionView::MissingTemplate)
       end
     end
   end
