@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Eve::API::Services::Character</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Eve::API::Services::Character</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/lib/eve/api/services/character_rb.html">
+                lib/eve/api/services/character.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000070">account_balance</a>&nbsp;&nbsp;
+      <a href="#M000071">asset_list</a>&nbsp;&nbsp;
+      <a href="#M000064">character_sheet</a>&nbsp;&nbsp;
+      <a href="#M000065">fac_war_stats</a>&nbsp;&nbsp;
+      <a href="#M000082">included</a>&nbsp;&nbsp;
+      <a href="#M000072">industry_jobs</a>&nbsp;&nbsp;
+      <a href="#M000081">journal_entries</a>&nbsp;&nbsp;
+      <a href="#M000073">kill_log</a>&nbsp;&nbsp;
+      <a href="#M000075">mail_messages</a>&nbsp;&nbsp;
+      <a href="#M000074">mailing_lists</a>&nbsp;&nbsp;
+      <a href="#M000076">market_orders</a>&nbsp;&nbsp;
+      <a href="#M000066">medals</a>&nbsp;&nbsp;
+      <a href="#M000077">notifications</a>&nbsp;&nbsp;
+      <a href="#M000078">research</a>&nbsp;&nbsp;
+      <a href="#M000067">skill_in_training</a>&nbsp;&nbsp;
+      <a href="#M000068">skill_queue</a>&nbsp;&nbsp;
+      <a href="#M000069">standings</a>&nbsp;&nbsp;
+      <a href="#M000079">wallet_journal</a>&nbsp;&nbsp;
+      <a href="#M000080">wallet_transactions</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000082" class="method-detail">
+        <a name="M000082"></a>
+
+        <div class="method-heading">
+          <a href="#M000082" class="method-signature">
+          <span class="method-name">included</span><span class="method-args">(base)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000082-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000082-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 82</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
+          <span class="ruby-identifier">base</span>.<span class="ruby-identifier">instance_eval</span> <span class="ruby-keyword kw">do</span>
+            <span class="ruby-identifier">validate_credentials</span> <span class="ruby-identifier">:limited</span>, <span class="ruby-identifier">:character_id</span>,
+                                 <span class="ruby-identifier">:for</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%w(character_sheet fac_war_stats medals skill_in_training skill_queue standings
+                                           )</span>
+            <span class="ruby-identifier">validate_credentials</span> <span class="ruby-identifier">:full</span>, <span class="ruby-identifier">:character_id</span>,
+                                 <span class="ruby-identifier">:for</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%w(account_balance asset_list industry_jobs kill_log mailing_lists
+                                            mail_messages market_orders notifications research wallet_journal
+                                            wallet_transactions journal_entries)</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000070" class="method-detail">
+        <a name="M000070"></a>
+
+        <div class="method-heading">
+          <a href="#M000070" class="method-signature">
+          <span class="method-name">account_balance</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+full <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000070-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000070-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 19</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">account_balance</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:account_balance</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000071" class="method-detail">
+        <a name="M000071"></a>
+
+        <div class="method-heading">
+          <a href="#M000071" class="method-signature">
+          <span class="method-name">asset_list</span><span class="method-args">(version = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+full <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000071-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000071-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 21</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">asset_list</span>(<span class="ruby-identifier">version</span> = <span class="ruby-keyword kw">nil</span>)
+          <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:asset_list</span>, {<span class="ruby-identifier">:version</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">version</span>}.<span class="ruby-identifier">optionalize</span>)
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000064" class="method-detail">
+        <a name="M000064"></a>
+
+        <div class="method-heading">
+          <a href="#M000064" class="method-signature">
+          <span class="method-name">character_sheet</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+limited <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000064-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000064-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 6</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">character_sheet</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:character_sheet</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000065" class="method-detail">
+        <a name="M000065"></a>
+
+        <div class="method-heading">
+          <a href="#M000065" class="method-signature">
+          <span class="method-name">fac_war_stats</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+limited <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000065-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000065-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 8</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fac_war_stats</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:fac_war_stats</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000072" class="method-detail">
+        <a name="M000072"></a>
+
+        <div class="method-heading">
+          <a href="#M000072" class="method-signature">
+          <span class="method-name">industry_jobs</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+full <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000072-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000072-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 25</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">industry_jobs</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:industry_jobs</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000081" class="method-detail">
+        <a name="M000081"></a>
+
+        <div class="method-heading">
+          <span class="method-name">journal_entries</span><span class="method-args">(account_key = 1000, options = { })</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Character.html#M000079">wallet_journal</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000073" class="method-detail">
+        <a name="M000073"></a>
+
+        <div class="method-heading">
+          <a href="#M000073" class="method-signature">
+          <span class="method-name">kill_log</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This <a href="../../API.html">API</a> call only returns 1000 entries.
+Often, you will need to gather all entries, and not just the most recent
+1000. If this is true for your application, simply pass the :walk option
+and this EVE library will automatically &quot;walk&quot; backward in time
+until the server reports that there are no more entries available.
+</p>
+<p>
+Walking is disabled by default, so you need to pass the :walk =&gt; true
+option if you wish to enable this.
+</p>
+<p>
+full <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000073-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000073-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 34</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">kill_log</span>(<span class="ruby-identifier">options</span> = {})
+          <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge!</span>({<span class="ruby-identifier">:walk</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:walk_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'before_kill_id'</span>, <span class="ruby-identifier">:walk_association</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'kills'</span> })
+          <span class="ruby-identifier">validate_options</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">:walk</span>, <span class="ruby-identifier">:walk_id</span>, <span class="ruby-identifier">:walk_association</span>)
+          <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:kill_log</span>, <span class="ruby-identifier">options</span>)
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000075" class="method-detail">
+        <a name="M000075"></a>
+
+        <div class="method-heading">
+          <a href="#M000075" class="method-signature">
+          <span class="method-name">mail_messages</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+full <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000075-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000075-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 42</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mail_messages</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:mail_messages</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000074" class="method-detail">
+        <a name="M000074"></a>
+
+        <div class="method-heading">
+          <a href="#M000074" class="method-signature">
+          <span class="method-name">mailing_lists</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+full <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000074-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000074-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 40</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mailing_lists</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:mailing_lists</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000076" class="method-detail">
+        <a name="M000076"></a>
+
+        <div class="method-heading">
+          <a href="#M000076" class="method-signature">
+          <span class="method-name">market_orders</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+full <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000076-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000076-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 44</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">market_orders</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:market_orders</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
+
+        <div class="method-heading">
+          <a href="#M000066" class="method-signature">
+          <span class="method-name">medals</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+limited <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000066-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000066-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 10</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">medals</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:medals</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000077" class="method-detail">
+        <a name="M000077"></a>
+
+        <div class="method-heading">
+          <a href="#M000077" class="method-signature">
+          <span class="method-name">notifications</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+full <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000077-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000077-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 46</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">notifications</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:notifications</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000078" class="method-detail">
+        <a name="M000078"></a>
+
+        <div class="method-heading">
+          <a href="#M000078" class="method-signature">
+          <span class="method-name">research</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+full <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000078-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000078-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 48</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">research</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:research</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
+
+        <div class="method-heading">
+          <a href="#M000067" class="method-signature">
+          <span class="method-name">skill_in_training</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+limited <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000067-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000067-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 12</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">skill_in_training</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:skill_in_training</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
+
+        <div class="method-heading">
+          <a href="#M000068" class="method-signature">
+          <span class="method-name">skill_queue</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+limited <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000068-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000068-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 14</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">skill_queue</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:skill_queue</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000069" class="method-detail">
+        <a name="M000069"></a>
+
+        <div class="method-heading">
+          <a href="#M000069" class="method-signature">
+          <span class="method-name">standings</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+limited <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000069-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000069-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 16</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">standings</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:standings</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000079" class="method-detail">
+        <a name="M000079"></a>
+
+        <div class="method-heading">
+          <a href="#M000079" class="method-signature">
+          <span class="method-name">wallet_journal</span><span class="method-args">(account_key = 1000, options = { })</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This <a href="../../API.html">API</a> call only returns 1000 entries.
+Often, you will need to gather all entries, and not just the most recent
+1000. If this is true for your application, simply pass the :walk option
+and this EVE library will automatically &quot;walk&quot; backward in time
+until the server reports that there are no more entries available.
+</p>
+<p>
+Walking is disabled by default, so you need to pass the :walk =&gt; true
+option if you wish to enable this.
+</p>
+<p>
+full <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000079-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000079-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 57</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wallet_journal</span>(<span class="ruby-identifier">account_key</span> = <span class="ruby-value">1000</span>, <span class="ruby-identifier">options</span> = { })
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">account_key</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+            <span class="ruby-identifier">options</span> = <span class="ruby-identifier">account_key</span>
+            <span class="ruby-identifier">account_key</span> = <span class="ruby-value">1000</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge!</span>({<span class="ruby-identifier">:walk</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:walk_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'before_ref_id'</span>, <span class="ruby-identifier">:walk_association</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'entries'</span> })
+          <span class="ruby-identifier">validate_options</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">:walk</span>, <span class="ruby-identifier">:walk_id</span>, <span class="ruby-identifier">:walk_association</span>)
+          <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:wallet_journal</span>, <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:account_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">account_key</span>))
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000080" class="method-detail">
+        <a name="M000080"></a>
+
+        <div class="method-heading">
+          <a href="#M000080" class="method-signature">
+          <span class="method-name">wallet_transactions</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This <a href="../../API.html">API</a> call only returns 1000 entries.
+Often, you will need to gather all entries, and not just the most recent
+1000. If this is true for your application, simply pass the :walk option
+and this EVE library will automatically &quot;walk&quot; backward in time
+until the server reports that there are no more entries available.
+</p>
+<p>
+Walking is disabled by default, so you need to pass the :walk =&gt; true
+option if you wish to enable this.
+</p>
+<p>
+full <a href="../../API.html">API</a> key
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000080-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000080-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/character.rb, line 74</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wallet_transactions</span>(<span class="ruby-identifier">options</span> = {})
+          <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge!</span>({<span class="ruby-identifier">:walk</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:walk_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'before_trans_id'</span>, <span class="ruby-identifier">:walk_association</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'transactions'</span> })
+          <span class="ruby-identifier">validate_options</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">:walk</span>, <span class="ruby-identifier">:walk_id</span>, <span class="ruby-identifier">:walk_association</span>)
+          <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">:wallet_transactions</span>, <span class="ruby-identifier">options</span>)
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

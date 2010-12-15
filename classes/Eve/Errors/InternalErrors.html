@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Eve::Errors::InternalErrors</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Eve::Errors::InternalErrors</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/eve/errors/internal_errors_rb.html">
+                lib/eve/errors/internal_errors.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="InternalErrors/CSVMismatch.html" class="link">Eve::Errors::InternalErrors::CSVMismatch</a><br />
+Class <a href="InternalErrors/CacheUtilMissing.html" class="link">Eve::Errors::InternalErrors::CacheUtilMissing</a><br />
+Class <a href="InternalErrors/CharacterInformationFailure.html" class="link">Eve::Errors::InternalErrors::CharacterInformationFailure</a><br />
+Class <a href="InternalErrors/CorporationInformationFailure.html" class="link">Eve::Errors::InternalErrors::CorporationInformationFailure</a><br />
+Class <a href="InternalErrors/FactionMemberInformationFailure.html" class="link">Eve::Errors::InternalErrors::FactionMemberInformationFailure</a><br />
+Class <a href="InternalErrors/InvalidAccountKey.html" class="link">Eve::Errors::InternalErrors::InvalidAccountKey</a><br />
+Class <a href="InternalErrors/InvalidAttribute.html" class="link">Eve::Errors::InternalErrors::InvalidAttribute</a><br />
+Class <a href="InternalErrors/InvalidBloodline.html" class="link">Eve::Errors::InternalErrors::InvalidBloodline</a><br />
+Class <a href="InternalErrors/InvalidCharID.html" class="link">Eve::Errors::InternalErrors::InvalidCharID</a><br />
+Class <a href="InternalErrors/InvalidCorpID.html" class="link">Eve::Errors::InternalErrors::InvalidCorpID</a><br />
+Class <a href="InternalErrors/InvalidCredentials.html" class="link">Eve::Errors::InternalErrors::InvalidCredentials</a><br />
+Class <a href="InternalErrors/InvalidGender.html" class="link">Eve::Errors::InternalErrors::InvalidGender</a><br />
+Class <a href="InternalErrors/InvalidInput.html" class="link">Eve::Errors::InternalErrors::InvalidInput</a><br />
+Class <a href="InternalErrors/InvalidOrNotLoaded.html" class="link">Eve::Errors::InternalErrors::InvalidOrNotLoaded</a><br />
+Class <a href="InternalErrors/InvalidRace.html" class="link">Eve::Errors::InternalErrors::InvalidRace</a><br />
+Class <a href="InternalErrors/InvalidRefType.html" class="link">Eve::Errors::InternalErrors::InvalidRefType</a><br />
+Class <a href="InternalErrors/InvalidUserID.html" class="link">Eve::Errors::InternalErrors::InvalidUserID</a><br />
+Class <a href="InternalErrors/MailNotAvailable.html" class="link">Eve::Errors::InternalErrors::MailNotAvailable</a><br />
+Class <a href="InternalErrors/MedalInformationFailure.html" class="link">Eve::Errors::InternalErrors::MedalInformationFailure</a><br />
+Class <a href="InternalErrors/MissingCorporation.html" class="link">Eve::Errors::InternalErrors::MissingCorporation</a><br />
+Class <a href="InternalErrors/NotificationsNotAvailable.html" class="link">Eve::Errors::InternalErrors::NotificationsNotAvailable</a><br />
+Class <a href="InternalErrors/NullAttributeID.html" class="link">Eve::Errors::InternalErrors::NullAttributeID</a><br />
+Class <a href="InternalErrors/RolesQueryFailure.html" class="link">Eve::Errors::InternalErrors::RolesQueryFailure</a><br />
+Class <a href="InternalErrors/StarbaseDetailFailure.html" class="link">Eve::Errors::InternalErrors::StarbaseDetailFailure</a><br />
+Class <a href="InternalErrors/TQTimeFailure.html" class="link">Eve::Errors::InternalErrors::TQTimeFailure</a><br />
+Class <a href="InternalErrors/UnexpectedDatabaseFailure.html" class="link">Eve::Errors::InternalErrors::UnexpectedDatabaseFailure</a><br />
+Class <a href="InternalErrors/UserInformationFailure.html" class="link">Eve::Errors::InternalErrors::UserInformationFailure</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

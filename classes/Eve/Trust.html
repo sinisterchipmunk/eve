@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Eve::Trust</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Eve::Trust</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/eve/trust_rb.html">
+                lib/eve/trust.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/trust/igb_interface_rb.html">
+                lib/eve/trust/igb_interface.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/trust/controller_helpers_rb.html">
+                lib/eve/trust/controller_helpers.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h2><a href="Trust.html">Trust</a></h2>
+<p>
+The primary purpose for the ActionController is to figure out which View
+should be rendered, and what data to send to that View. In keeping with
+this paradigm, a few helper methods have been added that allow you to
+establish trust with the In-Game Browser (IGB), which in turn provides
+access to more useful information such as the player&#8216;s current
+location. To establish trust with a compatible browser, simply add one line
+to your controller:
+</p>
+<pre>
+ class AnyController &lt; ApplicationController
+   requires_trust
+ end
+</pre>
+<p>
+This will cause the in-game browser to prompt the user, asking him/her to
+complete the handshake. If they refuse, the page will not load. To
+establish <em>optional</em> trust &#8212; that is, to allow the page to
+load even if the user hasn&#8216;t granted the trust request &#8212; you
+can use <tt>prefers_trust</tt> instead:
+</p>
+<pre>
+ class AnyController &lt; ApplicationController
+   prefers_trust
+ end
+</pre>
+<p>
+Both methods also accept a custom trust request message that will be shown
+to the user when they are prompted:
+</p>
+<pre>
+ class AnyController &lt; ApplicationController
+   prefers_trust &quot;To take full advantage of the features on this site, please grant this trust request.&quot;
+ end
+</pre>
+<h2>IGB Headers</h2>
+<p>
+After trust has been established, the IGB sends additional content headers
+to the server with every request. These headers contain the most up-to-date
+information regarding the current user, his/her location, his/her character
+ID, and so on. The character ID could, for example, be used in conjunction
+with <a href="API.html">Eve::API</a> to show the character&#8216;s portrait
+in a forum.
+</p>
+<p>
+To gain access to this extra information, use the <tt>igb</tt> method:
+</p>
+<pre>
+ class AnyController &lt; ApplicationController
+   . . .
+   def index
+     if igb? &amp;&amp; igb.trusted?                  # if the client is using the IGB and trust has been established
+       @solar_system = igb.solar_system_name  # then make a note of the current solar system
+       @character_id = igb.character_id       # and the character ID
+     else
+       . . .                                  # handle a non-IGB browser such as Internet Explorer or Firefox.
+     end
+   end
+</pre>
+<p>
+To find out which methods are exposed by the <tt>igb</tt> method, take a
+look at <a href="Trust/IgbInterface.html">Eve::Trust::IgbInterface</a>.
+</p>
+<h2>View Format</h2>
+<p>
+In Rails, the View is usually rendered in HTML format. That means the view
+template is usually called +some_action_name.html.erb+ , where
+&quot;some_action_name&quot; is the name of the current action and
+&quot;html&quot; is the file format. This library exposes a new format,
+&quot;igb&quot;, which allows you to render an IGB-specific response. This
+response is expected to be in IGB-compatible HTML format. Here&#8216;s an
+example of what an IGB file might look like:
+</p>
+<pre>
+ &lt;%=link_to_evemail &quot;Check Your Mail!&quot;%&gt;
+ &lt;%if igb.trusted?%&gt;
+   &lt;p&gt;Thanks for your trust! I see you're currently in &lt;%=igb.solar_system_name%&gt;.&lt;/p&gt;
+   &lt;p&gt;Here's some information about our secret headquarters:&lt;/p&gt;
+   &lt;ul&gt;
+     &lt;li&gt;&lt;%=link_to_route &quot;Click For Directions&quot;, &quot;Jita&quot;%&gt;&lt;/li&gt;
+     &lt;li&gt;&lt;%=link_to_map &quot;Show On Map&quot;, &quot;Jita&quot;%&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+ &lt;%end%&gt;
+</pre>
+<p>
+For more information about the various helpers available to your
+IGB-specific views, take a look at Eve::Helpers::JavascriptHelper.
+</p>
+<p>
+If the client is using the EVE In-Game Browser, then the
+&quot;action_name.igb.erb&quot; file will be automatically used, provided
+it exists. If the matching file is not found, then
+&quot;action_name.html.erb&quot; will be used in its place, just as if the
+client were using any other browser such as Internet Explorer or Firefox.
+You can also explicitly require that the .igb file be rendered using the
+<tt>set_igb</tt> method:
+</p>
+<pre>
+ class AnyController &lt; ApplicationController
+   before_filter :check_for_igb_requirement
+   private
+   def check_for_igb_requirement
+     if (some_condition)
+       set_igb # force the IGB template for this action to be rendered
+     end
+   end
+ end
+</pre>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="Trust/ControllerHelpers.html" class="link">Eve::Trust::ControllerHelpers</a><br />
+Class <a href="Trust/IgbInterface.html" class="link">Eve::Trust::IgbInterface</a><br />
+
+    </div>
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

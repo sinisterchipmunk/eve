@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Eve::Trust::ControllerHelpers</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Eve::Trust::ControllerHelpers</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/eve/trust/controller_helpers_rb.html">
+                lib/eve/trust/controller_helpers.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000017">default_template_exists?</a>&nbsp;&nbsp;
+      <a href="#M000016">default_template_name</a>&nbsp;&nbsp;
+      <a href="#M000012">deliver_trust_message</a>&nbsp;&nbsp;
+      <a href="#M000013">detect_igb</a>&nbsp;&nbsp;
+      <a href="#M000009">igb</a>&nbsp;&nbsp;
+      <a href="#M000006">included</a>&nbsp;&nbsp;
+      <a href="#M000011">prefer_trust</a>&nbsp;&nbsp;
+      <a href="#M000008">prefers_trust</a>&nbsp;&nbsp;
+      <a href="#M000010">require_trust</a>&nbsp;&nbsp;
+      <a href="#M000007">requires_trust</a>&nbsp;&nbsp;
+      <a href="#M000015">set_igb</a>&nbsp;&nbsp;
+      <a href="#M000014">set_igb_or_default</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="#M000006" class="method-signature">
+          <span class="method-name">included</span><span class="method-args">(base)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000006-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 4</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
+        <span class="ruby-identifier">base</span>.<span class="ruby-identifier">instance_eval</span> <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">hide_action</span> <span class="ruby-identifier">:trust_message</span>, <span class="ruby-identifier">:trust_message=</span>, <span class="ruby-identifier">:detect_igb</span>, <span class="ruby-identifier">:template_exists?</span>,
+                      <span class="ruby-identifier">:set_igb_or_default</span>, <span class="ruby-identifier">:default_template_exists?</span>, <span class="ruby-identifier">:mock_methods_for_testing!</span>,
+                      <span class="ruby-identifier">:igb</span>, <span class="ruby-identifier">:igb?</span>, <span class="ruby-identifier">:set_igb</span>, <span class="ruby-identifier">:require_trust</span>, <span class="ruby-identifier">:prefer_trust</span>, <span class="ruby-identifier">:deliver_trust_message</span>
+          <span class="ruby-identifier">class_inheritable_accessor</span> <span class="ruby-identifier">:trust_message</span>
+          <span class="ruby-identifier">read_inheritable_attribute</span>(<span class="ruby-identifier">:trust_message</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">write_inheritable_attribute</span>(<span class="ruby-identifier">:trust_message</span>,
+                                                                             <span class="ruby-value str">&quot;This web site is requesting your trust.&quot;</span>)
+          <span class="ruby-identifier">delegate</span> <span class="ruby-identifier">:igb?</span>, <span class="ruby-identifier">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:igb</span>
+          <span class="ruby-identifier">before_filter</span> <span class="ruby-identifier">:detect_igb</span>
+
+          <span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>
+            <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">requires_trust</span>(<span class="ruby-identifier">message</span> = <span class="ruby-identifier">trust_message</span>)
+              <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">trust_message</span> = <span class="ruby-identifier">message</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">message</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">trust_message</span>
+              <span class="ruby-identifier">before_filter</span> <span class="ruby-identifier">:require_trust</span>
+            <span class="ruby-keyword kw">end</span>
+  
+            <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prefers_trust</span>(<span class="ruby-identifier">message</span> = <span class="ruby-identifier">trust_message</span>)
+              <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">trust_message</span> = <span class="ruby-identifier">message</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">message</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">trust_message</span>
+              <span class="ruby-identifier">before_filter</span> <span class="ruby-identifier">:prefer_trust</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
+          <span class="method-name">prefers_trust</span><span class="method-args">(message = trust_message)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 21</span>
+            <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prefers_trust</span>(<span class="ruby-identifier">message</span> = <span class="ruby-identifier">trust_message</span>)
+              <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">trust_message</span> = <span class="ruby-identifier">message</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">message</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">trust_message</span>
+              <span class="ruby-identifier">before_filter</span> <span class="ruby-identifier">:prefer_trust</span>
+            <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">requires_trust</span><span class="method-args">(message = trust_message)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 16</span>
+            <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">requires_trust</span>(<span class="ruby-identifier">message</span> = <span class="ruby-identifier">trust_message</span>)
+              <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">trust_message</span> = <span class="ruby-identifier">message</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">message</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">trust_message</span>
+              <span class="ruby-identifier">before_filter</span> <span class="ruby-identifier">:require_trust</span>
+            <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="#M000017" class="method-signature">
+          <span class="method-name">default_template_exists?</span><span class="method-args">(format = request.format)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000017-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 78</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_template_exists?</span>(<span class="ruby-identifier">format</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">format</span>)
+        <span class="ruby-identifier">formats</span> = <span class="ruby-identifier">lookup_context</span>.<span class="ruby-identifier">formats</span>
+        <span class="ruby-identifier">lookup_context</span>.<span class="ruby-identifier">formats</span> = [<span class="ruby-identifier">format</span>]
+        <span class="ruby-identifier">lookup_context</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">default_template_name</span>, <span class="ruby-identifier">controller_path</span>)
+      <span class="ruby-keyword kw">ensure</span>
+        <span class="ruby-identifier">lookup_context</span>.<span class="ruby-identifier">formats</span> = <span class="ruby-identifier">formats</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="#M000016" class="method-signature">
+          <span class="method-name">default_template_name</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000016-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 71</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_template_name</span>
+          <span class="ruby-comment cmt"># FIXME: I didn't check how Rails3 actually decides which template to render --</span>
+          <span class="ruby-comment cmt"># we should really follow the same rules so we don't break anything unintentionally.</span>
+          <span class="ruby-identifier">action_name</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="#M000012" class="method-signature">
+          <span class="method-name">deliver_trust_message</span><span class="method-args">(trust_message = self.class.trust_message)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000012-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 48</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">deliver_trust_message</span>(<span class="ruby-identifier">trust_message</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">trust_message</span>)
+        <span class="ruby-identifier">trust_uri</span> = <span class="ruby-node">&quot;http://#{request.host}/&quot;</span>
+        <span class="ruby-identifier">headers</span>[<span class="ruby-value str">'Eve.trustme'</span>] = <span class="ruby-node">&quot;#{trust_uri}::#{trust_message}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="#M000013" class="method-signature">
+          <span class="method-name">detect_igb</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000013-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 53</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">detect_igb</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">igb</span>.<span class="ruby-identifier">igb?</span>
+          <span class="ruby-identifier">set_igb_or_default</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
+          <span class="method-name">igb</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 29</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">igb</span>
+        <span class="ruby-ivar">@igb</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Eve</span><span class="ruby-operator">::</span><span class="ruby-constant">Trust</span><span class="ruby-operator">::</span><span class="ruby-constant">IgbInterface</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">request</span>)
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="#M000011" class="method-signature">
+          <span class="method-name">prefer_trust</span><span class="method-args">(trust_message = self.class.trust_message)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 41</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prefer_trust</span>(<span class="ruby-identifier">trust_message</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">trust_message</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">igb?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">igb</span>.<span class="ruby-identifier">trusted?</span>
+          <span class="ruby-identifier">deliver_trust_message</span>(<span class="ruby-identifier">trust_message</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="#M000010" class="method-signature">
+          <span class="method-name">require_trust</span><span class="method-args">(trust_message = self.class.trust_message)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 33</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_trust</span>(<span class="ruby-identifier">trust_message</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">trust_message</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">igb?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">igb</span>.<span class="ruby-identifier">trusted?</span>
+          <span class="ruby-identifier">deliver_trust_message</span>(<span class="ruby-identifier">trust_message</span>)
+          <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="#M000015" class="method-signature">
+          <span class="method-name">set_igb</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000015-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 65</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_igb</span>
+        <span class="ruby-identifier">request</span>.<span class="ruby-identifier">format</span> = <span class="ruby-identifier">:igb</span>
+        <span class="ruby-identifier">igb</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="#M000014" class="method-signature">
+          <span class="method-name">set_igb_or_default</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000014-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/trust/controller_helpers.rb, line 59</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_igb_or_default</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">default_template_exists?</span> <span class="ruby-identifier">:igb</span>
+          <span class="ruby-identifier">set_igb</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

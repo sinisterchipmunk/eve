@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Eve::API::Services::Eve</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Eve::API::Services::Eve</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/lib/eve/api/services/eve_rb.html">
+                lib/eve/api/services/eve.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000126">alliance_id</a>&nbsp;&nbsp;
+      <a href="#M000125">alliance_ids</a>&nbsp;&nbsp;
+      <a href="#M000111">alliance_list</a>&nbsp;&nbsp;
+      <a href="#M000132">alliance_name</a>&nbsp;&nbsp;
+      <a href="#M000131">alliance_names</a>&nbsp;&nbsp;
+      <a href="#M000112">certificate_tree</a>&nbsp;&nbsp;
+      <a href="#M000119">character_id</a>&nbsp;&nbsp;
+      <a href="#M000121">character_ids</a>&nbsp;&nbsp;
+      <a href="#M000120">character_name</a>&nbsp;&nbsp;
+      <a href="#M000127">character_names</a>&nbsp;&nbsp;
+      <a href="#M000113">conquerable_station_list</a>&nbsp;&nbsp;
+      <a href="#M000123">corporation_id</a>&nbsp;&nbsp;
+      <a href="#M000122">corporation_ids</a>&nbsp;&nbsp;
+      <a href="#M000124">corporation_ids</a>&nbsp;&nbsp;
+      <a href="#M000129">corporation_name</a>&nbsp;&nbsp;
+      <a href="#M000130">corporation_names</a>&nbsp;&nbsp;
+      <a href="#M000128">corporation_names</a>&nbsp;&nbsp;
+      <a href="#M000114">error_list</a>&nbsp;&nbsp;
+      <a href="#M000115">fac_war_stats</a>&nbsp;&nbsp;
+      <a href="#M000116">fac_war_top_stats</a>&nbsp;&nbsp;
+      <a href="#M000133">factional_warfare_stats</a>&nbsp;&nbsp;
+      <a href="#M000134">factional_warfare_top100</a>&nbsp;&nbsp;
+      <a href="#M000118">ref_types</a>&nbsp;&nbsp;
+      <a href="#M000117">skill_tree</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000126" class="method-detail">
+        <a name="M000126"></a>
+
+        <div class="method-heading">
+          <span class="method-name">alliance_id</span><span class="method-args">(*names)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000119">character_id</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000125" class="method-detail">
+        <a name="M000125"></a>
+
+        <div class="method-heading">
+          <span class="method-name">alliance_ids</span><span class="method-args">(*names)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000119">character_id</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000111" class="method-detail">
+        <a name="M000111"></a>
+
+        <div class="method-heading">
+          <a href="#M000111" class="method-signature">
+          <span class="method-name">alliance_list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000111-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000111-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/eve.rb, line 5</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">alliance_list</span>;     <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:eve</span>, <span class="ruby-identifier">:alliance_list</span>);     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000132" class="method-detail">
+        <a name="M000132"></a>
+
+        <div class="method-heading">
+          <span class="method-name">alliance_name</span><span class="method-args">(*ids)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000120">character_name</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000131" class="method-detail">
+        <a name="M000131"></a>
+
+        <div class="method-heading">
+          <span class="method-name">alliance_names</span><span class="method-args">(*ids)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000127">character_names</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000112" class="method-detail">
+        <a name="M000112"></a>
+
+        <div class="method-heading">
+          <a href="#M000112" class="method-signature">
+          <span class="method-name">certificate_tree</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000112-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000112-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/eve.rb, line 6</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">certificate_tree</span>;  <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:eve</span>, <span class="ruby-identifier">:certificate_tree</span>, <span class="ruby-identifier">:column_mapping</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value str">'level'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'skillLevel'</span> });  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000119" class="method-detail">
+        <a name="M000119"></a>
+
+        <div class="method-heading">
+          <a href="#M000119" class="method-signature">
+          <span class="method-name">character_id</span><span class="method-args">(*names)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Character.html">Character</a> ID to Name conversion. Accepts a
+list of character names, and returns the name for each name in the form of
+a Hash. Despite the name, it can also accept corporation and alliance
+names.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000119-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000119-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/eve.rb, line 33</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">character_id</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">names</span>)
+          <span class="ruby-identifier">response</span> = <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:eve</span>, <span class="ruby-identifier">:character_id</span>, <span class="ruby-identifier">:names</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">names</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>))
+          <span class="ruby-identifier">result</span> = {}
+          [<span class="ruby-identifier">:characters</span>, <span class="ruby-identifier">:corporations</span>, <span class="ruby-identifier">:alliances</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">field</span>)
+              <span class="ruby-identifier">response</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">field</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span> <span class="ruby-identifier">result</span>[<span class="ruby-identifier">row</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">row</span>.<span class="ruby-identifier">character_id</span> }
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">result</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000121" class="method-detail">
+        <a name="M000121"></a>
+
+        <div class="method-heading">
+          <span class="method-name">character_ids</span><span class="method-args">(*names)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000119">character_id</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000120" class="method-detail">
+        <a name="M000120"></a>
+
+        <div class="method-heading">
+          <a href="#M000120" class="method-signature">
+          <span class="method-name">character_name</span><span class="method-args">(*ids)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Character.html">Character</a> ID to Name conversion. Accepts a
+list of character IDs, and returns the name for each ID in the form of a
+Hash. Despite the name, it can also accept corporation and alliance IDs.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000120-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000120-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/eve.rb, line 46</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">character_name</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ids</span>)
+          <span class="ruby-identifier">response</span> = <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:eve</span>, <span class="ruby-identifier">:character_name</span>, <span class="ruby-identifier">:ids</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>))
+          <span class="ruby-identifier">result</span> = {}
+          [<span class="ruby-identifier">:characters</span>, <span class="ruby-identifier">:corporations</span>, <span class="ruby-identifier">:alliances</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">field</span>)
+              <span class="ruby-identifier">response</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">field</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span> <span class="ruby-identifier">result</span>[<span class="ruby-identifier">row</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">row</span>.<span class="ruby-identifier">name</span> }
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">result</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000127" class="method-detail">
+        <a name="M000127"></a>
+
+        <div class="method-heading">
+          <span class="method-name">character_names</span><span class="method-args">(*ids)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000120">character_name</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000113" class="method-detail">
+        <a name="M000113"></a>
+
+        <div class="method-heading">
+          <a href="#M000113" class="method-signature">
+          <span class="method-name">conquerable_station_list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000113-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000113-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/eve.rb, line 7</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">conquerable_station_list</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:eve</span>, <span class="ruby-identifier">:conquerable_station_list</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000123" class="method-detail">
+        <a name="M000123"></a>
+
+        <div class="method-heading">
+          <span class="method-name">corporation_id</span><span class="method-args">(*names)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000119">character_id</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000122" class="method-detail">
+        <a name="M000122"></a>
+
+        <div class="method-heading">
+          <span class="method-name">corporation_ids</span><span class="method-args">(*names)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000119">character_id</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000124" class="method-detail">
+        <a name="M000124"></a>
+
+        <div class="method-heading">
+          <span class="method-name">corporation_ids</span><span class="method-args">(*names)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000119">character_id</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000129" class="method-detail">
+        <a name="M000129"></a>
+
+        <div class="method-heading">
+          <span class="method-name">corporation_name</span><span class="method-args">(*ids)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000120">character_name</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000130" class="method-detail">
+        <a name="M000130"></a>
+
+        <div class="method-heading">
+          <span class="method-name">corporation_names</span><span class="method-args">(*ids)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000127">character_names</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000128" class="method-detail">
+        <a name="M000128"></a>
+
+        <div class="method-heading">
+          <span class="method-name">corporation_names</span><span class="method-args">(*ids)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000127">character_names</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000114" class="method-detail">
+        <a name="M000114"></a>
+
+        <div class="method-heading">
+          <a href="#M000114" class="method-signature">
+          <span class="method-name">error_list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000114-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000114-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/eve.rb, line 8</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">error_list</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:eve</span>, <span class="ruby-identifier">:error_list</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000115" class="method-detail">
+        <a name="M000115"></a>
+
+        <div class="method-heading">
+          <a href="#M000115" class="method-signature">
+          <span class="method-name">fac_war_stats</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000115-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000115-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/eve.rb, line 9</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fac_war_stats</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:eve</span>, <span class="ruby-identifier">:fac_war_stats</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000116" class="method-detail">
+        <a name="M000116"></a>
+
+        <div class="method-heading">
+          <a href="#M000116" class="method-signature">
+          <span class="method-name">fac_war_top_stats</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000116-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000116-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/eve.rb, line 10</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fac_war_top_stats</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:eve</span>, <span class="ruby-identifier">:fac_war_top_stats</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000133" class="method-detail">
+        <a name="M000133"></a>
+
+        <div class="method-heading">
+          <span class="method-name">factional_warfare_stats</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000115">fac_war_stats</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000134" class="method-detail">
+        <a name="M000134"></a>
+
+        <div class="method-heading">
+          <span class="method-name">factional_warfare_top100</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Eve.html#M000116">fac_war_top_stats</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000118" class="method-detail">
+        <a name="M000118"></a>
+
+        <div class="method-heading">
+          <a href="#M000118" class="method-signature">
+          <span class="method-name">ref_types</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a list of transaction types used in the Journal Entries <a
+href="../Response.html">Response</a> Example:
+</p>
+<pre>
+  result = api.eve.ref_types
+  result.ref_types                    #=&gt; (Rowset)
+  result.ref_types[0].ref_type_id     #=&gt; 0
+  result.ref_types[0].ref_type_name   #=&gt; &quot;Undefined&quot;
+  result.ref_types[1].ref_type_id     #=&gt; 1
+  result.ref_types[1].ref_type_name   #=&gt; &quot;Player Trading&quot;
+  . . .
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000118-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000118-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/eve.rb, line 22</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ref_types</span>
+          <span class="ruby-identifier">response</span> = <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:eve</span>, <span class="ruby-identifier">:ref_types</span>)
+          <span class="ruby-identifier">result</span> = {}
+          <span class="ruby-identifier">response</span>.<span class="ruby-identifier">ref_types</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">result</span>[<span class="ruby-identifier">row</span>.<span class="ruby-identifier">ref_type_id</span>] = <span class="ruby-identifier">row</span>.<span class="ruby-identifier">ref_type_name</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">result</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000117" class="method-detail">
+        <a name="M000117"></a>
+
+        <div class="method-heading">
+          <a href="#M000117" class="method-signature">
+          <span class="method-name">skill_tree</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000117-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000117-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api/services/eve.rb, line 11</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">skill_tree</span>; <span class="ruby-identifier">request</span>(<span class="ruby-identifier">:eve</span>, <span class="ruby-identifier">:skill_tree</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

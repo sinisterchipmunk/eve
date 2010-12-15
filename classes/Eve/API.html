@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Eve::API</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Eve::API</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/eve/api/connectivity_rb.html">
+                lib/eve/api/connectivity.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/response_rb.html">
+                lib/eve/api/response.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/response/wrap_object_rb.html">
+                lib/eve/api/response/wrap_object.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/response/rowsets_rb.html">
+                lib/eve/api/response/rowsets.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/response/rowset_rb.html">
+                lib/eve/api/response/rowset.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/response/inspection_rb.html">
+                lib/eve/api/response/inspection.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/request_rb.html">
+                lib/eve/api/request.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/services_rb.html">
+                lib/eve/api/services.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/services/map_rb.html">
+                lib/eve/api/services/map.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/services/misc_rb.html">
+                lib/eve/api/services/misc.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/services/character_rb.html">
+                lib/eve/api/services/character.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/services/account_rb.html">
+                lib/eve/api/services/account.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/services/server_rb.html">
+                lib/eve/api/services/server.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/services/corporation_rb.html">
+                lib/eve/api/services/corporation.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api/services/eve_rb.html">
+                lib/eve/api/services/eve.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/api_rb.html">
+                lib/eve/api.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="../Eve.html">Eve</a> <a href="API.html">API</a> Libraries</h1>
+<p>
+EVE Online has made available various APIs which allow for querying the
+server for information about the server&#8216;s current status, general
+game information such as skill and certificate trees, top player rankings,
+and the players and characters themselves. This library interfaces with
+that <a href="API.html">API</a> to provide an intuitive way of retrieving
+this data.
+</p>
+<h2>The Basics</h2>
+<p>
+There are two forms of authentication that the <a href="API.html">API</a>
+uses: a limited <a href="API.html">API</a> key and a full <a
+href="API.html">API</a> key. For some information, such as the
+server&#8216;s current status, no <a href="API.html">API</a> key at all is
+required; for other information, such as which characters are owned by a
+particular user account, a limited <a href="API.html">API</a> key will
+suffice. For more personal information, such as a character&#8216;s
+transaction history, a full <a href="API.html">API</a> key is required.
+Using an inappropriate or missing <a href="API.html">API</a> key will
+result in an error being raised.
+</p>
+<h3>Instantiation &amp; [Re]Configuration</h3>
+<p>
+To interface with the <a href="../Eve.html">Eve</a> <a
+href="API.html">API</a>, you need to instantiate the <a
+href="API.html">API</a> object. This is simple:
+</p>
+<pre>
+  api = Eve::API.new
+</pre>
+<p>
+If you plan to make use of information requiring an <a
+href="API.html">API</a> key, you&#8216;ll need to pass in those options:
+</p>
+<pre>
+  api = Eve::API.new(:user_id =&gt; 'a_user_id', :api_key =&gt; 'an_api_key')
+</pre>
+<p>
+If you need to make use of Character-specific <a href="API.html">API</a>
+calls, then you should also pass a +:character_id+ key. Same goes for
+Corporation-specific <a href="API.html">API</a> calls: pass a
+<tt>corporation_id</tt> key. If you don&#8216;t know those yet (for
+instance, because you need the user to make a selection), then don&#8216;t
+fret. You can always instantiate a <a href="API.html#M000059">new</a> <a
+href="API.html">API</a> object, or simply <a
+href="API.html#M000060">set</a> the option directly on the <a
+href="API.html">API</a> object you&#8216;ve already got:
+</p>
+<pre>
+  api.set(:character_id =&gt; 'a_character_id')
+  # -or-
+  api[:character_id] = 'a_character_id'
+</pre>
+<h3>Making <a href="API.html">API</a> Calls</h3>
+<p>
+Actually retrieving information is just as straightforward as instantiation
+of the <a href="API.html">API</a> object was, though the syntax does
+sometimes vary from one call to the next. Here&#8216;s how to get the
+current server status:
+</p>
+<pre>
+  status = api.server_status
+</pre>
+<p>
+And retrieving the list of characters belonging to :user_id is done like
+so:
+</p>
+<pre>
+  charlist = api.account.characters
+</pre>
+<h3>List of <a href="API.html">API</a> Calls</h3>
+<p>
+This section is split into 3 subsections, one for each level of <a
+href="API.html">API</a> key required for the call in question. This table
+assumes the presence of an &quot;api&quot; object, which is an
+instantiation of the <a href="API.html">API</a> object as shown above. For
+more information on a particular subset of calls, including the exact
+return values, click on the corresponding class name to the left.
+</p>
+<h4>No <a href="API.html">API</a> Key</h4>
+<table>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.corporation_sheet
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.alliance_list
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.certificate_tree
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.conquerable_station_list
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.error_list
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.fac_war_stats / api.eve.factional_warfare_stats
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.fac_war_top_stats / api.eve.factional_warfare_top100
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.character_name(*ids)
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.character_id(*names)
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.corporation_name(*ids)
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.corporation_id(*names)
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.alliance_name(*ids)
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.alliance_id(*names)
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.ref_types
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Eve.html">Eve::API::Services::Eve</a>:</td><td>api.eve.skill_tree
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Map.html">Eve::API::Services::Map</a>:</td><td>api.map.fac_war_systems / api.map.contested_systems
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Map.html">Eve::API::Services::Map</a>:</td><td>api.map.sovereignty
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Map.html">Eve::API::Services::Map</a>:</td><td>api.map.kills
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Map.html">Eve::API::Services::Map</a>:</td><td>api.map.jumps
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Misc.html">Eve::API::Services::Misc</a>:</td><td>api.misc.character_portrait
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Server.html">Eve::API::Services::Server</a>:</td><td>api.server.server_status
+
+</td></tr>
+</table>
+<h4>Limited <a href="API.html">API</a> Key</h4>
+<table>
+<tr><td valign="top"><a href="API/Services/Account.html">Eve::API::Services::Account</a>:</td><td>api.account.characters
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.character_sheet
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.fac_war_stats
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.medals
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.skill_in_training
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.skill_queue
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.standings
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.corporation_sheet
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.fac_war_stats
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.medals
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.member_medals
+
+</td></tr>
+</table>
+<h4>Full <a href="API.html">API</a> Key</h4>
+<table>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.account_balance
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.asset_list(version = nil)
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.industry_jobs
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.kill_log(options = {})
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.mailing_lists
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.mail_messages
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.market_orders
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.notifications
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.research
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.wallet_journal(account_key = 1000, options = {})
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.journal_entries(account_key = 1000, options = {})
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Character.html">Eve::API::Services::Character</a>:</td><td>api.character.wallet_transactions(options = {})
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.account_balance
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.asset_list
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.container_log
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.corporation_sheet(corporation_id = nil)
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.fac_war_stats
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.industry_jobs
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.kill_log(options = {})
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.market_orders
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.member_security
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.member_security_log
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.member_tracking
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.starbase_detail(item_id, version = 2)
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.starbase_list
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.shareholders
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.standings
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.titles
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.wallet_journal(account_key = 1000, options = {})
+
+</td></tr>
+<tr><td valign="top"><a href="API/Services/Corporation.html">Eve::API::Services::Corporation</a>:</td><td>api.corporation.wallet_transactions(account_key = 1000, options = {})
+
+</td></tr>
+</table>
+<h3>Interpreting Responses</h3>
+<p>
+<a href="API/Response.html">Response</a> objects are generated
+automatically, and should be able to accommodate any changes in the <a
+href="API.html">API</a> reasonably well.
+</p>
+<p>
+The classes listed above attempt to document the <a href="API.html">API</a>
+calls. However, if you are unsure of how to process the return value of a
+particular <a href="API.html">API</a> call, don&#8216;t be afraid to check
+it out directly:
+</p>
+<pre>
+  irb(main):004:0&gt; puts api.server_status.to_yaml
+  ---
+  current_time: 2010-03-14T04:41:51+00:00
+  cached_until: 2010-03-14T04:44:51+00:00
+  online_players: 30694
+  server_open: true
+  api_version: &quot;2&quot;
+</pre>
+<p>
+In this example, server_status provides 5 fields: api_version,
+cached_until, current_time, online_players, and server_open.
+</p>
+<p>
+Some fields in a given response are essentially arrays with some additional
+fields. These are called Rowsets. For instance, the call to
++api.account.characters+, above, returned a response with a characters
+method, which contained up to 3 characters. Each element, or Row, in a
+Rowset has in turn its own fields and/or Rowsets. Each character in this
+example includes a character_id, corporation_id, and corporation_name.
+</p>
+<p>
+Additionally, all responses always have a name field. For basic responses,
+the name is &quot;(<a href="API/Response.html">Response</a>)&quot;, and
+probably doesn&#8216;t mean much to you. For Rowsets, the name is the name
+of the Rowset (for example, &quot;characters&quot;). For individual Rows,
+the name might mean something more useful &#8212; the name of a character,
+for instance.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000061">[]</a>&nbsp;&nbsp;
+      <a href="#M000062">[]=</a>&nbsp;&nbsp;
+      <a href="#M000059">new</a>&nbsp;&nbsp;
+      <a href="#M000060">set</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="API/Connectivity.html">Eve::API::Connectivity</a></span>
+        <span class="include-name"><a href="API/Services.html">Eve::API::Services</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="API/Connectivity.html" class="link">Eve::API::Connectivity</a><br />
+Module <a href="API/Services.html" class="link">Eve::API::Services</a><br />
+Class <a href="API/Request.html" class="link">Eve::API::Request</a><br />
+Class <a href="API/Response.html" class="link">Eve::API::Response</a><br />
+
+    </div>
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">map</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">options</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000059" class="method-detail">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+          <a href="#M000059" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000059-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000059-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api.rb, line 151</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span> = {})
+      <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">default_options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">send_includes</span>
+      <span class="ruby-identifier">instantiate_submodules</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+          <a href="#M000061" class="method-signature">
+          <span class="method-name">[]</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000061-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000061-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api.rb, line 171</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>); <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">key</span>]; <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+          <a href="#M000062" class="method-signature">
+          <span class="method-name">[]=</span><span class="method-args">(key, value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000062-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000062-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api.rb, line 172</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>); <span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>); <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
+
+        <div class="method-heading">
+          <a href="#M000060" class="method-signature">
+          <span class="method-name">set</span><span class="method-args">(key, value = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000060-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000060-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/api.rb, line 157</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> = <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Key can't be nil&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">key</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+        <span class="ruby-identifier">key</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">set</span>(<span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>) }
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">then</span> <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-ivar">@options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">key</span>
+        <span class="ruby-keyword kw">end</span>
+        [<span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:submodules</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sub</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">sub</span>).<span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sub</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Eve::JavascriptHelper</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Eve::JavascriptHelper</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/eve/javascript_helper_rb.html">
+                lib/eve/javascript_helper.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+In addition to the helpers listed below, this library also exposes the
+&quot;igb&quot; method as described in <a href="Trust.html">Eve::Trust</a>.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000057">link_to_channel</a>&nbsp;&nbsp;
+      <a href="#M000051">link_to_contract</a>&nbsp;&nbsp;
+      <a href="#M000055">link_to_destination</a>&nbsp;&nbsp;
+      <a href="#M000045">link_to_evemail</a>&nbsp;&nbsp;
+      <a href="#M000050">link_to_fitting</a>&nbsp;&nbsp;
+      <a href="#M000046">link_to_info</a>&nbsp;&nbsp;
+      <a href="#M000058">link_to_mailing_list</a>&nbsp;&nbsp;
+      <a href="#M000049">link_to_map</a>&nbsp;&nbsp;
+      <a href="#M000052">link_to_market_details</a>&nbsp;&nbsp;
+      <a href="#M000047">link_to_preview</a>&nbsp;&nbsp;
+      <a href="#M000048">link_to_route</a>&nbsp;&nbsp;
+      <a href="#M000053">link_to_trust_request</a>&nbsp;&nbsp;
+      <a href="#M000056">link_to_waypoint</a>&nbsp;&nbsp;
+      <a href="#M000054">request_trust</a>&nbsp;&nbsp;
+      <a href="#M000044">type_id</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000057" class="method-detail">
+        <a name="M000057"></a>
+
+        <div class="method-heading">
+          <a href="#M000057" class="method-signature">
+          <span class="method-name">link_to_channel</span><span class="method-args">(text, channel_name, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Causes the user to attempt to join the named channel. Normal channel access
+control rules apply. If the user is unable to join the channel, the method
+fails silently.
+</p>
+<pre>
+ channel_name (String)
+   The name of the channel which the user will join.
+</pre>
+<p>
+This method requires that the user grant <a href="Trust.html">Trust</a> to
+the calling site.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000057-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000057-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 182</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_channel</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">channel_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.joinChannel(#{channel_name.inspect})&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
+
+        <div class="method-heading">
+          <a href="#M000051" class="method-signature">
+          <span class="method-name">link_to_contract</span><span class="method-args">(text, solar_system_id, contract_id, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creatse a hyperlink that results in opening the contract window and
+displaying the contract represented by the contract_id argument. Contracts
+are, however, assigned per-solar-system, and so a solar_system_id must also
+be provided.
+</p>
+<pre>
+ solar_system_id (Number)
+   The ID number of the solar system in which the contract is located.
+ contract_id (Number)
+   The ID number of the contract to display.
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000051-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000051-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 100</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_contract</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">solar_system_id</span>, <span class="ruby-identifier">contract_id</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.showContract(#{solar_system_id.inspect}, #{contract_id.inspect})&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000055" class="method-detail">
+        <a name="M000055"></a>
+
+        <div class="method-heading">
+          <a href="#M000055" class="method-signature">
+          <span class="method-name">link_to_destination</span><span class="method-args">(text, solar_system_id, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the client&#8216;s autopilot destination to the specified solar
+system.
+</p>
+<pre>
+ solar_system_id (Number)
+   The numerical identifier of the solar system to which you wish to set the client's autopilot destination.
+</pre>
+<p>
+This method requires that the user grant <a href="Trust.html">Trust</a> to
+the calling site.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000055-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000055-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 160</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_destination</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">solar_system_id</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.setDestination(#{solar_system_id.inspect})&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000045" class="method-detail">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+          <a href="#M000045" class="method-signature">
+          <span class="method-name">link_to_evemail</span><span class="method-args">(text, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a hyperlink that results in opening the client&#8216;s EVE mail
+inbox.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000045-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000045-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 34</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_evemail</span>(<span class="ruby-identifier">text</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">text</span>, <span class="ruby-value str">&quot;CCPEVE.openEveMail()&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
+
+        <div class="method-heading">
+          <a href="#M000050" class="method-signature">
+          <span class="method-name">link_to_fitting</span><span class="method-args">(text, ship_dna_string, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a hyperlink that results in opening the fitting window and displays
+the fitting represented by fitting.
+</p>
+<pre>
+ fitting (String)
+   A Ship DNA string.
+</pre>
+<p>
+See <a
+href="http://wiki.eveonline.com/en/wiki/Ship_DNA">wiki.eveonline.com/en/wiki/Ship_DNA</a>
+for details
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000050-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 88</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_fitting</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">ship_dna_string</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.showFitting(#{ship_dna_string.inspect})&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000046" class="method-detail">
+        <a name="M000046"></a>
+
+        <div class="method-heading">
+          <a href="#M000046" class="method-signature">
+          <span class="method-name">link_to_info</span><span class="method-args">(text, type_id, item_id = nil, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a hyperlink that results in the &quot;show info&quot; dialog being
+displayed on the client&#8216;s screen. If item_id is given, the show info
+window will open for that item.
+</p>
+<pre>
+ type_id (Number)
+   Type ID of item to show info on.
+ item_id (Number)
+   Optional item ID of specific item of type type_id to show info on. This is required for specific types of
+   items, such as solar systems, stations, regions, and constellations.
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000046-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000046-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 47</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_info</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">type_id</span>, <span class="ruby-identifier">item_id</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;CCPEVE.showInfo(#{type_id.inspect}&quot;</span>
+      <span class="ruby-identifier">function</span>.<span class="ruby-identifier">concat</span> <span class="ruby-node">&quot;, #{item_id.inspect}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">item_id</span>
+      <span class="ruby-identifier">function</span>.<span class="ruby-identifier">concat</span> <span class="ruby-value str">&quot;)&quot;</span>
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">function</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000058" class="method-detail">
+        <a name="M000058"></a>
+
+        <div class="method-heading">
+          <a href="#M000058" class="method-signature">
+          <span class="method-name">link_to_mailing_list</span><span class="method-args">(text, mailing_list_name, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Causes the user to subscribe to the named mailing list.
+</p>
+<pre>
+ mailing_list_name (String)
+   The name of the mailing list which the user will join.
+</pre>
+<p>
+This method requires that the user grant <a href="Trust.html">Trust</a> to
+the calling site.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000058-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000058-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 192</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_mailing_list</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">mailing_list_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.joinMailingList(#{mailing_list_name.inspect})&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+          <a href="#M000049" class="method-signature">
+          <span class="method-name">link_to_map</span><span class="method-args">(text, system_id = nil, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a hyperlink that results in opening the map. If system_id is given,
+the map will focus on that system.
+</p>
+<pre>
+ system_id (Number)
+   Optional ID of solar system to focus map on.
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000049-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000049-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 78</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_map</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">system_id</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.showMap(#{system_id ? system_id.inspect : ''})&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000052" class="method-detail">
+        <a name="M000052"></a>
+
+        <div class="method-heading">
+          <a href="#M000052" class="method-signature">
+          <span class="method-name">link_to_market_details</span><span class="method-args">(text, type_id, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a hyperlink which results in opening the market details window and
+displays the information about the item represented by <a
+href="JavascriptHelper.html#M000044">type_id</a>.
+</p>
+<pre>
+ typeID (Number)
+   Type ID to display market details about
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000052-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000052-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 110</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_market_details</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">type_id</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.showMarketDetails(#{type_id.inspect})&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000047" class="method-detail">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+          <a href="#M000047" class="method-signature">
+          <span class="method-name">link_to_preview</span><span class="method-args">(text, type_id, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a hyperlink that results in opening the preview window for <a
+href="JavascriptHelper.html#M000044">type_id</a>.
+</p>
+<pre>
+ type_id (Number)
+   Type ID of item to preview.
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000047-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000047-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 59</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_preview</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">type_id</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.showPreview(#{type_id.inspect})&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
+
+        <div class="method-heading">
+          <a href="#M000048" class="method-signature">
+          <span class="method-name">link_to_route</span><span class="method-args">(text, destination_id, source_id = nil, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a hyperlink that results in showing the route to the destination_id
+from the source_id. If source_id is not given, the source system is taken
+to be the system the user is currently in.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000048-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000048-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 66</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_route</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">destination_id</span>, <span class="ruby-identifier">source_id</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;CCPEVE.showRouteTo(#{destination_id.inspect}&quot;</span>
+      <span class="ruby-identifier">function</span>.<span class="ruby-identifier">concat</span> <span class="ruby-node">&quot;, #{source_id.inspect}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">source_id</span>
+      <span class="ruby-identifier">function</span>.<span class="ruby-identifier">concat</span> <span class="ruby-value str">&quot;)&quot;</span>
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">function</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000053" class="method-detail">
+        <a name="M000053"></a>
+
+        <div class="method-heading">
+          <a href="#M000053" class="method-signature">
+          <span class="method-name">link_to_trust_request</span><span class="method-args">(text, trust_url = &quot;http://</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Produces a hyperlink that will result in a pop-up a trust prompt in the
+client, allowing the user to either grant the trust request, ignore it, or
+always ignore trust requests from your site.
+</p>
+<pre>
+ trust_url (String)
+   This is a fully-qualified domain name and path (e.g. http://wiki.eveonline.com/w/) to which your site would
+   like the user to grant trust.
+</pre>
+<p>
+The page will not be automatically refreshed if the user grants the trust
+request. <a href="Trust.html">Trust</a> will take effect the next time the
+user refreshes the page, or navigates within the site.
+</p>
+<p>
+Note that trust_url is processed and only the protocol, domain and path
+will be used from it. If you supply a query string or anchor, they will be
+discarded. It is recommended that you primarily pass in only
+fully-qualified domain names without paths (e.g. <a
+href="http://wiki.eveonline.com">wiki.eveonline.com</a> instead of <a
+href="http://wiki.eveonline.com/w/index.php">wiki.eveonline.com/w/index.php</a>),
+as this avoids pestering the user for trust on every page.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000053-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000053-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 129</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_trust_request</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">trust_url</span> = <span class="ruby-node">&quot;http://#{request.host}/&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">trust_url</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-identifier">trust_url</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>)) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">trust_url</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.requestTrust(#{trust_url.inspect})&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000056" class="method-detail">
+        <a name="M000056"></a>
+
+        <div class="method-heading">
+          <a href="#M000056" class="method-signature">
+          <span class="method-name">link_to_waypoint</span><span class="method-args">(text, solar_system_id, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds the specified solar system to the end of the client&#8216;s autopilot
+route. If the solar system is already in the route, no changes are made and
+the method fails silently.
+</p>
+<pre>
+ solar_system_id (Number)
+   The numerical identifier of the solar system which you wish to append to the client's autopilot route.
+</pre>
+<p>
+This method requires that the user grant <a href="Trust.html">Trust</a> to
+the calling site.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000056-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000056-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 171</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">link_to_waypoint</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">solar_system_id</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">link_to_function</span> <span class="ruby-identifier">text</span>, <span class="ruby-node">&quot;CCPEVE.addWaypoint(#{solar_system_id.inspect})&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000054" class="method-detail">
+        <a name="M000054"></a>
+
+        <div class="method-heading">
+          <a href="#M000054" class="method-signature">
+          <span class="method-name">request_trust</span><span class="method-args">(trust_url = &quot;http://</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This will generate a method call that produces a pop-up a trust prompt in
+the client, allowing the user to either grant the trust request, ignore it,
+or always ignore trust requests from your site.
+</p>
+<pre>
+ trust_url (String)
+   This is a fully-qualified domain name and path (e.g. http://wiki.eveonline.com/w/) to which your site would
+   like the user to grant trust.
+</pre>
+<p>
+The page will not be automatically refreshed if the user grants the trust
+request. <a href="Trust.html">Trust</a> will take effect the next time the
+user refreshes the page, or navigates within the site.
+</p>
+<p>
+Note that trust_url is processed and only the protocol, domain and path
+will be used from it. If you supply a query string or anchor, they will be
+discarded. It is recommended that you primarily pass in only
+fully-qualified domain names without paths (e.g. <a
+href="http://wiki.eveonline.com">wiki.eveonline.com</a> instead of <a
+href="http://wiki.eveonline.com/w/index.php">wiki.eveonline.com/w/index.php</a>),
+as this avoids pestering the user for trust on every page.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000054-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000054-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 149</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">request_trust</span>(<span class="ruby-identifier">trust_url</span> = <span class="ruby-node">&quot;http://#{request.host}/&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">trust_url</span> = <span class="ruby-identifier">url_for</span>(<span class="ruby-identifier">trust_url</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:only_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>)) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">trust_url</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+      <span class="ruby-identifier">javascript_tag</span> <span class="ruby-node">&quot;CCPEVE.requestTrust(#{trust_url.inspect});&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="#M000044" class="method-signature">
+          <span class="method-name">type_id</span><span class="method-args">(which)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the numeric type ID for a string, so you don&#8216;t have to manage
+&quot;magic numbers&quot; in your application. The argument can be a string
+or a symbol, and is case insensitive. Underscores will be converted to
+spaces.
+</p>
+<p>
+Examples:
+</p>
+<pre>
+  type_id('alliance')       # =&gt; 16159
+  type_id('character')      # =&gt; 1377
+  type_id('corporation')    # =&gt; 2
+  type_id('constellation')  # =&gt; 4
+  type_id('region')         # =&gt; 3
+  type_id('Solar System')   # =&gt; 5
+  type_id(:solar_system)    # =&gt; 5
+  type_id(:station)         # =&gt; 3867
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000044-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000044-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/javascript_helper.rb, line 18</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">type_id</span>(<span class="ruby-identifier">which</span>)
+      <span class="ruby-identifier">which</span> = <span class="ruby-identifier">which</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">humanize</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">which</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
+      <span class="ruby-identifier">which</span>.<span class="ruby-identifier">downcase!</span>
+      <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">which</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'alliance'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">16159</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'character'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">1377</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'corporation'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">2</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'constellation'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">4</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'region'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">3</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'solar system'</span>, <span class="ruby-value str">'solarsystem'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">5</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'station'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value">3867</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Unknown type: #{which}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

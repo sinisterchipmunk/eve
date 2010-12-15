@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Eve::Errors</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Eve::Errors</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/eve/errors_rb.html">
+                lib/eve/errors.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/errors/authentication_errors_rb.html">
+                lib/eve/errors/authentication_errors.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/errors/internal_errors_rb.html">
+                lib/eve/errors/internal_errors.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/errors/miscellaneous_errors_rb.html">
+                lib/eve/errors/miscellaneous_errors.rb
+                </a>
+        <br />
+                <a href="../../files/lib/eve/errors/user_input_errors_rb.html">
+                lib/eve/errors/user_input_errors.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000004">find_by_code</a>&nbsp;&nbsp;
+      <a href="#M000005">raise</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="Errors/AuthenticationErrors.html" class="link">Eve::Errors::AuthenticationErrors</a><br />
+Module <a href="Errors/InternalErrors.html" class="link">Eve::Errors::InternalErrors</a><br />
+Module <a href="Errors/MiscellaneousErrors.html" class="link">Eve::Errors::MiscellaneousErrors</a><br />
+Module <a href="Errors/UserInputErrors.html" class="link">Eve::Errors::UserInputErrors</a><br />
+Class <a href="Errors/AuthenticationError.html" class="link">Eve::Errors::AuthenticationError</a><br />
+Class <a href="Errors/InternalError.html" class="link">Eve::Errors::InternalError</a><br />
+Class <a href="Errors/InvalidRowset.html" class="link">Eve::Errors::InvalidRowset</a><br />
+Class <a href="Errors/MiscellaneousError.html" class="link">Eve::Errors::MiscellaneousError</a><br />
+Class <a href="Errors/UnknownError.html" class="link">Eve::Errors::UnknownError</a><br />
+Class <a href="Errors/UserInputError.html" class="link">Eve::Errors::UserInputError</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">API_ERROR_MAP</td>
+          <td>=</td>
+          <td class="context-item-value">{         '1xx' =&gt; Eve::Errors::UserInputError,         100 =&gt; Eve::Errors::UserInputErrors::WalletNotLoaded,         101 =&gt; Eve::Errors::UserInputErrors::WalletExhausted,         102 =&gt; Eve::Errors::UserInputErrors::WalletPreviouslyLoaded,         103 =&gt; Eve::Errors::UserInputErrors::RetryLater,         104 =&gt; Eve::Errors::UserInputErrors::KeyNotFound,         105 =&gt; Eve::Errors::UserInputErrors::InvalidCharacterID,         106 =&gt; Eve::Errors::UserInputErrors::MissingUserID,         107 =&gt; Eve::Errors::UserInputErrors::InvalidBeforeRefID,         108 =&gt; Eve::Errors::UserInputErrors::InvalidAccountKey,         109 =&gt; Eve::Errors::UserInputErrors::AccountKeyOutOfBounds,         110 =&gt; Eve::Errors::UserInputErrors::InvalidBeforeTransID,         111 =&gt; Eve::Errors::UserInputErrors::InvalidInteger,         112 =&gt; Eve::Errors::UserInputErrors::VersionMismatch,         113 =&gt; Eve::Errors::UserInputErrors::VersionEscalationNotAllowed,         114 =&gt; Eve::Errors::UserInputErrors::InvalidItemID,         115 =&gt; Eve::Errors::UserInputErrors::AssetsAlreadyDownloaded,         116 =&gt; Eve::Errors::UserInputErrors::IndustryJobsAlreadyDownloaded,         117 =&gt; Eve::Errors::UserInputErrors::MarketOrdersAlreadyDownloaded,         118 =&gt; Eve::Errors::UserInputErrors::KillsNotLoaded,         119 =&gt; Eve::Errors::UserInputErrors::KillsExhausted,         120 =&gt; Eve::Errors::UserInputErrors::KillsPreviouslyLoaded,         121 =&gt; Eve::Errors::UserInputErrors::InvalidBeforeKillID,         122 =&gt; Eve::Errors::UserInputErrors::InvalidNameList,         123 =&gt; Eve::Errors::UserInputErrors::InvalidIDList,         124 =&gt; Eve::Errors::UserInputErrors::CharacterNotEnlisted,         125 =&gt; Eve::Errors::UserInputErrors::CorporationNotEnlisted,          '2xx' =&gt; Eve::Errors::AuthenticationError,         200 =&gt; Eve::Errors::AuthenticationErrors::InadequateSecurityLevel,         201 =&gt; Eve::Errors::AuthenticationErrors::WrongAccount,         202 =&gt; Eve::Errors::AuthenticationErrors::CachedKeyAuthFailure,         203 =&gt; Eve::Errors::AuthenticationErrors::AuthenticationFailure,         204 =&gt; Eve::Errors::AuthenticationErrors::AuthenticationFailure,         205 =&gt; Eve::Errors::AuthenticationErrors::LastAuthenticationFailure,         206 =&gt; Eve::Errors::AuthenticationErrors::MissingRoles,         207 =&gt; Eve::Errors::AuthenticationErrors::NotAvailable,         208 =&gt; Eve::Errors::AuthenticationErrors::MissingRoles,         209 =&gt; Eve::Errors::AuthenticationErrors::MissingRoles,         210 =&gt; Eve::Errors::AuthenticationErrors::AuthenticationFailure,         211 =&gt; Eve::Errors::AuthenticationErrors::LoginDenied,         212 =&gt; Eve::Errors::AuthenticationErrors::LastAuthenticationFailure,         213 =&gt; Eve::Errors::AuthenticationErrors::MissingRoles,         214 =&gt; Eve::Errors::AuthenticationErrors::NotInAlliance,           '5xx' =&gt; Eve::Errors::InternalError,         500 =&gt; Eve::Errors::InternalErrors::InvalidOrNotLoaded,         501 =&gt; Eve::Errors::InternalErrors::InvalidOrNotLoaded,         502 =&gt; Eve::Errors::InternalErrors::CacheUtilMissing,         503 =&gt; Eve::Errors::InternalErrors::InvalidInput,         504 =&gt; Eve::Errors::InternalErrors::InvalidRace,         505 =&gt; Eve::Errors::InternalErrors::InvalidGender,         506 =&gt; Eve::Errors::InternalErrors::InvalidBloodline,         507 =&gt; Eve::Errors::InternalErrors::InvalidAttribute,         508 =&gt; Eve::Errors::InternalErrors::InvalidRefType,         509 =&gt; Eve::Errors::InternalErrors::NullAttributeID,         510 =&gt; Eve::Errors::InternalErrors::MissingCorporation,         511 =&gt; Eve::Errors::InternalErrors::InvalidAccountKey,         512 =&gt; Eve::Errors::InternalErrors::InvalidCharID,         513 =&gt; Eve::Errors::InternalErrors::RolesQueryFailure,         514 =&gt; Eve::Errors::InternalErrors::InvalidCorpID,         515 =&gt; Eve::Errors::InternalErrors::InvalidUserID,         516 =&gt; Eve::Errors::InternalErrors::UserInformationFailure,         517 =&gt; Eve::Errors::InternalErrors::CSVMismatch,         518 =&gt; Eve::Errors::InternalErrors::TQTimeFailure,         519 =&gt; Eve::Errors::InternalErrors::StarbaseDetailFailure,         520 =&gt; Eve::Errors::InternalErrors::UnexpectedDatabaseFailure,         521 =&gt; Eve::Errors::InternalErrors::InvalidCredentials,         522 =&gt; Eve::Errors::InternalErrors::CharacterInformationFailure,         523 =&gt; Eve::Errors::InternalErrors::CorporationInformationFailure,         524 =&gt; Eve::Errors::InternalErrors::FactionMemberInformationFailure,         525 =&gt; Eve::Errors::InternalErrors::MedalInformationFailure,         526 =&gt; Eve::Errors::InternalErrors::NotificationsNotAvailable,         527 =&gt; Eve::Errors::InternalErrors::MailNotAvailable,          '9xx' =&gt; Eve::Errors::MiscellaneousError,         900 =&gt; Eve::Errors::MiscellaneousErrors::BetaInProgress,         901 =&gt; Eve::Errors::MiscellaneousErrors::SiteDatabaseDisabled,         902 =&gt; Eve::Errors::MiscellaneousErrors::BackendDatabaseDisabled,         903 =&gt; Eve::Errors::MiscellaneousErrors::RateLimited,         999 =&gt; Eve::Errors::MiscellaneousErrors::TestErrorForced,       }</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">find_by_code</span><span class="method-args">(code)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns an error class by its code. If a match cannot be found, the closest
+match is used instead. For instance, &#8216;100&#8217; returns
+WalletNotLoaded; &#8216;199&#8217; returns <a
+href="Errors/UserInputError.html">UserInputError</a>.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/errors.rb, line 11</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_by_code</span>(<span class="ruby-identifier">code</span>)
+        <span class="ruby-keyword kw">return</span> <span class="ruby-constant">API_ERROR_MAP</span>[<span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-constant">API_ERROR_MAP</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span>)
+        <span class="ruby-comment cmt"># exact match can't be found, look for x's</span>
+        <span class="ruby-identifier">code</span> = <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">code</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">generic_code</span> = <span class="ruby-identifier">code</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;x&quot;</span><span class="ruby-operator">*</span>(<span class="ruby-value">3</span><span class="ruby-operator">-</span><span class="ruby-identifier">code</span>.<span class="ruby-identifier">length</span>)
+          <span class="ruby-keyword kw">return</span> <span class="ruby-constant">API_ERROR_MAP</span>[<span class="ruby-identifier">generic_code</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-constant">API_ERROR_MAP</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">generic_code</span>)
+          <span class="ruby-identifier">code</span> = <span class="ruby-identifier">code</span>[<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>]
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-constant">UnknownError</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="#M000005" class="method-signature">
+          <span class="method-name">raise</span><span class="method-args">(*several_variants)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/eve/errors.rb, line 23</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">raise</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">several_variants</span>)
+        <span class="ruby-identifier">options</span> = <span class="ruby-identifier">several_variants</span>.<span class="ruby-identifier">extract_options!</span>
+        <span class="ruby-keyword kw">super</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:code</span>]
+          <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">find_by_code</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:code</span>])
+          <span class="ruby-identifier">message</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:message</span>]
+          <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">caller</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
