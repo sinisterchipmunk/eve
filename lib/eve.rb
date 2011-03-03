@@ -16,8 +16,11 @@ module Eve
 
     def cache
       return @cache if @cache
-      @cache = defined?(Rails.cache) ? Rails.cache : ActiveSupport::Cache.lookup_store(*cache_store)
-      @cache
+      @cache = begin
+        Rails.cache
+      rescue NameError
+        ActiveSupport::Cache.lookup_store(*cache_store)
+      end
     end
   end
 end
