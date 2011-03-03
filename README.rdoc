@@ -13,7 +13,6 @@ stand-alone application or script using this library.
 === Including The Gem
 In Rails 3:
 
-  # Please note that Rails 3 support is under active development and is not ready yet.
   gem 'eve'
 
 In Rails 2:

@@ -37,7 +37,7 @@ module Eve
         end
         true
       end
-
+      
       def prefer_trust(trust_message = self.class.trust_message)
         if igb? && !igb.trusted?
           deliver_trust_message(trust_message)

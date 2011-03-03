@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-# TrustController is our test controller. It defines a single #index action.
+# TrustController is our test controller.
 describe TrustController do
   render_views
   

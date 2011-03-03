@@ -13,10 +13,12 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "eve"
-  gem.homepage = "http://github.com/sinisterchipmunk/eve"
+  gem.homepage = "http://thoughtsincomputation.com"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "A Ruby library for interfacing with all aspects of the EVE Online MMO."
+  gem.description = "A Ruby library for interfacing with all aspects of the EVE Online MMO. It is designed for use "+
+          "within a Ruby on Rails project, but does not require Rails as a dependency. That means there is nothing "+
+          "preventing you from writing a stand-alone application or script using this library."
   gem.email = "sinisterchipmunk@gmail.com"
   gem.authors = ["Colin MacKenzie IV"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,

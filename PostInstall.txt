@@ -1,6 +1,0 @@
-
-For more information on eve, see http://github.com/sinisterchipmunk/eve.git
-
-
-
-
