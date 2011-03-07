@@ -27,7 +27,20 @@ In Pure Ruby:
 
 === Usage Example: Controller
   class MyEveCompatibleController < ApplicationController
-    requires_trust  # or, requires_trust "with a custom trust message: please click yes"
+    requires_trust
+  end
+  
+Rails 3: This returns a blank page with a trust request. This behavior can be overridden with an initializer to provide custom trust request pages:
+  module Eve
+    module Trust
+      module ControllerHelpers
+        def require_trust(trust_message = self.class.trust_message)
+          if igb? && !igb.trusted?
+            render :text => "<center>Requires trust!</br><a href=\"#\" onclick=\"CCPEVE.requestTrust('http://#{request.host_with_port}/')\">give trust</a>", :layout => false
+          end
+        end
+      end
+    end
   end
 
 === Usage Example: View Helpers
