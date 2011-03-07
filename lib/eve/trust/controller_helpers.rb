@@ -32,8 +32,7 @@ module Eve
 
       def require_trust(trust_message = self.class.trust_message)
         if igb? && !igb.trusted?
-          deliver_trust_message(trust_message)
-          return false
+          render :text => "<body onload=\"CCPEVE.requestTrust('http://#{request.host_with_port}')\">", :layout => false
         end
         true
       end
@@ -46,8 +45,8 @@ module Eve
       end
 
       def deliver_trust_message(trust_message = self.class.trust_message)
-        trust_uri = "http://#{request.host}/"
-        headers['Eve.trustme'] = "#{trust_uri}::#{trust_message}"
+        trust_uri = "http://#{request.host_with_port}/"
+        head :unauthorized, 'Eve.trustme' => "#{trust_uri}::#{trust_message}"
       end
 
       def detect_igb
