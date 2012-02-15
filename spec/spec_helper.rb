@@ -1,4 +1,15 @@
-require 'rubygems'
+begin
+  require 'rubygems'
+  require 'bundler'
+  Bundler.setup
+rescue LoadError
+  puts " *** You don't seem to have Bundler installed. ***"
+  puts "     Please run the following command:"
+  puts
+  puts "       gem install bundler"
+  exit
+end
+
 require File.join(File.dirname(__FILE__), '../lib/eve')
 require 'rails'
 ##require "active_record/railtie"
