@@ -1,7 +1,6 @@
 module Eve
   module Trust
     class IgbInterface
-      extend ActiveSupport::Memoizable
       attr_reader :request
       delegate :headers, :to => :request
 
@@ -72,17 +71,22 @@ module Eve
       end
 
       private
-      def igb_variable_get(method_name, warning = nil)
-        return_value = (
-          v = headers["HTTP_EVE_#{method_name.to_s.camelize.upcase}"] || nil
-          v = (YAML::load(v) rescue v) unless v.nil?
-          v
-        )
-        warn warning if return_value.nil? && warning
-        return_value
+      def memoized_igb_variables(method_name = nil)
+        @memoized_igb_variables ||= {}
+        @memoized_igb_variables[method_name] ||= {}
       end
-
-      memoize :igb_variable_get
+      
+      def igb_variable_get(method_name, warning = nil)
+        memoized_igb_variables(method_name)[warning] ||= begin
+          return_value = (
+            v = headers["HTTP_EVE_#{method_name.to_s.camelize.upcase}"] || nil
+            v = (YAML::load(v) rescue v) unless v.nil?
+            v
+          )
+          warn warning if return_value.nil? && warning
+          return_value
+        end
+      end
     end
   end
 end
