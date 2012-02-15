@@ -33,7 +33,7 @@ module Eve
 
         def value_for(candidate)
           candidate.kind_of?(String) ? YAML::load(candidate) : candidate
-        rescue
+        rescue (defined?(Psych::SyntaxError) ? Psych::SyntaxError : StandardError)
           candidate
         end
       end
