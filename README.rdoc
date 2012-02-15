@@ -19,7 +19,7 @@ In Rails 2:
 
   # Please note that the Rails 2 version of this gem is no longer being maintained, so
   # you will need to download a 1.x version of the gem.
-  config.gem 'eve', :version => ">~ 1.0"
+  config.gem 'eve', :version => "~> 1.0"
   
 In Pure Ruby:
   require 'rubygems'
