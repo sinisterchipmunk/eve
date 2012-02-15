@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.summary = "A Ruby library for interfacing with all aspects of the EVE Online MMO."
 
   s.add_runtime_dependency 'hpricot', "= 0.8.2"
-  s.add_runtime_dependency 'sc-core-ext', ">= 0"
+  s.add_runtime_dependency 'activesupport', "~> 3.2"
   
   s.add_development_dependency 'rails', ">= 0"
   s.add_development_dependency 'rspec-rails', "~> 2.1.0"
