@@ -26,6 +26,9 @@ Eve::MockRailsApplication.initialize!
 # and must come AFTER the app is initialized. If app is initialized, routes are cleared.
 Eve::MockRailsApplication.routes.draw { match ':controller(/:action(/:id(.:format)))' }
 
+RSpec.configure do |config|
+  config.before { FileUtils.rm_rf Rails.root.join('tmp') }
+end
 
 # Set to false to disable mock web service responses. Real requests will be used
 # whenever Eve.cache does not suffice. The API information above must be real and
