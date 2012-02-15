@@ -11,6 +11,8 @@ require 'rake'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
+  require './lib/eve/version'
+  
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "eve"
   gem.homepage = "http://thoughtsincomputation.com"
@@ -21,6 +23,7 @@ Jeweler::Tasks.new do |gem|
           "preventing you from writing a stand-alone application or script using this library."
   gem.email = "sinisterchipmunk@gmail.com"
   gem.authors = ["Colin MacKenzie IV"]
+  gem.version = Eve::VERSION
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
@@ -43,7 +46,8 @@ task :default => :spec
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+  require './lib/eve/version'
+  version = Eve::VERSION
 
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "eve #{version}"
