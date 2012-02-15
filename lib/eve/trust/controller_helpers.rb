@@ -6,9 +6,9 @@ module Eve
           hide_action :trust_message, :trust_message=, :detect_igb, :template_exists?,
                       :set_igb_or_default, :default_template_exists?, :mock_methods_for_testing!,
                       :igb, :igb?, :set_igb, :require_trust, :prefer_trust, :deliver_trust_message
-          class_inheritable_accessor :trust_message
-          read_inheritable_attribute(:trust_message) || write_inheritable_attribute(:trust_message,
-                                                                             "This web site is requesting your trust.")
+          class_attribute :trust_message
+          self.trust_message ||= "This web site is requesting your trust."
+
           delegate :igb?, :to => :igb
           before_filter :detect_igb
 

@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{eve}
+  s.name = "eve"
   s.version = "2.0.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Colin MacKenzie IV"]
-  s.date = %q{2011-03-03}
-  s.description = %q{A Ruby library for interfacing with all aspects of the EVE Online MMO. It is designed for use within a Ruby on Rails project, but does not require Rails as a dependency. That means there is nothing preventing you from writing a stand-alone application or script using this library.}
-  s.email = %q{sinisterchipmunk@gmail.com}
+  s.date = "2012-02-15"
+  s.description = "A Ruby library for interfacing with all aspects of the EVE Online MMO. It is designed for use within a Ruby on Rails project, but does not require Rails as a dependency. That means there is nothing preventing you from writing a stand-alone application or script using this library."
+  s.email = "sinisterchipmunk@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "eve.gemspec",
     "lib/eve.rb",
     "lib/eve/api.rb",
     "lib/eve/api/connectivity.rb",
@@ -188,11 +189,11 @@ Gem::Specification.new do |s|
     "spec/support/xml/rowset_with_mismatched_attributes.xml",
     "spec/support/xml/server/server_status.xml"
   ]
-  s.homepage = %q{http://thoughtsincomputation.com}
+  s.homepage = "http://thoughtsincomputation.com"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.0}
-  s.summary = %q{A Ruby library for interfacing with all aspects of the EVE Online MMO.}
+  s.rubygems_version = "1.8.10"
+  s.summary = "A Ruby library for interfacing with all aspects of the EVE Online MMO."
   s.test_files = [
     "spec/controllers/controller_helpers_spec.rb",
     "spec/helpers/javascript_helper_spec.rb",
@@ -269,33 +270,27 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<activesupport>, [">= 3.0"])
-      s.add_runtime_dependency(%q<actionpack>, [">= 3.0"])
       s.add_runtime_dependency(%q<hpricot>, ["= 0.8.2"])
       s.add_runtime_dependency(%q<sc-core-ext>, [">= 0"])
       s.add_development_dependency(%q<rails>, [">= 0"])
-      s.add_development_dependency(%q<rspec-rails>, [">= 2.1.0"])
+      s.add_development_dependency(%q<rspec-rails>, ["~> 2.1.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.1"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
     else
-      s.add_dependency(%q<activesupport>, [">= 3.0"])
-      s.add_dependency(%q<actionpack>, [">= 3.0"])
       s.add_dependency(%q<hpricot>, ["= 0.8.2"])
       s.add_dependency(%q<sc-core-ext>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 0"])
-      s.add_dependency(%q<rspec-rails>, [">= 2.1.0"])
+      s.add_dependency(%q<rspec-rails>, ["~> 2.1.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
       s.add_dependency(%q<rcov>, [">= 0"])
     end
   else
-    s.add_dependency(%q<activesupport>, [">= 3.0"])
-    s.add_dependency(%q<actionpack>, [">= 3.0"])
     s.add_dependency(%q<hpricot>, ["= 0.8.2"])
     s.add_dependency(%q<sc-core-ext>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 0"])
-    s.add_dependency(%q<rspec-rails>, [">= 2.1.0"])
+    s.add_dependency(%q<rspec-rails>, ["~> 2.1.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5.1"])
     s.add_dependency(%q<rcov>, [">= 0"])
