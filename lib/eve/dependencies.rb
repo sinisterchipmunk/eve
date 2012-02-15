@@ -12,6 +12,10 @@ module Eve
   autoload :Errors,           "eve/errors"
   autoload :JavascriptHelper, "eve/javascript_helper"
   autoload :Trust,            "eve/trust"
+  autoload :Version,          "eve/version"
+  autoload :VERSION,          "eve/version"
+
+  require 'eve/deprecation'
 
   # Railtie for bootstrapping to Rails
   begin
@@ -42,5 +46,3 @@ module Eve
     # no rails? no problem.
   end
 end
-
-require 'eve/deprecation'
