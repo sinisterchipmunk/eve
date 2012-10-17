@@ -25,11 +25,12 @@ Gem::Specification.new do |s|
   s.rubygems_version = "1.8.10"
   s.summary = "A Ruby library for interfacing with all aspects of the EVE Online MMO."
 
-  s.add_runtime_dependency 'hpricot', "= 0.8.2"
-  s.add_runtime_dependency 'activesupport', "~> 3.2"
+  s.add_runtime_dependency 'nokogiri', "~> 1"
+  s.add_runtime_dependency 'activesupport', "~> 3"
+  s.add_runtime_dependency 'sc-core-ext'
   
   s.add_development_dependency 'rails', ">= 0"
-  s.add_development_dependency 'rspec-rails', "~> 2.1.0"
-  s.add_development_dependency 'bundler', "~> 1.0.0"
+  s.add_development_dependency 'rspec-rails', "~> 2"
+  s.add_development_dependency 'bundler', "~> 1"
 end
 

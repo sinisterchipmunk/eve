@@ -7,9 +7,5 @@ describe Eve::API::Services::Map do
     it "should behave like a Rowset" do
       subject.should behave_like_rowset("solarSystemID,shipKills,factionKills,podKills")
     end
-
-    it "produces a RowSet called :solar_systems" do
-      subject.should be_kind_of(Eve::API::Response::Rowset)
-    end
   end
 end

@@ -1,7 +1,8 @@
 require 'net/http'
-require 'hpricot'
+require 'nokogiri'
 require 'yaml'
 require 'sc-core-ext'
+require 'active_support/core_ext'
 
 gem_path = File.expand_path(File.dirname(__FILE__), "..")
 $LOAD_PATH.unshift gem_path
@@ -20,7 +21,6 @@ module Eve
   # Railtie for bootstrapping to Rails
   begin
     require 'rails'
-    # we just required Rails -- are these next 3 necessary?
     require 'action_pack'
     require 'action_controller'
     require 'action_view'

@@ -7,8 +7,8 @@ describe Eve::API::Response do
     end
 
     it "should be convertible to Hash" do
-      subject.to_hash.should == {"current_time"=>DateTime.parse("Wed, 10 Mar 2010 01:03:36 +0000"),
-                                 "cached_until"=>DateTime.parse("Sat, 10 Mar 2040 01:06:36 +0000"),
+      subject.to_hash.should == {"current_time"=>Time.parse("Wed, 10 Mar 2010 01:03:36 +0000"),
+                                 "cached_until"=>Time.parse("Sat, 10 Mar 2040 01:06:36 +0000"),
                                  "online_players"=>31835,
                                  "server_open"=>true,
                                  "api_version"=>"2"}
