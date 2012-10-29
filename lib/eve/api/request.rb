@@ -21,7 +21,15 @@ module Eve
       end
 
       def dispatch
-        r = (cached_response || cache_response(Net::HTTP.post_form(URI.parse(uri), post_options).body))
+        r = cached_response || cache_response {
+          url = URI.parse uri
+          request = Net::HTTP::Post.new url.path
+          request.set_form_data post_options
+          http = Net::HTTP.new url.host, url.port
+          http.use_ssl = true
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+          http.start { |http| http.request(request) }.body
+        }
         if r.respond_to?(:error) && r.error
           Eve::Errors.raise(:code => r.error.code, :message => r.error)
         end
@@ -42,7 +50,8 @@ module Eve
         @response_type == :xml ? Eve::API::Response.new(body, options) : body
       end
 
-      def cache_response(xml)
+      def cache_response
+        xml = yield
         Eve.cache.write(cache_key, xml) if options[:cache]
         response_for xml
       end
@@ -58,7 +67,7 @@ module Eve
 
       def default_options
         {
-          :base_uri => "http://api.eve-online.com",
+          :base_uri => "https://api.eve-online.com",
           :extension => "xml.aspx",
           :camelize => true,
           :response_type => :xml,
