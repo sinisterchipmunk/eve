@@ -1,7 +1,6 @@
 module Eve
   class API
     class Request
-      extend ActiveSupport::Memoizable
       attr_reader :response, :uri, :options, :namespace, :service
       
       def initialize(namespace, service, options = {})
@@ -49,10 +48,8 @@ module Eve
       end
 
       def cache_key
-        ActiveSupport::Cache.expand_cache_key(post_options, @uri)
+        @cache_key ||= ActiveSupport::Cache.expand_cache_key(post_options, @uri)
       end
-
-      memoize :cache_key
 
       private
       def post_options
