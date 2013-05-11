@@ -195,8 +195,8 @@ module Eve
     end
 
     def validate_credentials(type, *additional_requirements)
-      raise ArgumentError, "user_id is required" unless options[:user_id]
-      raise ArgumentError, "api_key is required" unless options[:api_key]
+      raise ArgumentError, "key_id is required" unless options[:key_id]
+      raise ArgumentError, "v_code is required" unless options[:v_code]
       additional_requirements.each do |r|
         raise ArgumentError, "#{r} is required" unless options[r]
       end
